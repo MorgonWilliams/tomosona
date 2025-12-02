@@ -5,9 +5,9 @@
 
 const UI_TEXT = {
     en: {
-        welcome: "The simple way to learn Toki Pona",
+        welcome: "An simple, structured way to learn Toki Pona",
         intro: "Master the language of good in 18 simple lessons. No clutter, no distractions, just you and 120 words.",
-        start: "Start Journey",
+        start: "Start",
         lesson: "Lesson",
         test: "Checkpoint",
         vocab: "New Vocabulary",
@@ -34,7 +34,7 @@ const UI_TEXT = {
         good: "Good Job!",
         tryAgain: "Try Again",
         homeNav: "Home",
-        pathNav: "Path",
+        pathNav: "Course",
         wordsNav: "Words",
         advancedNav: "Advanced",
         advancedTitle: "Advanced Studies",
@@ -81,49 +81,13 @@ const UI_TEXT = {
 const curriculum = [
     // --- SECTION 1: BASICS ---
     {
-        id: 1, type: "lesson", title: "Me & You (Basics)", desc: "Pronouns and Identity",
+        id: 1, type: "lesson", title: "Basic Sentence Structure & 'li'", desc: "Forming basic sentences and understanding subject versus predicate.",
         vocab: [
             { word: "mi", def: "I, me, we, us", type: "pronoun", ex: "mi moku. (I eat.)" },
             { word: "sina", def: "you", type: "pronoun", ex: "sina pona. (You are good.)" },
             { word: "jan", def: "person, human, to personify", type: "n/v/adj", ex: "jan li lape. (The person sleeps.)" },
             { word: "pona", def: "good, simple, to fix", type: "n/v/adj", ex: "mi pona. (I am good.)" },
-            { word: "moku", def: "food, to eat/drink", type: "n/v/adj", ex: "mi moku. (I eat.)" }
-        ],
-        grammar: `
-            <h3>1. The Golden Rule: X li Y</h3>
-            <p>Welcome to Toki Pona! In English, we worry about verb tenses and complex grammar. Here, we care about <strong>context</strong>.</p>
-            
-            <p>A basic sentence has a Subject (what we are talking about) and a Predicate (what it is or does).</p>
-            
-            <h3>2. The Exception: "mi" and "sina"</h3>
-            <p>Usually, we use a separator word called <code>li</code>. However, if the subject is exactly <strong>mi</strong> (I/we) or <strong>sina</strong> (you), we skip the separator!.</p>
-            
-            <div class="grammar-box" style="background: white; border-color: var(--primary-light);">
-                <ul>
-                    <li><strong>mi moku.</strong> = I eat. (or "I am eating")</li>
-                    <li><strong>sina pona.</strong> = You are good. (or "You fix")</li>
-                </ul>
-            </div>
-            
-            <p><strong>Note:</strong> There is no word for "am", "is", or "are". We simply place the description next to the subject.</p>
-        `,
-        story: `<p><b>mi jan.</b> (I am a person.)</p><p><b>sina jan.</b> (You are a person.)</p><p><b>mi pona.</b> (I am good.)</p>`,
-        quiz: [
-            { q: "Translate: 'I eat'", options: ["mi moku", "sina moku", "moku mi"], ans: 0 },
-            { q: "What does 'pona' mean?", options: ["Bad", "Good/Simple", "Person"], ans: 1 },
-            { q: "Translate: 'You are good'", options: ["sina pona", "mi pona", "sina moku"], ans: 0 },
-            { q: "Translate to English: 'mi jan'", options: ["I am a person", "You are a person", "Person eats"], ans: 0 },
-            { q: "Translate to English: 'sina moku'", options: ["I eat", "You eat", "Good food"], ans: 1 },
-            { q: "Identify the ERROR:", options: ["mi moku", "sina pona", "mi li moku"], ans: 2 },
-            { q: "Identify the ERROR:", options: ["sina li jan", "sina jan", "mi jan"], ans: 0 },
-            { q: "Build sentence: 'I am good'", options: ["mi pona", "pona mi", "mi li pona"], ans: 0 },
-            { q: "Build sentence: 'You eat'", options: ["moku sina", "sina moku", "sina li moku"], ans: 1 },
-            { q: "What is 'jan'?", options: ["Food", "Person", "Good"], ans: 1 }
-        ]
-    },
-    {
-        id: 2, type: "lesson", title: "The Separator 'li'", desc: "Talking about others",
-        vocab: [
+            { word: "moku", def: "food, to eat/drink", type: "n/v/adj", ex: "mi moku. (I eat.)" },
             { word: "li", def: "(separator) between subject and verb", type: "particle", ex: "jan li lape." },
             { word: "suli", def: "big, size, to grow", type: "n/v/adj", ex: "tomo li suli." },
             { word: "lili", def: "small, few, to shrink", type: "n/v/adj", ex: "waso lili." },
@@ -131,9 +95,13 @@ const curriculum = [
             { word: "suno", def: "sun, light, to shine", type: "n/v/adj", ex: "suno li seli." }
         ],
         grammar: `
-            <h3>The Predicate Marker: 'li'</h3>
-            <p>In Lesson 1, we learned that <em>mi</em> and <em>sina</em> are special. For <strong>everyone and everything else</strong>, we need a way to separate the Subject from the Action. That is what <strong>li</strong> does.</p>
             
+            <h3>The Predicate Marker: 'li'</h3>
+            <p>Welcome to Toki Pona! Toki Pona is a language built around simple sentence structure with a reliance on implied <strong>context</strong>.</p>
+            <p>A basic sentence has a subject (what we are talking about) and a predicate (what it is or does).</p>
+            <p>We need a way to separate the Subject from the Action. That is what <strong>li</strong> does.</p>
+            
+            <h3>1. The Golden Rule: X li Y</h3>
             <p>Think of <strong>li</strong> as an equals sign (=) or an arrow pointing to the action. It has no meaning on its own; it is just a grammatical road sign.</p>
 
             <div class="grammar-box" style="background: white; border-color: var(--primary-light);">
@@ -145,11 +113,32 @@ const curriculum = [
                 <li><strong>jan <span style="color:var(--primary);">li</span> suli.</strong> <br> (Person = Big)</li>
             </ul>
             
-            <p><strong>Wait, is it "The person IS big" or "The person GREW"?</strong><br>
-            It can be both! Toki Pona relies on context. Adjectives (big) and Verbs (to grow) often look the same.</p>
+            <p><strong>Wait, is it "The person IS big" or "The person GREW"?</strong><br>It can be both! Toki Pona relies on context. Adjectives (big) and Verbs (to grow) often look the same.</p>
+
+            <h3>2. The Exception: "mi" and "sina"</h3>
+            <p>Usually, we use a separator word called <code>li</code> between the subject and predicate. However, if the subject is exactly <strong>mi</strong> (I/we) or <strong>sina</strong> (you), we skip the separator!.</p>
+            
+            <div class="grammar-box" style="background: white; border-color: var(--primary-light);">
+                <ul>
+                    <li><strong>mi moku.</strong> = I eat. (or "I am eating")</li>
+                    <li><strong>sina pona.</strong> = You are good. (or "You fix")</li>
+                </ul>
+            </div>
+            
+            <p><strong>Note:</strong> There is no word for "am", "is", or "are". We simply place the description next to the subject.</p>
         `,
-        story: `<p><b>suno li suli.</b> (The sun is big.)</p><p><b>mi jan lili.</b> (I am a small person.)</p><p><b>telo li pona.</b> (The water is good.)</p>`,
+        story: `<p><b>mi jan.</b> (I am a person.)</p><p><b>sina jan.</b> (You are a person.)</p><p><b>mi pona.</b> (I am good.)</p><p><b>suno li suli.</b> (The sun is big.)</p><p><b>mi jan lili.</b> (I am a small person.)</p><p><b>telo li pona.</b> (The water is good.)</p>`,
         quiz: [
+            { q: "Translate: 'I eat'", options: ["mi moku", "sina moku", "moku mi"], ans: 0 },
+            { q: "What does 'pona' mean?", options: ["Bad", "Good/Simple", "Person"], ans: 1 },
+            { q: "Translate: 'You are good'", options: ["sina pona", "mi pona", "sina moku"], ans: 0 },
+            { q: "Translate to English: 'mi jan'", options: ["I am a person", "You are a person", "Person eats"], ans: 0 },
+            { q: "Translate to English: 'sina moku'", options: ["I eat", "You eat", "Good food"], ans: 1 },
+            { q: "Identify the ERROR:", options: ["mi moku", "sina pona", "mi li moku"], ans: 2 },
+            { q: "Identify the ERROR:", options: ["sina li jan", "sina jan", "mi jan"], ans: 0 },
+            { q: "Build sentence: 'I am good'", options: ["mi pona", "pona mi", "mi li pona"], ans: 0 },
+            { q: "Build sentence: 'You eat'", options: ["moku sina", "sina moku", "sina li moku"], ans: 1 },
+            { q: "What is 'jan'?", options: ["Food", "Person", "Good"], ans: 1 },            
             { q: "Translate: 'The water is small.'", options: ["telo lili.", "telo li lili.", "mi telo lili."], ans: 1 }, 
             { q: "Which sentence is INCORRECT?", options: ["mi li moku.", "jan li moku.", "sina moku."], ans: 0 },
             { q: "Translate: 'The sun is big'", options: ["suno li suli", "suno suli", "suli li suno"], ans: 0 },
@@ -163,13 +152,18 @@ const curriculum = [
         ]
     },
     {
-        id: 3, type: "lesson", title: "Direct Objects 'e'", desc: "Doing things to things",
+        id: 2, type: "lesson", title: "Action and Modification", desc: "Include objects and describe how actions are performed",
         vocab: [
             { word: "e", def: "(separator) introduces direct object", type: "particle", ex: "mi lukin e sina." },
             { word: "kili", def: "fruit, vegetable", type: "n/v/adj", ex: "mi moku e kili." },
             { word: "lukin", def: "eye, to see, visual", type: "n/v/adj", ex: "ona li lukin." },
             { word: "jo", def: "to have, possession", type: "n/v/adj", ex: "mi jo e mani." },
-            { word: "waso", def: "bird, flying animal", type: "n/v/adj", ex: "waso li tawa." }
+            { word: "waso", def: "bird, flying animal", type: "n/v/adj", ex: "waso li tawa." },            
+            { word: "loje", def: "red, redness, to redden", type: "n/v/adj", ex: "kili loje." },
+            { word: "walo", def: "white, whiteness", type: "n/v/adj", ex: "tomo walo." },
+            { word: "tomo", def: "house, structure, indoor", type: "n/v/adj", ex: "mi lon tomo." },
+            { word: "tawa", def: "movement, to go, moving", type: "n/v/adj", ex: "mi tawa tomo." },
+            { word: "ni", def: "this, that", type: "pronoun", ex: "ni li pona." }
         ],
         grammar: `
             <h3>The Direct Object Marker: 'e'</h3>
@@ -187,32 +181,8 @@ const curriculum = [
             </ul>
             
             <p><strong>Common Mistake:</strong> Do not use 'e' if you are just describing a state (e.g., "I am good"). Only use it for transitive actions (doing something to something).</p>
-        `,
-        story: `<p><b>mi lukin e waso.</b> (I see a bird.)</p><p><b>waso li lukin e mi.</b> (The bird sees me.)</p><p><b>waso li moku e kili.</b> (The bird eats fruit.)</p>`,
-        quiz: [
-            { q: "Translate: 'I have water.'", options: ["mi jo telo.", "mi jo e telo.", "mi telo e jo."], ans: 1 }, 
-            { q: "What is 'kili'?", options: ["Tool", "Fruit/Veg", "Animal"], ans: 1 },
-            { q: "Translate: 'The person eats fruit'", options: ["jan li moku e kili", "jan moku kili", "jan li moku kili"], ans: 0 },
-            { q: "Translate to English: 'mi lukin e suno'", options: ["I see the sun", "The sun sees me", "I am the sun"], ans: 0 },
-            { q: "Translate to English: 'waso li jo e moku'", options: ["The bird has food", "The bird eats", "I have a bird"], ans: 0 },
-            { q: "Identify the ERROR:", options: ["mi lukin e sina", "mi lukin sina", "sina lukin e mi"], ans: 1 },
-            { q: "Identify the ERROR:", options: ["jan li jo e kili", "mi jo e kili", "mi li jo e kili"], ans: 2 },
-            { q: "Build sentence: 'I see a bird'", options: ["mi lukin e waso", "mi lukin waso", "waso li lukin e mi"], ans: 0 },
-            { q: "Build sentence: 'You have fruit'", options: ["sina jo e kili", "sina jo kili", "sina li jo e kili"], ans: 0 },
-            { q: "What is 'lukin'?", options: ["To eat", "To see", "To have"], ans: 1 }
-        ]
-    },
-    {
-        id: 4, type: "lesson", title: "Modifiers & Adjectives", desc: "Describing things",
-        vocab: [
-            { word: "loje", def: "red, redness, to redden", type: "n/v/adj", ex: "kili loje." },
-            { word: "walo", def: "white, whiteness", type: "n/v/adj", ex: "tomo walo." },
-            { word: "tomo", def: "house, structure, indoor", type: "n/v/adj", ex: "mi lon tomo." },
-            { word: "tawa", def: "movement, to go, moving", type: "n/v/adj", ex: "mi tawa tomo." },
-            { word: "ni", def: "this, that", type: "pronoun", ex: "ni li pona." }
-        ],
-        grammar: `
-            <h3>Adjectives Follow Nouns</h3>
+
+             <h3>Adjectives Follow Nouns</h3>
             <p>In English, we say "Red house". In Toki Pona, the order is flipped: "House red". The main word (the <strong>head</strong>) comes first, and the describers (modifiers) follow it.</p>
 
             <div class="grammar-box" style="background: white; border-color: var(--primary-light);">
@@ -227,8 +197,18 @@ const curriculum = [
             
             <p><strong>Stacking:</strong> You can stack them! <em>tomo loje suli</em> = "House red big" (Big red house).</p>
         `,
-        story: `<p><b>waso ni li lili.</b> (This bird is small.)</p><p><b>waso lili li loje.</b> (The small bird is red.)</p><p><b>mi tawa tomo walo.</b> (I go to the white house.)</p>`,
+       story: `<p><b>mi lukin e waso.</b> (I see a bird.)</p><p><b>waso li lukin e mi.</b> (The bird sees me.)</p><p><b>waso li moku e kili.</b> (The bird eats fruit.)</p><p><b>waso ni li lili.</b> (This bird is small.)</p><p><b>waso lili li loje.</b> (The small bird is red.)</p><p><b>mi tawa tomo walo.</b> (I go to the white house.)</p>`,
         quiz: [
+            { q: "Translate: 'I have water.'", options: ["mi jo telo.", "mi jo e telo.", "mi telo e jo."], ans: 1 }, 
+            { q: "What is 'kili'?", options: ["Tool", "Fruit/Veg", "Animal"], ans: 1 },
+            { q: "Translate: 'The person eats fruit'", options: ["jan li moku e kili", "jan moku kili", "jan li moku kili"], ans: 0 },
+            { q: "Translate to English: 'mi lukin e suno'", options: ["I see the sun", "The sun sees me", "I am the sun"], ans: 0 },
+            { q: "Translate to English: 'waso li jo e moku'", options: ["The bird has food", "The bird eats", "I have a bird"], ans: 0 },
+            { q: "Identify the ERROR:", options: ["mi lukin e sina", "mi lukin sina", "sina lukin e mi"], ans: 1 },
+            { q: "Identify the ERROR:", options: ["jan li jo e kili", "mi jo e kili", "mi li jo e kili"], ans: 2 },
+            { q: "Build sentence: 'I see a bird'", options: ["mi lukin e waso", "mi lukin waso", "waso li lukin e mi"], ans: 0 },
+            { q: "Build sentence: 'You have fruit'", options: ["sina jo e kili", "sina jo kili", "sina li jo e kili"], ans: 0 },
+            { q: "What is 'lukin'?", options: ["To eat", "To see", "To have"], ans: 1 },
             { q: "Translate: 'Red fruit'", options: ["loje kili", "kili loje", "kili li loje"], ans: 1 }, 
             { q: "Translate: 'That small house'", options: ["tomo lili ni", "ni tomo lili", "tomo ni lili"], ans: 0 },
             { q: "Translate: 'Good person'", options: ["jan pona", "pona jan", "jan li pona"], ans: 0 },
@@ -242,7 +222,7 @@ const curriculum = [
         ]
     },
     {
-        id: 5, type: "lesson", title: "Prepositions", desc: "Location and Tools",
+        id: 3, type: "lesson", title: "Prepositions", desc: "Location and Tools",
         vocab: [
             { word: "lon", def: "in, at, true, to exist", type: "n/v/adj/prep", ex: "mi lon tomo." },
             { word: "kepeken", def: "to use, with, using", type: "n/v/adj/prep", ex: "mi moku kepeken ilo." },
@@ -300,7 +280,7 @@ const curriculum = [
     },
     // --- SECTION 2: STRUCTURE ---
     {
-        id: 6, type: "lesson", title: "The Particle 'pi'", desc: "Grouping modifiers",
+        id: 4, type: "lesson", title: "The Particle 'pi'", desc: "Grouping modifiers",
         vocab: [
             { word: "pi", def: "(separator) of, regrouping", type: "particle", ex: "tomo pi telo nasa." },
             { word: "kalama", def: "sound, noisy, to make noise", type: "n/v/adj", ex: "kalama musi." },
@@ -341,13 +321,17 @@ const curriculum = [
         ]
     },
     {
-        id: 7, type: "lesson", title: "Negation & Yes/No", desc: "Saying No",
+        id: 5, type: "lesson", title: "Imperatives, Negation, Yes/No, Questions", desc: "Saying No",
         vocab: [
             { word: "ala", def: "no, not, zero, nothing", type: "n/v/adj", ex: "mi lape ala." },
             { word: "lape", def: "sleep, sleeping, to sleep", type: "n/v/adj", ex: "ona li lape." },
             { word: "wawa", def: "strong, power, to strengthen", type: "n/v/adj", ex: "jan wawa." },
             { word: "pali", def: "work, activity, to make", type: "n/v/adj", ex: "mi pali." },
-            { word: "ken", def: "can, possible, ability", type: "n/v/adj", ex: "mi ken tawa." }
+            { word: "ken", def: "can, possible, ability", type: "n/v/adj", ex: "mi ken tawa." },
+            { word: "o", def: "hey! (vocative/imperative)", type: "particle", ex: "jan o, kute." },
+            { word: "kute", def: "ear, to hear, auditory", type: "n/v/adj", ex: "o kute!" },
+            { word: "seme", def: "what, which, who", type: "question", ex: "ni li seme?" },
+            { word: "tan", def: "from, because, origin", type: "n/v/adj/prep", ex: "mi kama tan ma." }
         ],
         grammar: `
             <h3>Negation with 'ala'</h3>
@@ -368,32 +352,23 @@ const curriculum = [
                 <li><strong>sina lape ala lape?</strong><br>(Are you sleeping?)</li>
                 <li><strong>ona li pona ala pona?</strong><br>(Is it good?)</li>
             </ul>
-        `,
-        story: `<p><b>taso, mi lape ala.</b> (But, I do not sleep.)</p><p><b>sina lape ala lape?</b> (Are you sleeping?)</p><p><b>waso li wawa.</b> (The bird is strong.)</p>`,
-        quiz: [
-            { q: "Translate: 'I am not working.'", options: ["mi pali ala.", "mi ala pali.", "mi li pali ala."], ans: 0 }, 
-            { q: "Ask: 'Is it good?'", options: ["ni li pona?", "ni li pona ala pona?", "ni ala ni pona?"], ans: 1 },
-            { q: "Translate: 'Nothing'", options: ["ala", "pali", "wawa"], ans: 0 },
-            { q: "Translate to English: 'sina ken ala ken?'", options: ["Can you?", "Do you allow?", "Are you able not able?"], ans: 0 },
-            { q: "Translate to English: 'mi lape ala'", options: ["I do not sleep", "I sleep no", "Sleep is not me"], ans: 0 },
-            { q: "Identify the ERROR:", options: ["mi moku ala", "mi ala moku", "jan li moku ala"], ans: 1 },
-            { q: "Identify the ERROR:", options: ["sina pona ala pona?", "sina pona ala?", "sina pona ala pona"], ans: 1 },
-            { q: "Build sentence: 'I cannot'", options: ["mi ken ala", "mi ala ken", "mi li ken ala"], ans: 0 },
-            { q: "Build sentence: 'Do you eat?'", options: ["sina moku ala moku?", "sina moku ala?", "sina ala moku?"], ans: 0 },
-            { q: "What is 'wawa'?", options: ["Work", "Strong/Power", "Sleep"], ans: 1 }
-        ]
-    },
-    {
-        id: 8, type: "lesson", title: "Gender & Imperatives", desc: "Commands & People",
-        vocab: [
-            { word: "meli", def: "woman, female, feminine", type: "n/v/adj", ex: "jan meli." },
-            { word: "mije", def: "man, male, masculine", type: "n/v/adj", ex: "jan mije." },
-            { word: "o", def: "hey! (vocative/imperative)", type: "particle", ex: "jan o, kute." },
-            { word: "kute", def: "ear, to hear, auditory", type: "n/v/adj", ex: "o kute!" },
-            { word: "mama", def: "parent, creator, to create", type: "n/v/adj", ex: "mama mi." }
-        ],
-        grammar: `
-            <h3>Addressing People (Vocative)</h3>
+
+            <h3>The Question Word: 'seme'</h3>
+            <p>In English, we move words around to ask questions ("Who are you?"). In Toki Pona, you just <strong>fill in the blank</strong> with the word <strong>seme</strong>.</p>
+
+            <div class="grammar-box" style="background: white; border-color: var(--primary-light);">
+                <p><strong>Rule:</strong> Replace the unknown info with <em>seme</em>.</p>
+            </div>
+
+            <ul>
+                <li><strong>ni li kili.</strong> (This is fruit.) <br>&rarr; <strong>ni li <span style="color:var(--accent);">seme</span>?</strong> (This is what?)</li>
+                
+                <li><strong>jan li moku.</strong> (Person eats.) <br>&rarr; <strong>jan <span style="color:var(--accent);">seme</span> li moku?</strong> (Who eats?)</li>
+                
+                <li><strong>sina lon tomo.</strong> (You are at home.) <br>&rarr; <strong>sina lon <span style="color:var(--accent);">seme</span>?</strong> (Where are you?)</li>
+            </ul>
+
+             <h3>Addressing People (Vocative)</h3>
             <p>To call someone's name, use <strong>o</strong>.</p>
             <ul>
                 <li><strong>jan Ken o, toki.</strong> = Hey Ken, hello.</li>
@@ -412,27 +387,42 @@ const curriculum = [
                 <li><strong>mi mute o tawa!</strong> = Let's go! (Us O Go)</li>
             </ul>
         `,
-        story: `<p><b>waso o, o kute!</b> (Bird, listen!)</p><p><b>o moku e kili ni.</b> (Eat this fruit.)</p><p><b>mama o, o lukin e waso mi.</b> (Mom, look at my bird.)</p>`,
+        story: `<p><b>taso, mi lape ala.</b> (But, I do not sleep.)</p><p><b>sina lape ala lape?</b> (Are you sleeping?)</p><p><b>waso li wawa.</b> (The bird is strong.)</p><p><b>waso o, o kute!</b> (Bird, listen!)</p><p><b>o moku e kili ni.</b> (Eat this fruit.)</p><p><b>mama o, o lukin e waso mi.</b> (Mom, look at my bird.)</p>`,
         quiz: [
-            { q: "How to say 'Listen!'", options: ["mi kute.", "kute!", "o kute!"], ans: 2 }, 
-            { q: "Translate: 'jan mije'", options: ["Man", "Woman", "Child"], ans: 0 },
-            { q: "Translate: 'Hey Mom,'", options: ["mama o,", "o mama,", "mama li,"], ans: 0 },
-            { q: "Translate to English: 'jan meli'", options: ["Woman", "Man", "Parent"], ans: 0 },
-            { q: "Translate to English: 'o lape'", options: ["Sleep!", "I sleep", "He sleeps"], ans: 0 },
-            { q: "Identify the ERROR:", options: ["sina o moku", "mi o moku", "o moku"], ans: 1 },
-            { q: "Identify the ERROR:", options: ["jan Ken o", "o jan Ken", "jan o"], ans: 1 },
-            { q: "Build sentence: 'Work!'", options: ["o pali!", "pali!", "sina pali"], ans: 0 },
-            { q: "Build sentence: 'Hey person, look!'", options: ["jan o, o lukin!", "jan o lukin!", "o jan, lukin!"], ans: 0 },
-            { q: "What is 'kute'?", options: ["To speak", "To hear/Listen", "To see"], ans: 1 }
+            { q: "Translate: 'I am not working.'", options: ["mi pali ala.", "mi ala pali.", "mi li pali ala."], ans: 0 }, 
+            { q: "Ask: 'Is it good?'", options: ["ni li pona?", "ni li pona ala pona?", "ni ala ni pona?"], ans: 1 },
+            { q: "Translate: 'Nothing'", options: ["ala", "pali", "wawa"], ans: 0 },
+            { q: "Translate to English: 'sina ken ala ken?'", options: ["Can you?", "Do you allow?", "Are you able not able?"], ans: 0 },
+            { q: "Translate to English: 'mi lape ala'", options: ["I do not sleep", "I sleep no", "Sleep is not me"], ans: 0 },
+            { q: "Identify the ERROR:", options: ["mi moku ala", "mi ala moku", "jan li moku ala"], ans: 1 },
+            { q: "Identify the ERROR:", options: ["sina pona ala pona?", "sina pona ala?", "sina pona ala pona"], ans: 1 },
+            { q: "Build sentence: 'I cannot'", options: ["mi ken ala", "mi ala ken", "mi li ken ala"], ans: 0 },
+            { q: "Build sentence: 'Do you eat?'", options: ["sina moku ala moku?", "sina moku ala?", "sina ala moku?"], ans: 0 },
+            { q: "What is 'wawa'?", options: ["Work", "Strong/Power", "Sleep"], ans: 1 },
+            { q: "Translate: 'Who are you?'", options: ["sina seme?", "sina jan seme?", "seme sina?"], ans: 1 }, 
+            { q: "Translate: 'sina wile e seme?'", options: ["What do you want?", "Who wants?", "Where is the desire?"], ans: 0 },
+            { q: "Translate: 'Where is the house?'", options: ["tomo li lon seme?", "tomo li seme?", "lon seme tomo?"], ans: 0 },
+            { q: "Translate to English: 'ni li seme?'", options: ["What is this?", "Who is this?", "Where is this?"], ans: 0 },
+            { q: "Translate to English: 'ma suwi'", options: ["Cute land", "Sweet earth", "Land candy"], ans: 0 },
+            { q: "Identify the ERROR:", options: ["jan seme li moku?", "seme jan li moku?", "sina wile seme?"], ans: 1 },
+            { q: "Identify the ERROR:", options: ["tan seme?", "sina tan seme?", "sina kama tan seme?"], ans: 1 },
+            { q: "Build sentence: 'Who is eating?'", options: ["jan seme li moku?", "seme li moku?", "jan li moku seme?"], ans: 0 },
+            { q: "Build sentence: 'I come from the house'", options: ["mi kama tan tomo", "mi tan tomo", "mi kama tomo"], ans: 0 },
+            { q: "What is 'tan'?", options: ["To go", "From/Because", "To stay"], ans: 1 }
         ]
     },
     {
-        id: 9, type: "lesson", title: "Pre-verbs", desc: "Want, Can, Need",
+        id: 6, type: "lesson", title: "Pre-verbs", desc: "Want, Can, Need",
         vocab: [
             { word: "wile", def: "want, need, must, desire", type: "n/v/adj", ex: "mi wile moku." },
             { word: "sona", def: "know, wisdom, to understand", type: "n/v/adj", ex: "mi sona e ni." },
             { word: "kama", def: "come, event, to arrive/happen", type: "n/v/adj", ex: "ona li kama suli." },
-            { word: "awen", def: "stay, wait, endurance", type: "n/v/adj", ex: "o awen pali." }
+            { word: "awen", def: "stay, wait, endurance", type: "n/v/adj", ex: "o awen pali." },
+            { word: "lukin", def: "eye, to see, to try(old)", type: "n/v/adj", ex: "mi lukin pali." },
+            { word: "alasa", def: "to hunt, to seek, to try", type: "n/v/adj", ex: "mi alasa e waso." },
+            { word: "pali", def: "work, activity, to make", type: "n/v/adj", ex: "mi pali e tomo." },
+            { word: "toki", def: "speech, language, to talk", type: "n/v/adj", ex: "toki pona." },
+            { word: "open", def: "start, open, to begin", type: "n/v/adj", ex: "o open e lupa." }
         ],
         grammar: `
             <h3>Pre-verbs (Helpers)</h3>
@@ -448,8 +438,18 @@ const curriculum = [
                 <li><strong>mi <span style="color:var(--advanced);">kama</span> sona.</strong><br>(I <em>come</em> to know = I learn.)</li>
                 <li><strong>mi <span style="color:var(--advanced);">awen</span> pali.</strong><br>(I <em>continue</em> to work.)</li>
             </ul>
+
+            <h3>'alasa' as a Helper</h3>
+            <p>We learned that <strong>alasa</strong> means "to see". When used as a pre-verb (helper), it means "to seek to" or "to try".</p>
+
+            <ul>
+                <li><strong>mi lukin e tomo.</strong><br>(I see the house.)</li>
+                <li><strong>mi <span style="color:var(--advanced);">alasa</span> pali e tomo.</strong><br>(I <em>try</em> to make a house.)</li>
+            </ul>
+            
+            <p><strong>Note:</strong>In the past, speakers use the word <em>lukin</em> (hunt/gather) for "try", but <em>alasa</em> is more common in modern Toki Pona.</p>
         `,
-        story: `<p><b>mi wile tawa.</b> (I want to go.)</p><p><b>mi wile kama sona.</b> (I want to learn/know.)</p><p><b>waso li awen lon tomo.</b> (The bird stays in the house.)</p>`,
+        story: `<p><b>mi wile tawa.</b> (I want to go.)</p><p><b>mi wile kama sona.</b> (I want to learn/know.)</p><p><b>waso li awen lon tomo.</b> (The bird stays in the house.)</p><p><b>mi alasa open e lupa.</b> (I try to open the door.)</p><p><b>mi alasa toki tawa jan.</b> (I try to talk to people.)</p><p><b>mi open tawa.</b> (I start going.)</p>`,
         quiz: [
             { q: "Translate: 'I need to sleep.'", options: ["mi lape wile.", "mi wile lape.", "mi lape."], ans: 1 }, 
             { q: "What is 'kama'?", options: ["Go", "Come/Become", "Food"], ans: 1 },
@@ -460,38 +460,15 @@ const curriculum = [
             { q: "Identify the ERROR:", options: ["ona li sona toki", "ona li toki sona", "mi sona toki"], ans: 1 },
             { q: "Build sentence: 'I want to go'", options: ["mi wile tawa", "mi tawa wile", "wile mi tawa"], ans: 0 },
             { q: "Build sentence: 'Keep working'", options: ["o awen pali", "o pali awen", "awen pali"], ans: 0 },
-            { q: "What is 'sona'?", options: ["To want", "To know", "To stay"], ans: 1 }
-        ]
-    },
-    {
-        id: 10, type: "lesson", title: "Pre-verb: lukin", desc: "Trying vs Seeing",
-        vocab: [
-            { word: "lukin", def: "eye, to see, to try", type: "n/v/adj", ex: "mi lukin pali." },
-            { word: "pali", def: "work, activity, to make", type: "n/v/adj", ex: "mi pali e tomo." },
-            { word: "toki", def: "speech, language, to talk", type: "n/v/adj", ex: "toki pona." },
-            { word: "open", def: "start, open, to begin", type: "n/v/adj", ex: "o open e lupa." }
-        ],
-        grammar: `
-            <h3>'lukin' as a Helper</h3>
-            <p>We learned that <strong>lukin</strong> means "to see". When used as a pre-verb (helper), it means "to seek to" or "to try".</p>
-
-            <ul>
-                <li><strong>mi lukin e tomo.</strong><br>(I see the house.)</li>
-                <li><strong>mi <span style="color:var(--advanced);">lukin</span> pali e tomo.</strong><br>(I <em>try</em> to make a house.)</li>
-            </ul>
-            
-            <p><strong>Note:</strong> Some speakers use the word <em>alasa</em> (hunt/gather) for "try", but <em>lukin</em> is very common in standard Toki Pona.</p>
-        `,
-        story: `<p><b>mi lukin open e lupa.</b> (I try to open the door.)</p><p><b>mi lukin toki tawa jan.</b> (I try to talk to people.)</p><p><b>mi open tawa.</b> (I start going.)</p>`,
-        quiz: [
-            { q: "Translate: 'mi lukin tawa.'", options: ["I see movement.", "I try to move.", "I look at the move."], ans: 1 }, 
+            { q: "What is 'sona'?", options: ["To want", "To know", "To stay"], ans: 1 },
+            { q: "Translate: 'mi alasa tawa.'", options: ["I hunt movement.", "I try to move.", "I look at the move."], ans: 1 }, 
             { q: "How to say 'Start speaking'", options: ["open toki", "toki open", "kama toki"], ans: 0 },
-            { q: "Translate: 'I try to work'", options: ["mi lukin pali", "mi pali lukin", "mi lukin e pali"], ans: 0 },
+            { q: "Translate: 'I try to work'", options: ["mi alasa pali", "mi pali alasa", "mi alasa e pali"], ans: 0 },
             { q: "Translate to English: 'mi open moku'", options: ["I start eating", "I eat openly", "I open the food"], ans: 0 },
             { q: "Translate to English: 'toki pona'", options: ["Good language", "Speak good", "Language fix"], ans: 0 },
-            { q: "Identify the ERROR:", options: ["mi lukin lape", "mi lape lukin", "mi wile lukin lape"], ans: 1 },
+            { q: "Identify the ERROR:", options: ["mi alasa lape", "mi lape lukin", "mi wile alasa lape"], ans: 1 },
             { q: "Identify the ERROR:", options: ["o open e lupa", "o lupa open", "o open"], ans: 1 },
-            { q: "Build sentence: 'Try to listen'", options: ["o lukin kute", "o kute lukin", "lukin kute"], ans: 0 },
+            { q: "Build sentence: 'Try to listen'", options: ["o alasa kute", "o kute alasa", "alasa kute"], ans: 0 },
             { q: "Build sentence: 'I speak'", options: ["mi toki", "mi li toki", "toki mi"], ans: 0 },
             { q: "What is 'open'?", options: ["To close", "To start/Open", "To see"], ans: 1 }
         ]
@@ -517,50 +494,14 @@ const curriculum = [
     },
     // --- SECTION 3: COMPLEXITY ---
     {
-        id: 11, type: "lesson", title: "Questions with 'seme'", desc: "What, Who, Where",
-        vocab: [
-            { word: "seme", def: "what, which, who", type: "question", ex: "ni li seme?" },
-            { word: "tan", def: "from, because, origin", type: "n/v/adj/prep", ex: "mi kama tan ma." },
-            { word: "ma", def: "land, earth, country", type: "n/v/adj", ex: "ma pona." },
-            { word: "suwi", def: "sweet, cute, candy", type: "n/v/adj", ex: "soweli suwi." }
-        ],
-        grammar: `
-            <h3>The Question Word: 'seme'</h3>
-            <p>In English, we move words around to ask questions ("Who are you?"). In Toki Pona, you just <strong>fill in the blank</strong> with the word <strong>seme</strong>.</p>
-
-            <div class="grammar-box" style="background: white; border-color: var(--primary-light);">
-                <p><strong>Rule:</strong> Replace the unknown info with <em>seme</em>.</p>
-            </div>
-
-            <ul>
-                <li><strong>ni li kili.</strong> (This is fruit.) <br>&rarr; <strong>ni li <span style="color:var(--accent);">seme</span>?</strong> (This is what?)</li>
-                
-                <li><strong>jan li moku.</strong> (Person eats.) <br>&rarr; <strong>jan <span style="color:var(--accent);">seme</span> li moku?</strong> (Who eats?)</li>
-                
-                <li><strong>sina lon tomo.</strong> (You are at home.) <br>&rarr; <strong>sina lon <span style="color:var(--accent);">seme</span>?</strong> (Where are you?)</li>
-            </ul>
-        `,
-        story: `<p><b>ni li ma seme?</b> (What land is this?)</p><p><b>jan seme li lon?</b> (Who is here?)</p><p><b>mi kama tan ma suwi.</b> (I come from the pleasant land.)</p>`,
-        quiz: [
-            { q: "Translate: 'Who are you?'", options: ["sina seme?", "sina jan seme?", "seme sina?"], ans: 1 }, 
-            { q: "Translate: 'sina wile e seme?'", options: ["What do you want?", "Who wants?", "Where is the desire?"], ans: 0 },
-            { q: "Translate: 'Where is the house?'", options: ["tomo li lon seme?", "tomo li seme?", "lon seme tomo?"], ans: 0 },
-            { q: "Translate to English: 'ni li seme?'", options: ["What is this?", "Who is this?", "Where is this?"], ans: 0 },
-            { q: "Translate to English: 'ma suwi'", options: ["Cute land", "Sweet earth", "Land candy"], ans: 0 },
-            { q: "Identify the ERROR:", options: ["jan seme li moku?", "seme jan li moku?", "sina wile seme?"], ans: 1 },
-            { q: "Identify the ERROR:", options: ["tan seme?", "sina tan seme?", "sina kama tan seme?"], ans: 1 },
-            { q: "Build sentence: 'Who is eating?'", options: ["jan seme li moku?", "seme li moku?", "jan li moku seme?"], ans: 0 },
-            { q: "Build sentence: 'I come from the house'", options: ["mi kama tan tomo", "mi tan tomo", "mi kama tomo"], ans: 0 },
-            { q: "What is 'tan'?", options: ["To go", "From/Because", "To stay"], ans: 1 }
-        ]
-    },
-    {
-        id: 12, type: "lesson", title: "Conjunctions", desc: "And, Or",
+        id: 7, type: "lesson", title: "Conjunctions", desc: "And, Or",
         vocab: [
             { word: "en", def: "and (joins subjects)", type: "particle", ex: "mi en sina." },
             { word: "anu", def: "or", type: "particle", ex: "moku anu telo." },
             { word: "taso", def: "but, only", type: "particle", ex: "mi wile, taso mi ken ala." },
-            { word: "kin", def: "also, too, indeed", type: "particle", ex: "mi kin." }
+            { word: "kin", def: "also, too, indeed", type: "particle", ex: "mi kin." },
+            { word: "ma", def: "land, earth, country", type: "n/v/adj", ex: "ma pona." },
+            { word: "suwi", def: "sweet, cute, candy", type: "n/v/adj", ex: "soweli suwi." }
         ],
         grammar: `
             <h3>Connecting Words</h3>
@@ -594,12 +535,16 @@ const curriculum = [
         ]
     },
     {
-        id: 13, type: "lesson", title: "Context 'la' (Basic)", desc: "Setting the scene",
+        id: 8, type: "lesson", title: "Context 'la'", desc: "Add complexity with context",
         vocab: [
             { word: "la", def: "(separator) context marker", type: "particle", ex: "tenpo ni la..." },
             { word: "tenpo", def: "time, moment, duration", type: "n/v/adj", ex: "tenpo ni." },
             { word: "pini", def: "end, past, to finish", type: "n/v/adj", ex: "tenpo pini." },
-            { word: "kama", def: "coming, future, to happen", type: "n/v/adj", ex: "tenpo kama." }
+            { word: "kama", def: "coming, future, to happen", type: "n/v/adj", ex: "tenpo kama." },            
+            { word: "moli", def: "die, dead, death, to kill", type: "n/v/adj", ex: "ona li moli." },
+            { word: "pakala", def: "break, mistake, to damage", type: "n/v/adj", ex: "ilo li pakala." },
+            { word: "sike", def: "circle, ball, round, year", type: "n/v/adj", ex: "sike suno." },
+            { word: "ale", def: "all, everything, abundant", type: "n/v/adj", ex: "ale li pona." }
         ],
         grammar: `
             <h3>Context First: 'la'</h3>
@@ -615,31 +560,8 @@ const curriculum = [
             </ul>
             
             <p>This is how we do "In the morning...", "In my opinion...", etc.</p>
-        `,
-        story: `<p><b>tenpo ni la mi lili.</b> (At this time, I am small.)</p><p><b>tenpo pini la mi lon tomo.</b> (In the past, I was at the house.)</p><p><b>mi la ni li pona.</b> (To me, this is good.)</p>`,
-        quiz: [
-            { q: "Translate: 'Now'", options: ["tenpo ni la", "la tenpo ni", "ni tenpo la"], ans: 0 }, 
-            { q: "Translate: 'In my opinion...'", options: ["mi la...", "la mi...", "mi pilin..."], ans: 0 },
-            { q: "Translate: 'In the future...'", options: ["tenpo kama la...", "tenpo pini la...", "tenpo ni la..."], ans: 0 },
-            { q: "Translate to English: 'tenpo pini'", options: ["Past", "Future", "Present"], ans: 0 },
-            { q: "Translate to English: 'mi la ni li ike'", options: ["To me, this is bad", "I am bad", "This is my bad"], ans: 0 },
-            { q: "Identify the ERROR:", options: ["tenpo ni la mi moku", "mi moku la tenpo ni", "tenpo pini la mi lape"], ans: 1 },
-            { q: "Identify the ERROR:", options: ["mi la", "sina la", "la mi"], ans: 2 },
-            { q: "Build sentence: 'Today I work'", options: ["tenpo suno ni la mi pali", "mi pali tenpo suno ni", "tenpo ni la mi pali"], ans: 0 },
-            { q: "Build sentence: 'I finish'", options: ["mi pini", "mi li pini", "pini mi"], ans: 0 },
-            { q: "What is 'tenpo'?", options: ["Time", "Temple", "Place"], ans: 0 }
-        ]
-    },
-    {
-        id: 14, type: "lesson", title: "Context 'la' (Conditionals)", desc: "If... then...",
-        vocab: [
-            { word: "moli", def: "die, dead, death, to kill", type: "n/v/adj", ex: "ona li moli." },
-            { word: "pakala", def: "break, mistake, to damage", type: "n/v/adj", ex: "ilo li pakala." },
-            { word: "sike", def: "circle, ball, round, year", type: "n/v/adj", ex: "sike suno." },
-            { word: "ale", def: "all, everything, abundant", type: "n/v/adj", ex: "ale li pona." }
-        ],
-        grammar: `
-            <h3>If / Then Statements</h3>
+
+             <h3>If / Then Statements</h3>
             <p>The <strong>la</strong> particle is also used for "If... then..." statements. The first part is the condition (the "If"), and the second part is the result (the "Then").</p>
 
             <div class="grammar-box" style="background: white; border-color: var(--primary-light);">
@@ -651,8 +573,18 @@ const curriculum = [
                 <li><strong>suno li moli <span style="color:var(--advanced);">la</span> mi lape.</strong><br>(Sun dies &rarr; I sleep. = When the sun sets, I sleep.)</li>
             </ul>
         `,
-        story: `<p><b>suno li moli la mi lape.</b> (If the sun dies [sets], I sleep.)</p><p><b>mi lape la mi pilin pona.</b> (If I sleep, I feel good.)</p><p><b>ale li pona.</b> (Everything is good.)</p>`,
+        story: `<p><b>tenpo ni la mi lili.</b> (At this time, I am small.)</p><p><b>tenpo pini la mi lon tomo.</b> (In the past, I was at the house.)</p><p><b>mi la ni li pona.</b> (To me, this is good.)</p><p><b>suno li moli la mi lape.</b> (If the sun dies [sets], I sleep.)</p><p><b>mi lape la mi pilin pona.</b> (If I sleep, I feel good.)</p><p><b>ale li pona.</b> (Everything is good.)</p>`,
         quiz: [
+            { q: "Translate: 'Now'", options: ["tenpo ni la", "la tenpo ni", "ni tenpo la"], ans: 0 }, 
+            { q: "Translate: 'In my opinion...'", options: ["mi la...", "la mi...", "mi pilin..."], ans: 0 },
+            { q: "Translate: 'In the future...'", options: ["tenpo kama la...", "tenpo pini la...", "tenpo ni la..."], ans: 0 },
+            { q: "Translate to English: 'tenpo pini'", options: ["Past", "Future", "Present"], ans: 0 },
+            { q: "Translate to English: 'mi la ni li ike'", options: ["To me, this is bad", "I am bad", "This is my bad"], ans: 0 },
+            { q: "Identify the ERROR:", options: ["tenpo ni la mi moku", "mi moku la tenpo ni", "tenpo pini la mi lape"], ans: 1 },
+            { q: "Identify the ERROR:", options: ["mi la", "sina la", "la mi"], ans: 2 },
+            { q: "Build sentence: 'Today I work'", options: ["tenpo suno ni la mi pali", "mi pali tenpo suno ni", "tenpo ni la mi pali"], ans: 0 },
+            { q: "Build sentence: 'I finish'", options: ["mi pini", "mi li pini", "pini mi"], ans: 0 },
+            { q: "What is 'tenpo'?", options: ["Time", "Temple", "Place"], ans: 0 },
             { q: "Translate: 'If he comes...'", options: ["ona li kama la...", "la ona li kama...", "kama ona la..."], ans: 0 }, 
             { q: "What does 'pakala' mean?", options: ["Fix", "Break/Mistake", "Good"], ans: 1 },
             { q: "Translate: 'If I sleep, I feel good.'", options: ["mi lape la mi pilin pona.", "mi pilin pona la mi lape.", "la mi lape mi pilin pona."], ans: 0 },
@@ -666,7 +598,7 @@ const curriculum = [
         ]
     },
     {
-        id: 15, type: "lesson", title: "Colors & Numbers", desc: "Simple counting",
+        id: 9, type: "lesson", title: "Colors & Numbers", desc: "Simple counting",
         vocab: [
             { word: "kule", def: "color, paint, to color", type: "n/v/adj", ex: "kule loje." },
             { word: "jelo", def: "yellow, yellowish", type: "n/v/adj", ex: "suno jelo." },
@@ -737,13 +669,16 @@ const curriculum = [
     },
     // --- SECTION 4: ADVANCED ---
     {
-        id: 16, type: "lesson", title: "Body & Feelings", desc: "Sijelo en Pilin",
+        id: 10, type: "lesson", title: "Body & Feelings", desc: "Sijelo en Pilin",
         vocab: [
             { word: "sijelo", def: "body, physical state", type: "n/v/adj", ex: "sijelo mi." },
             { word: "lawa", def: "head, mind, to lead/control", type: "n/v/adj", ex: "jan lawa." },
             { word: "luka", def: "hand, arm", type: "n/v/adj", ex: "luka mi." },
             { word: "noka", def: "foot, leg", type: "n/v/adj", ex: "noka mi." },
-            { word: "pilin", def: "feeling, heart, to touch", type: "n/v/adj", ex: "mi pilin pona." }
+            { word: "pilin", def: "feeling, heart, to touch", type: "n/v/adj", ex: "mi pilin pona." },
+            { word: "meli", def: "woman, female, feminine", type: "n/v/adj", ex: "jan meli." },
+            { word: "mije", def: "man, male, masculine", type: "n/v/adj", ex: "jan mije." },
+            { word: "mama", def: "parent, creator, to create", type: "n/v/adj", ex: "mama mi." }
         ],
         grammar: `
             <h3>The Concept of 'pilin'</h3>
@@ -777,7 +712,7 @@ const curriculum = [
         ]
     },
     {
-        id: 17, type: "lesson", title: "Proper Names", desc: "Unofficial Words",
+        id: 11, type: "lesson", title: "Proper Names", desc: "Unofficial Words",
         vocab: [
             { word: "toki", def: "language, talk", type: "noun", ex: "toki Inli (English)." },
             { word: "ma", def: "land, country", type: "noun", ex: "ma Kanata." },
@@ -816,7 +751,7 @@ const curriculum = [
         ]
     },
     {
-        id: 18, type: "lesson", title: "Advanced Time", desc: "Tense Nuances",
+        id: 12, type: "lesson", title: "Advanced Time", desc: "Tense Nuances",
         vocab: [
             { word: "open", def: "start, begin", type: "pre-verb", ex: "mi open pali." },
             { word: "pini", def: "finish, end", type: "pre-verb", ex: "mi pini moku." },
