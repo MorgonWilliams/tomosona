@@ -36,6 +36,8 @@ const UI_TEXT = {
         homeNav: "Home",
         pathNav: "Course",
         wordsNav: "Words",
+        advancedTitle: "Advanced Studies",
+        advancedDesc: "Deep dives into complex topics."
     },
     tp: {
         welcome: "nasin toki",
@@ -69,6 +71,8 @@ const UI_TEXT = {
         homeNav: "tomo",
         pathNav: "nasin",
         wordsNav: "nimi",
+        advancedTitle: "sona suli",
+        advancedDesc: "sona pi ijo ike."
     }
 };
 
@@ -117,9 +121,41 @@ const curriculum = [
         <p><b>jan Keli li pona.</b> (Kelly is good.)</p>
         `,
         quiz: [
-            { q: "How do you say 'Canada'?", options: ["Kanata", "ma Kanata", "ma kanata"], ans: 1 },
-            { q: "Where is the stress placed?", options: ["Last syllable", "First syllable", "Randomly"], ans: 1 },
-            { q: "How is 'j' pronounced?", options: ["Like 'y' in Yes", "Like 'j' in Jump"], ans: 0 }
+        // 1. Toki Pona to English
+        { 
+        type: "mc", 
+        q: "What does <b>'toki pona'</b> mean?", 
+        options: ["Simple language", "Good person", "Talking bad"], 
+        ans: 0 
+        },
+        // 2. English to Toki Pona
+        { 
+        type: "mc", 
+        q: "Select the word for <b>'Bad'</b> or <b>'Complex'</b>.", 
+        options: ["pona", "ike", "jan"], 
+        ans: 1 
+        },
+        // 3. Find the Correct Sentence (Grammar)
+        {    
+        type: "mc", 
+        q: "Which sentence is grammatically correct?", 
+        options: ["Mary li toki.", "jan Mary li toki.", "jan mary li toki."], 
+        ans: 1 
+        },
+        // 4. Find the Incorrect Sentence
+        { 
+        type: "mc", 
+        q: "Which of these is <b>WRONG</b>?", 
+        options: ["mi jan.", "mi pona.", "mi li jan."], 
+        ans: 2 
+        },
+        // 5. Sentence Builder
+        { 
+        type: "builder", 
+        q: "Translate: <b>'The person is good.'</b>", 
+        correctSentence: "jan li pona", // The target answer
+        words: ["jan", "li", "pona", "ike", "suli", "mi"] // Shuffled words + distractors
+        }
         ]
     },
 
@@ -159,11 +195,38 @@ const curriculum = [
         <p><b>sina suli.</b> (You are big/important.)</p>
         <p><b>jan li lili.</b> (The person is small.)</p>
         `,
-        quiz: [
-            { q: "Which particle separates subject and predicate?", options: ["li", "e", "pi"], ans: 0 },
-            { q: "When do you DROP 'li'?", options: ["Always", "With 'mi' or 'sina'", "With 'jan'"], ans: 1 },
-            { q: "Translate: 'mi suli'", options: ["I am big", "The person is big", "I is big"], ans: 0 }
-        ]
+    quiz: [
+    { 
+        type: "mc", 
+        q: "Which sentence is correct?", 
+        options: ["mi li suli.", "mi suli.", "mi e suli."], 
+        ans: 1 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'The person is small.'</b>", 
+        options: ["jan lili.", "jan li lili.", "lili li jan."], 
+        ans: 1 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'You are good.'</b>", 
+        correctSentence: "sina pona", 
+        words: ["sina", "pona", "li", "mi", "jan"] 
+    },
+    { 
+        type: "mc", 
+        q: "When do you DROP the word 'li'?", 
+        options: ["Always", "Never", "When subject is mi or sina"], 
+        ans: 2 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'I am a person.'</b>", 
+        correctSentence: "mi jan", 
+        words: ["mi", "jan", "li", "suli", "sina"] 
+    }   
+    ]
     },
 
     // --- LESSON 3 ---
@@ -199,11 +262,38 @@ const curriculum = [
         <p><b>soweli li lukin e mi.</b> (The animal watches me.)</p>
         <p><b>mi pona e ilo.</b> (I fix the tool.)</p>
         `,
-        quiz: [
-            { q: "What does 'e' do?", options: ["Separates Subject/Verb", "Marks the Target (Object)", "Means 'and'"], ans: 1 },
-            { q: "Translate: 'mi pona e tomo'", options: ["I fix the house", "The house is good", "I am good house"], ans: 0 },
-            { q: "Does Toki Pona have verb tenses?", options: ["Yes", "No"], ans: 1 }
-        ]
+    quiz: [
+    { 
+        type: "mc", 
+        q: "What does the particle <b>'e'</b> do?", 
+        options: ["Ends the sentence", "Marks the direct object", "Marks the subject"], 
+        ans: 1 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'I eat fruit.'</b>", 
+        correctSentence: "mi moku e kili", 
+        words: ["mi", "kili", "e", "moku", "li", "soweli"] 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'mi pona e tomo.'</b>", 
+        options: ["I fix the house.", "The house is good.", "I like the house."], 
+        ans: 0 
+    },
+    { 
+        type: "mc", 
+        q: "Which is the <b>INCORRECT</b> sentence?", 
+        options: ["mi lukin e sina.", "ona li pali e tomo.", "mi moku kili."], 
+        ans: 2 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'The animal sees me.'</b>", 
+        correctSentence: "soweli li lukin e mi", 
+        words: ["soweli", "mi", "lukin", "e", "li", "pona"] 
+    }
+    ]
     },
 
     // --- LESSON 4 ---
@@ -240,11 +330,83 @@ const curriculum = [
         <p><b>tomo loje li suli.</b> (The red house is big.)</p>
         <p><b>mi moku e telo wawa.</b> (I drink coffee/strong-water.)</p>
         `,
-        quiz: [
-            { q: "Where do adjectives go?", options: ["Before the noun", "After the noun"], ans: 1 },
-            { q: "When do you use 'pi'?", options: ["For multiple modifiers", "For simple adjectives", "Always"], ans: 0 },
-            { q: "Translate: 'Red fruit'", options: ["loje kili", "kili loje"], ans: 1 }
-        ]
+    quiz: [
+    { 
+        type: "mc", 
+        q: "Translate: <b>'Red house'</b>", 
+        options: ["tomo loje", "loje tomo", "tomo pi loje"], 
+        ans: 0 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'I have a strong tool.'</b>", 
+        correctSentence: "mi jo e ilo wawa", 
+        words: ["mi", "jo", "e", "ilo", "wawa", "pi", "li"] 
+    },
+    { 
+        type: "mc", 
+        q: "When do you use <b>'pi'</b>?", 
+        options: ["For plural nouns", "When an adjective modifies another adjective", "For all colors"], 
+        ans: 1 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'poki pi telo wawa'</b>", 
+        options: ["Strong water bottle", "A bottle of strong water", "Water bottle is strong"], 
+        ans: 1 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'Eating tool (Fork)'</b>", 
+        correctSentence: "ilo moku", 
+        words: ["ilo", "moku", "pi", "e", "li"] 
+    }
+    ]
+    },
+
+    {
+    id: "1",
+    type: "test",
+    title: "Checkpoint 1: The Basics",
+    desc: "Test your understanding of mi, sina, li, and basic objects.",
+    grammar: `
+        <h3>Review: The Core Structure</h3>
+        <ul>
+            <li><strong>li:</strong> Separates Subject and Verb. (<em>jan <strong>li</strong> moku</em>).</li>
+            <li><strong>mi / sina:</strong> Do NOT use 'li'. (<em>mi moku</em>).</li>
+            <li><strong>e:</strong> Marks the object/target. (<em>mi moku <strong>e</strong> kili</em>).</li>
+            <li><strong>pi:</strong> Use only for "adjective of an adjective". (<em>tomo <strong>pi</strong> telo wawa</em>).</li>
+        </ul>
+    `,quiz: [
+    // --- VOCAB (5) ---
+    { type: "mc", q: "Translate: <b>'soweli'</b>", options: ["Animal", "Plant", "Person"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'pona'</b>", options: ["Bad/Complex", "Good/Simple", "Big"], ans: 1 },
+    { type: "mc", q: "Translate: <b>'ilo'</b>", options: ["Tool", "House", "Sun"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'lukin'</b>", options: ["To eat", "To see", "To sleep"], ans: 1 },
+    { type: "mc", q: "Translate: <b>'wawa'</b>", options: ["Water", "Strong/Power", "Small"], ans: 1 },
+
+    // --- GRAMMAR (5) ---
+    { type: "mc", q: "Which particle marks the <b>Direct Object</b>?", options: ["li", "pi", "e"], ans: 2 },
+    { type: "mc", q: "Select the correct structure:", options: ["mi li moku.", "mi moku.", "moku mi."], ans: 1 },
+    { type: "mc", q: "When do you use <b>'pi'</b>?", options: ["Multiple adjectives (Adj of Adj)", "Plural nouns", "Verbs"], ans: 0 },
+    { type: "mc", q: "Where does the adjective go?", options: ["Before the noun", "After the noun"], ans: 1 },
+    { type: "mc", q: "Translate: <b>'I am not eating.'</b>", options: ["mi moku ala.", "mi ala moku.", "ala mi moku."], ans: 0 },
+
+    // --- TRANSLATION (5) ---
+    { type: "mc", q: "Translate: <b>'tomo loje'</b>", options: ["Red house", "Big house", "House paint"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'ilo moku'</b>", options: ["Food tool (Fork/Spoon)", "Edible tool", "Tool eats"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'telo wawa'</b>", options: ["Weak water", "Strong water (Coffee/Alcohol)", "Big river"], ans: 1 },
+    { type: "mc", q: "Translate: <b>'jan lili'</b>", options: ["Small person / Child", "Big person", "Bad person"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'mi en sina'</b>", options: ["Me and you", "Me or you", "I am you"], ans: 0 },
+
+    // --- BUILDER (5) ---
+    { type: "builder", q: "Build: <b>'I eat fruit.'</b>", correctSentence: "mi moku e kili", words: ["mi", "moku", "e", "kili", "li", "pona"] },
+    { type: "builder", q: "Build: <b>'The person is big.'</b>", correctSentence: "jan li suli", words: ["jan", "li", "suli", "mi", "e", "lili"] },
+    { type: "builder", q: "Build: <b>'Container of strong water.'</b>", correctSentence: "poki pi telo wawa", words: ["poki", "pi", "telo", "wawa", "li", "e", "pona"] },
+    { type: "builder", q: "Build: <b>'You are good.'</b>", correctSentence: "sina pona", words: ["sina", "pona", "li", "mi", "jan", "e"] },
+    { type: "builder", q: "Build: <b>'I fix (make good) the house.'</b>", correctSentence: "mi pona e tomo", words: ["mi", "pona", "e", "tomo", "li", "suli", "lukin"] }
+]
+
     },
 
     // --- LESSON 5 ---
@@ -288,11 +450,38 @@ const curriculum = [
         <p><b>mi tawa esun.</b> (I go to the market.)</p>
         <p><b>mi pali ala.</b> (I am not working.)</p>
         `,
-        quiz: [
-            { q: "What is the word for 'no' / 'not'?", options: ["ala", "ali", "ike"], ans: 0 },
-            { q: "Do prepositions use 'e'?", options: ["Yes", "No"], ans: 1 },
-            { q: "How do you say 'Me and you' (Subject)?", options: ["mi en sina", "mi e sina", "mi li sina"], ans: 0 }
-        ]
+    quiz: [
+    { 
+        type: "builder", 
+        q: "Build: <b>'I am not sleeping.'</b>", 
+        correctSentence: "mi lape ala", 
+        words: ["mi", "lape", "ala", "li", "e", "tawa"] 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'mi tawa tomo.'</b>", 
+        options: ["I am at the house.", "I go to the house.", "The house moves."], 
+        ans: 1 
+    },
+    { 
+        type: "mc", 
+        q: "How do you say 'Me and you'?", 
+        options: ["mi en sina", "mi li sina", "mi e sina"], 
+        ans: 0 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'The person is in the room.'</b>", 
+        correctSentence: "jan li lon tomo", 
+        words: ["jan", "li", "lon", "tomo", "e", "tawa"] 
+    },
+    { 
+        type: "mc", 
+        q: "Which word means 'No' or 'Not'?", 
+        options: ["ala", "ali", "ike"], 
+        ans: 0 
+    }
+    ]
     },
 
     // --- LESSON 6 ---
@@ -331,10 +520,37 @@ const curriculum = [
         <p><b>tomo mi la tomo sina li suli.</b> (Compared to my house, your house is big.)</p>
         `,
         quiz: [
-            { q: "What does 'la' mark?", options: ["The context", "The object", "The subject"], ans: 0 },
-            { q: "How do you compare things?", options: ["Using 'la'", "Using 'mute'", "Using 'pi'"], ans: 0 },
-            { q: "Translate: 'If you want, I go.'", options: ["sina wile la mi tawa", "mi tawa la sina wile"], ans: 0 }
-        ]
+    { 
+        type: "mc", 
+        q: "What does <b>'la'</b> mark?", 
+        options: ["The object", "The context", "The verb"], 
+        ans: 1 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'If you want, I go.'</b>", 
+        correctSentence: "sina wile la mi tawa", 
+        words: ["sina", "wile", "la", "mi", "tawa", "li", "e"] 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'tenpo ni la'</b>", 
+        options: ["This time", "Now (At this time...)", "Time is this"], 
+        ans: 1 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'Compared to me, you are big.'</b>", 
+        correctSentence: "mi la sina suli", 
+        words: ["mi", "la", "sina", "suli", "li", "e", "pona"] 
+    },
+    { 
+        type: "mc", 
+        q: "True or False: Toki Pona has a specific word for 'More'.", 
+        options: ["True", "False (Use 'la' for comparison)"], 
+        ans: 1 
+    }
+    ]
     },
 
     // --- LESSON 7 ---
@@ -343,7 +559,7 @@ const curriculum = [
         type: "lesson", 
         title: "Numbers & Ordinals", 
         desc: "Mastering the number system and order.",
-                vocab: [
+        vocab: [
             { word: "nanpa", def: "Number, ordinal marker.", type: "noun", ex: "jan nanpa wan. (First person.)" },
             { word: "wan", def: "One.", type: "num", ex: "jan wan. (One person.)" },
             { word: "tu", def: "Two.", type: "num", ex: "jan tu. (Two people.)" },
@@ -390,11 +606,38 @@ const curriculum = [
         <p><b>jan nanpa wan li lon.</b> (The first person is here.)</p>
         <p><b>wan ale.</b> (100.)</p>
         `,
-        quiz: [
-            { q: "What is 'wan ale'?", options: ["100", "101", "110"], ans: 0 },
-            { q: "How do you say 'The second person'?", options: ["jan nanpa tu", "jan tu", "nanpa jan tu"], ans: 0 },
-            { q: "What word is used for the decimal point?", options: ["ala", "pini", "lili"], ans: 0 }
-        ]
+quiz: [
+    { 
+        type: "builder", 
+        q: "Build: <b>'Three people' (2 + 1)</b>", 
+        correctSentence: "jan tu wan", 
+        words: ["jan", "tu", "wan", "luka", "li"] 
+    },
+    { 
+        type: "mc", 
+        q: "What number is <b>'luka'</b>?", 
+        options: ["2", "5", "10"], 
+        ans: 1 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'jan nanpa wan'</b>", 
+        options: ["One person", "The first person", "Number one"], 
+        ans: 1 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'20' (mute)</b>", 
+        correctSentence: "mute", 
+        words: ["mute", "luka", "tu", "ale"] 
+    },
+    { 
+        type: "mc", 
+        q: "What is <b>'wan ale'</b>?", 
+        options: ["100", "101", "10"], 
+        ans: 0 
+    }
+]
     },
 
     // --- LESSON 8 ---
@@ -432,11 +675,83 @@ const curriculum = [
         <p><b>mi alasa sona e toki.</b> (I am trying to know/learn the language.)</p>
         <p><b>sina ken ala ken toki?</b> (Can you speak?)</p>
         `,
-        quiz: [
-            { q: "What does 'seme' mean?", options: ["What/Question", "Yes", "No"], ans: 0 },
-            { q: "Translate: 'I try to eat'", options: ["mi alasa moku", "mi moku alasa", "mi wile moku"], ans: 0 },
-            { q: "Translate: 'sina ken toki'", options: ["You can speak", "You speak", "You will speak"], ans: 0 }
-        ]
+quiz: [
+    { 
+        type: "mc", 
+        q: "Which word indicates a question?", 
+        options: ["seme", "sina", "sona"], 
+        ans: 0 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'What is this?'</b>", 
+        correctSentence: "ni li seme", 
+        words: ["ni", "li", "seme", "e", "jan", "kama"] 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'mi kama sona.'</b>", 
+        options: ["I learn (come to know).", "I know the future.", "I went to know."], 
+        ans: 0 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'I can speak.'</b>", 
+        correctSentence: "mi ken toki", 
+        words: ["mi", "ken", "toki", "lape", "e", "li"] 
+    },
+    { 
+        type: "mc", 
+        q: "How do you ask a Yes/No question?", 
+        options: ["Use 'seme'", "Repeat verb with 'ala' (Verb ala Verb)", "Say 'anu'"], 
+        ans: 1 
+    }
+]
+    },
+
+    {
+    id: "2",
+    type: "test",
+    title: "Checkpoint 2: Context & Time",
+    desc: "Prove your mastery of prepositions, numbers, and 'la'.",
+    grammar: `
+        <h3>Review: Context & Negation</h3>
+        <ul>
+            <li><strong>ala:</strong> Put after a word to say "No" or "Not". (<em>mi lape <strong>ala</strong></em>).</li>
+            <li><strong>la:</strong> "In the context of X..." (<em>tenpo ni <strong>la</strong>...</em> = Now...).</li>
+            <li><strong>seme:</strong> Replaces the unknown word in questions.</li>
+            <li><strong>Preverbs:</strong> <em>ken</em> (can), <em>wile</em> (want), <em>kama</em> (become).</li>
+        </ul>
+    `,
+quiz: [
+    // --- GRAMMAR: PREPOSITIONS & NEGATION (5) ---
+    { type: "mc", q: "Translate: <b>'mi lape ala'</b>", options: ["I am not sleeping", "I sleep a lot", "I will sleep"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I go to the house.'</b>", correctSentence: "mi tawa tomo", words: ["mi", "tawa", "tomo", "e", "li", "lon"] },
+    { type: "mc", q: "Which word means <b>'At/In/On'</b>?", options: ["lon", "tawa", "kepeken"], ans: 0 },
+    { type: "builder", q: "Build: <b>'You and me.' (Subject)</b>", correctSentence: "sina en mi", words: ["sina", "en", "mi", "li", "e"] },
+    { type: "mc", q: "Does 'lon' (at) require the particle 'e'?", options: ["Yes", "No"], ans: 1 },
+
+    // --- GRAMMAR: CONTEXT 'la' (5) ---
+    { type: "mc", q: "What does <b>'la'</b> separate?", options: ["Context and Main Sentence", "Subject and Verb", "Verb and Object"], ans: 0 },
+    { type: "builder", q: "Build: <b>'If you want, I go.'</b>", correctSentence: "sina wile la mi tawa", words: ["sina", "wile", "la", "mi", "tawa", "li", "e"] },
+    { type: "mc", q: "Translate: <b>'tenpo ni la'</b>", options: ["Now (At this time...)", "Time is this", "Later"], ans: 0 },
+    { type: "mc", q: "How do you compare two things?", options: ["Using 'la' (X la Y li...)", "Using 'mute'", "Using 'sama'"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Compared to me, you are good.'</b>", correctSentence: "mi la sina pona", words: ["mi", "la", "sina", "pona", "li", "suli"] },
+
+    // --- VOCAB: NUMBERS (5) ---
+    { type: "mc", q: "What is <b>'wan ale'</b>?", options: ["100", "101", "10"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Three' (2 + 1)</b>", correctSentence: "tu wan", words: ["tu", "wan", "luka", "mute"] },
+    { type: "mc", q: "What is <b>'luka'</b>?", options: ["5 (Hand)", "2", "10"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'jan nanpa wan'</b>", options: ["The first person", "One person", "Number one"], ans: 0 },
+    { type: "builder", q: "Build: <b>'20'</b>", correctSentence: "mute", words: ["mute", "ale", "luka", "tu"] },
+
+    // --- VOCAB: QUESTIONS & PREVERBS (5) ---
+    { type: "mc", q: "What is <b>'seme'</b>?", options: ["Question word (What/Who)", "Exclamation", "No"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'mi ken toki'</b>", options: ["I can speak", "I want to speak", "I speak"], ans: 0 },
+    { type: "builder", q: "Build: <b>'What is this?'</b>", correctSentence: "ni li seme", words: ["ni", "li", "seme", "jan", "pona"] },
+    { type: "mc", q: "Translate: <b>'mi wile lape'</b>", options: ["I want to sleep", "I can sleep", "I try to sleep"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I learn (come to know).'</b>", correctSentence: "mi kama sona", words: ["mi", "kama", "sona", "li", "e", "wile"] }
+]
     },
 
     // --- LESSON 9: COMMANDS & CONNECTIONS ---
@@ -474,11 +789,38 @@ const curriculum = [
         <p><b>mi wile moku, taso mi jo ala e mani.</b> (I want to eat, but I have no money.)</p>
         <p><b>jan ni li pona: ona li pana e mani.</b> (That person is good: they give money.)</p>
         `,
-        quiz: [
-            { q: "How do you say 'Hey!'?", options: ["o!", "a!", "ni!"], ans: 0 },
-            { q: "Translate: 'moku anu lape'", options: ["Eat and sleep", "Eat or sleep", "Eat then sleep"], ans: 1 },
-            { q: "How do you say 'The man who sleeps'?", options: ["Split into 2 sentences", "jan li lape...", "jan who lape"], ans: 0 }
-        ]
+quiz: [
+    { 
+        type: "mc", 
+        q: "How do you say <b>'Hey!'</b>?", 
+        options: ["a!", "o!", "ni!"], 
+        ans: 1 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'Eat!' (Command)</b>", 
+        correctSentence: "o moku", 
+        words: ["o", "moku", "li", "sina", "e"] 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'moku anu lape'</b>", 
+        options: ["Eat and sleep", "Eat or sleep", "Eat then sleep"], 
+        ans: 1 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'I want, but I can't.'</b>", 
+        correctSentence: "mi wile taso mi ken ala", 
+        words: ["mi", "wile", "taso", "ken", "ala", "li", "anu"] 
+    },
+    { 
+        type: "mc", 
+        q: "How do you handle 'The man who eats' (Relative Clauses)?", 
+        options: ["Use 'pi'", "Split into two sentences with 'ni'", "Use 'seme'"], 
+        ans: 1 
+    }
+]
     },
 
     // --- LESSON 10: PEOPLE & SOCIETY ---
@@ -494,8 +836,39 @@ const curriculum = [
         ],
         grammar: `<h3>Usage Note</h3><p><strong>ona</strong> is the universal pronoun. It covers he, she, and they. Toki Pona does not distinguish gender in pronouns.</p>`,
         story: `<p><b>ona li mama mi.</b> (She is my mother.)</p><p><b>kulupu li suli.</b> (The group is big.)</p>`,
-        quiz: [{q: "What is 'ona'?", options: ["He/She/It", "I/Me", "You"], ans: 0}]
+        quiz: [
+    { 
+        type: "mc", 
+        q: "What does <b>'ona'</b> mean?", 
+        options: ["He/She/It/They", "You", "We"], 
+        ans: 0 
     },
+    { 
+        type: "builder", 
+        q: "Build: <b>'She is my parent.'</b>", 
+        correctSentence: "ona li mama mi", 
+        words: ["ona", "li", "mama", "mi", "e", "jan"] 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'meli pona'</b>", 
+        options: ["Good woman", "Good man", "Good person"], 
+        ans: 0 
+    },
+    { 
+        type: "mc", 
+        q: "Translate: <b>'jan tonsi'</b>", 
+        options: ["Leader", "Non-binary person", "Warrior"], 
+        ans: 1 
+    },
+    { 
+        type: "builder", 
+        q: "Build: <b>'The group speaks.'</b>", 
+        correctSentence: "kulupu li toki", 
+        words: ["kulupu", "li", "toki", "e", "mi", "ona"] 
+    }
+]
+},
 
     // --- LESSON 11: THE BODY ---
     {
@@ -512,8 +885,14 @@ const curriculum = [
         ],
         grammar: `<h3>Body Metaphors</h3><p><strong>lawa</strong> means 'head', but also 'to lead' or 'control'.<br><strong>noka</strong> is 'foot', but also the 'bottom' of something.</p>`,
         story: `<p><b>o lawa e kulupu.</b> (Lead the group.)</p><p><b>sijelo mi li pona.</b> (My body is good.)</p>`,
-        quiz: [{q: "What is 'lawa'?", options: ["Head/Control", "Foot/Walk", "Hand"], ans: 0}]
-    },
+        quiz: [
+    { type: "mc", q: "What does <b>'lawa'</b> mean?", options: ["Head / To lead", "Hand", "Foot"], ans: 0 },
+    { type: "builder", q: "Build: <b>'My hand is small.'</b>", correctSentence: "luka mi li lili", words: ["luka", "mi", "li", "lili", "suli", "noka"] },
+    { type: "mc", q: "Translate: <b>'noka'</b>", options: ["Foot / Leg / Bottom", "Hand / Arm", "Head"], ans: 0 },
+    { type: "mc", q: "Which word means <b>'Face'</b> or <b>'Front'</b>?", options: ["sinpin", "monsi", "lupa"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Open the mouth.'</b>", correctSentence: "o open e uta", words: ["o", "open", "e", "uta", "noka", "luka"] }
+]    
+},
 
     // --- LESSON 12: NATURE ---
     {
@@ -530,7 +909,57 @@ const curriculum = [
         ],
         grammar: `<h3>Nature Words</h3><p><strong>telo</strong> is any liquid. <strong>kiwen</strong> is any hard substance (metal, rock, plastic).</p>`,
         story: `<p><b>suno li seli.</b> (The sun is hot.)</p><p><b>mi moku e telo.</b> (I drink water.)</p>`,
-        quiz: [{q: "Translate: 'telo seli'", options: ["Hot water/Tea", "Cold water", "Ice"], ans: 0}]
+        quiz: [
+    { type: "mc", q: "Translate: <b>'telo seli'</b>", options: ["Hot water", "Cold water", "Ice"], ans: 0 },
+    { type: "builder", q: "Build: <b>'The sun is strong.'</b>", correctSentence: "suno li wawa", words: ["suno", "li", "wawa", "mun", "telo", "ma"] },
+    { type: "mc", q: "What is <b>'kiwen'</b>?", options: ["Hard object / Rock / Metal", "Soft / Mud", "Air"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'kon'</b>", options: ["Air / Wind / Spirit", "Fire", "Earth"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I am on the land.'</b>", correctSentence: "mi lon ma", words: ["mi", "lon", "ma", "telo", "li", "e"] }
+]
+    },
+
+    {
+    id: "3",
+    type: "test",
+    title: "Checkpoint 3: The World",
+    desc: "Commands, body parts, and nature vocabulary.",
+    grammar: `
+        <h3>Review: World & Connections</h3>
+        <ul>
+            <li><strong>o:</strong> Use for commands (<em>o moku!</em>) or calling names (<em>jan Keli o!</em>).</li>
+            <li><strong>ona:</strong> He, She, It, They. (Gender neutral).</li>
+            <li><strong>Metaphors:</strong> <em>lawa</em> (Head/Lead), <em>noka</em> (Foot/Bottom).</li>
+        </ul>
+    `,
+    quiz: [
+    // --- COMMANDS & PEOPLE (5) ---
+    { type: "mc", q: "How do you give a command?", options: ["Use 'o' (o moku!)", "Use 'li'", "Use 'e'"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Hey person!'</b>", correctSentence: "jan o", words: ["jan", "o", "li", "e", "ni"] },
+    { type: "mc", q: "Translate: <b>'ona'</b>", options: ["He/She/It/They", "I", "You"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'mije'</b>", options: ["Man", "Woman", "Parent"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Listen!'</b>", correctSentence: "o kute", words: ["o", "kute", "li", "toki", "lukin"] },
+
+    // --- BODY (5) ---
+    { type: "mc", q: "What is <b>'luka'</b>?", options: ["Hand/Arm", "Foot/Leg", "Head"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'lawa'</b>", options: ["Head / Control", "Body", "Face"], ans: 0 },
+    { type: "builder", q: "Build: <b>'My body is good.'</b>", correctSentence: "sijelo mi li pona", words: ["sijelo", "mi", "li", "pona", "lawa", "ike"] },
+    { type: "mc", q: "Translate: <b>'sinpin'</b>", options: ["Face / Front / Wall", "Back / Rear", "Inside"], ans: 0 },
+    { type: "mc", q: "What is <b>'insa'</b>?", options: ["Inside / Stomach", "Outside / Skin", "Head"], ans: 0 },
+
+    // --- NATURE (5) ---
+    { type: "mc", q: "Translate: <b>'ma'</b>", options: ["Land / Earth", "Sky", "Water"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Red moon.'</b>", correctSentence: "mun loje", words: ["mun", "loje", "li", "suno", "pimeja"] },
+    { type: "mc", q: "What is <b>'telo'</b>?", options: ["Water / Liquid", "Fire", "Stone"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'ko'</b>", options: ["Powder / Paste / Mud", "Rock", "Air"], ans: 0 },
+    { type: "builder", q: "Build: <b>'The fire is hot.'</b>", correctSentence: "seli li wawa", words: ["seli", "li", "wawa", "telo", "kiwen", "e"] },
+
+    // --- MIXED (5) ---
+    { type: "mc", q: "Translate: <b>'mama'</b>", options: ["Parent / Creator", "Child", "Friend"], ans: 0 },
+    { type: "builder", q: "Build: <b>'The group listens.'</b>", correctSentence: "kulupu li kute", words: ["kulupu", "li", "kute", "toki", "e", "jan"] },
+    { type: "mc", q: "What is <b>'anu'</b>?", options: ["Or", "And", "But"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'taso'</b>", options: ["But / Only", "Also", "Or"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Me too.'</b>", correctSentence: "mi kin", words: ["mi", "kin", "taso", "anu", "li"] }
+]
     },
 
     // --- LESSON 13: LIFE & DEATH ---
@@ -547,7 +976,13 @@ const curriculum = [
         ],
         grammar: `<h3>Grouping Animals</h3><p>Toki Pona groups animals by features: <strong>waso</strong> (flying), <strong>kala</strong> (swimming), <strong>soweli</strong> (land mammal), <strong>akesi</strong> (creepy/crawly/reptile).</p>`,
         story: `<p><b>kala li moku e pipi.</b> (The fish eats the bug.)</p><p><b>kasi li kama suli.</b> (The plant becomes big.)</p>`,
-        quiz: [{q: "What is a 'waso'?", options: ["Bird/Flying thing", "Fish", "Bug"], ans: 0}]
+        quiz: [
+    { type: "mc", q: "What is a <b>'waso'</b>?", options: ["Bird / Flying creature", "Fish", "Bug"], ans: 0 },
+    { type: "builder", q: "Build: <b>'The fish swims (moves).'</b>", correctSentence: "kala li tawa", words: ["kala", "li", "tawa", "waso", "moku", "e"] },
+    { type: "mc", q: "Translate: <b>'kasi'</b>", options: ["Plant / Tree", "Animal", "Mushroom"], ans: 0 },
+    { type: "mc", q: "Which is a <b>'soweli'</b>?", options: ["Dog / Cat / Cow", "Spider", "Eagle"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Bug' (Small animal)</b>", correctSentence: "pipi", words: ["pipi", "akesi", "soweli", "lili"] }
+]
     },
 
     // --- LESSON 14: COLORS & ART ---
@@ -564,7 +999,13 @@ const curriculum = [
         ],
         grammar: `<h3>Combining Colors</h3><p>Combine words for more colors: <br><strong>laso jelo</strong> (Yellow-Green) <br><strong>loje pimeja</strong> (Dark Red / Brown).</p>`,
         story: `<p><b>mi sitelen e kasi laso.</b> (I draw a green plant.)</p><p><b>ni li musi.</b> (This is fun.)</p>`,
-        quiz: [{q: "Translate: 'laso'", options: ["Blue/Green", "Red", "Black"], ans: 0}]
+        quiz: [
+    { type: "mc", q: "Translate: <b>'laso'</b>", options: ["Blue / Green", "Red", "Yellow"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Yellow sun.'</b>", correctSentence: "suno jelo", words: ["suno", "jelo", "loje", "li", "e"] },
+    { type: "mc", q: "What is <b>'pimeja'</b>?", options: ["Black / Dark", "White / Light", "Colorful"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'sitelen'</b>", options: ["Image / Writing / Symbol", "Sound", "Tool"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I paint (color) the house.'</b>", correctSentence: "mi kule e tomo", words: ["mi", "kule", "e", "tomo", "sitelen", "li"] }
+]
     },
 
     // --- LESSON 15: OBJECTS ---
@@ -582,7 +1023,13 @@ const curriculum = [
         ],
         grammar: `<h3>Compound Words</h3><p><strong>supa lape</strong> = Surface for sleep (Bed). <br><strong>ilo toki</strong> = Tool for talk (Phone).</p>`,
         story: `<p><b>o pana e lipu.</b> (Give me the paper.)</p><p><b>mi lon supa.</b> (I am on the chair/furniture.)</p>`,
-        quiz: [{q: "What is a 'supa'?", options: ["Flat surface/Furniture", "Stick", "Box"], ans: 0}]
+        quiz: [
+    { type: "mc", q: "What is a <b>'supa'</b>?", options: ["Flat surface / Furniture", "Box", "Stick"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I have a box.'</b>", correctSentence: "mi jo e poki", words: ["mi", "jo", "e", "poki", "supa", "li"] },
+    { type: "mc", q: "Translate: <b>'len'</b>", options: ["Clothing / Fabric", "Tool", "Book"], ans: 0 },
+    { type: "mc", q: "What is a <b>'palisa'</b>?", options: ["Stick / Rod", "Square block", "Hole"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Bed' (Sleep surface)</b>", correctSentence: "supa lape", words: ["supa", "lape", "moku", "ilo", "pi"] }
+]
     },
 
     // --- LESSON 16: SPACE & MOVEMENT ---
@@ -599,7 +1046,57 @@ const curriculum = [
         ],
         grammar: `<h3>Direction</h3><p><strong>tawa sewi</strong> = Go up. <br><strong>lon anpa</strong> = At the bottom.</p>`,
         story: `<p><b>waso li tawa sewi.</b> (The bird goes up.)</p><p><b>o weka e ijo ike.</b> (Remove the bad things.)</p>`,
-        quiz: [{q: "What is 'sewi'?", options: ["Up/High/Divine", "Down/Low", "Side"], ans: 0}]
+        quiz: [
+    { type: "mc", q: "Translate: <b>'sewi'</b>", options: ["Up / High / Divine", "Down / Floor", "Side"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Go down.'</b>", correctSentence: "o tawa anpa", words: ["o", "tawa", "anpa", "sewi", "li", "e"] },
+    { type: "mc", q: "What is <b>'monsi'</b>?", options: ["Back / Behind", "Front / Face", "Inside"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'poka'</b>", options: ["Side / Next to", "Top", "Bottom"], ans: 0 },
+    { type: "builder", q: "Build: <b>'The bird is high up.'</b>", correctSentence: "waso li lon sewi", words: ["waso", "li", "lon", "sewi", "anpa", "e"] }
+]
+    },
+
+    {
+    id: "4",
+    type: "test",
+    title: "Checkpoint 4: Colors & Space",
+    desc: "Describing position, colors, and compound objects.",
+    grammar: `
+        <h3>Review: Description & Position</h3>
+        <ul>
+            <li><strong>Colors:</strong> Combine them. <em>laso jelo</em> (Yellow-ish Green).</li>
+            <li><strong>Space:</strong> <em>anpa</em> (down), <em>sewi</em> (up), <em>monsi</em> (back).</li>
+            <li><strong>Prepositions:</strong> <em>tawa</em> (to), <em>lon</em> (at). No 'e' needed!</li>
+        </ul>
+    `,
+    quiz: [
+    // --- LIFE FORMS (5) ---
+    { type: "mc", q: "What is a <b>'kala'</b>?", options: ["Fish", "Bird", "Mammal"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'akesi'</b>", options: ["Reptile / Amphibian", "Cute animal", "Tree"], ans: 0 },
+    { type: "builder", q: "Build: <b>'The plant grows (becomes big).'</b>", correctSentence: "kasi li kama suli", words: ["kasi", "li", "kama", "suli", "e", "moku"] },
+    { type: "mc", q: "Which is a <b>'pipi'</b>?", options: ["Ant / Bee", "Dog", "Fish"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'soko'</b>", options: ["Mushroom / Fungus", "Fruit", "Meat"], ans: 0 },
+
+    // --- COLORS (5) ---
+    { type: "mc", q: "Translate: <b>'walo'</b>", options: ["White / Light", "Black / Dark", "Red"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Green water.'</b>", correctSentence: "telo laso", words: ["telo", "laso", "jelo", "li", "e"] },
+    { type: "mc", q: "What is <b>'loje'</b>?", options: ["Red", "Blue", "Yellow"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'kule'</b>", options: ["Color", "Sound", "Shape"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Dark room.'</b>", correctSentence: "tomo pimeja", words: ["tomo", "pimeja", "walo", "li", "e"] },
+
+    // --- OBJECTS (5) ---
+    { type: "mc", q: "What is a <b>'lipu'</b>?", options: ["Paper / Book / Flat thing", "Box", "Stick"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Phone' (Talk tool)</b>", correctSentence: "ilo toki", words: ["ilo", "toki", "pi", "moku", "kute"] },
+    { type: "mc", q: "Translate: <b>'leko'</b>", options: ["Block / Square / Stairs", "Circle", "Line"], ans: 0 },
+    { type: "mc", q: "What is a <b>'lupa'</b>?", options: ["Hole / Door / Window", "Wall", "Roof"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I have clothes.'</b>", correctSentence: "mi jo e len", words: ["mi", "jo", "e", "len", "leko", "li"] },
+
+    // --- SPACE (5) ---
+    { type: "mc", q: "Translate: <b>'nasin'</b>", options: ["Way / Path / Method", "House", "Tree"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Look back.'</b>", correctSentence: "o lukin e monsi", words: ["o", "lukin", "e", "monsi", "sinpin", "sewi"] },
+    { type: "mc", q: "What is <b>'anpa'</b>?", options: ["Low / Down / Humble", "High / Arrogant", "Side"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'nena'</b>", options: ["Bump / Hill / Nose", "Hole", "Flat"], ans: 0 },
+    { type: "builder", q: "Build: <b>'God' (Divine person)</b>", correctSentence: "jan sewi", words: ["jan", "sewi", "anpa", "ma", "li"] }
+]
     },
 
     // --- LESSON 17: EMOTION & SOUND ---
@@ -616,7 +1113,13 @@ const curriculum = [
         ],
         grammar: `<h3>Feelings</h3><p><strong>mi pilin pona</strong> = I feel good / I am happy. <br><strong>mi pilin ike</strong> = I feel bad / I am sad/sick.</p>`,
         story: `<p><b>mi olin e mama mi.</b> (I love my parents.)</p><p><b>o kute e kalama musi.</b> (Listen to the music.)</p>`,
-        quiz: [{q: "What is 'pilin'?", options: ["Feeling/Heart", "Thinking", "Talking"], ans: 0}]
+        quiz: [
+    { type: "mc", q: "What is <b>'pilin'</b>?", options: ["Feeling / Heart / Touch", "Thinking / Head", "Speaking"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I love you.'</b>", correctSentence: "mi olin e sina", words: ["mi", "olin", "e", "sina", "pilin", "li"] },
+    { type: "mc", q: "Translate: <b>'kalama'</b>", options: ["Sound / Noise", "Picture", "Color"], ans: 0 },
+    { type: "mc", q: "What is <b>'mu'</b>?", options: ["Animal noise", "Cow", "Music"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I hear a sound.'</b>", correctSentence: "mi kute e kalama", words: ["mi", "kute", "e", "kalama", "pilin", "li"] }
+]
     },
 
     // --- LESSON 18: ABSTRACT I ---
@@ -632,7 +1135,13 @@ const curriculum = [
         ],
         grammar: `<h3>Time Modifiers</h3><p><strong>pini</strong> can mark the past/completion: <br><em>mi pini lape.</em> (I finished sleeping.)</p>`,
         story: `<p><b>mi wile e ijo ante.</b> (I want a different thing.)</p><p><b>ona li sama.</b> (They are the same.)</p>`,
-        quiz: [{q: "What is 'pakala'?", options: ["Mistake/Break", "Fix/Good", "New"], ans: 0}]
+        quiz: [
+    { type: "mc", q: "Translate: <b>'sama'</b>", options: ["Same / Similar", "Different", "New"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I finished eating.'</b>", correctSentence: "mi pini moku", words: ["mi", "pini", "moku", "kama", "li", "e"] },
+    { type: "mc", q: "What is <b>'ante'</b>?", options: ["Different / Other", "Same", "Old"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'pakala'</b>", options: ["Mistake / Break", "Fix", "Good"], ans: 0 },
+    { type: "builder", q: "Build: <b>'New day (sun).'</b>", correctSentence: "suno sin", words: ["suno", "sin", "pini", "namako", "li"] }
+]
     },
 
     // --- LESSON 19: ABSTRACT II ---
@@ -649,7 +1158,13 @@ const curriculum = [
         ],
         grammar: `<h3>Cause and Effect</h3><p><strong>tan</strong> marks the origin. <br><em>mi lape tan ni.</em> (I sleep because of this.)</p>`,
         story: `<p><b>mi pana e mani tawa sina.</b> (I give money to you.)</p><p><b>ona li alasa e sona.</b> (She seeks knowledge.)</p>`,
-        quiz: [{q: "What is 'pana'?", options: ["Give/Send", "Take", "Have"], ans: 0}]
+        quiz: [
+    { type: "mc", q: "What is <b>'mani'</b>?", options: ["Money / Wealth", "Food", "House"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I give money.'</b>", correctSentence: "mi pana e mani", words: ["mi", "pana", "e", "mani", "lanpan", "li"] },
+    { type: "mc", q: "Translate: <b>'tan'</b>", options: ["Because / From", "To", "With"], ans: 0 },
+    { type: "mc", q: "What is <b>'lanpan'</b>?", options: ["Steal / Seize", "Give", "Buy"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I cry because of this.'</b>", correctSentence: "mi telo oko tan ni", words: ["mi", "telo", "oko", "tan", "ni", "li"] }
+]
     },
 
     // --- LESSON 20: MODERN WORDS ---
@@ -666,16 +1181,56 @@ const curriculum = [
         ],
         grammar: `<h3>Course Complete!</h3><p>You have now seen every word in the standard reference. Go forth and speak good!</p>`,
         story: `<p><b>mi kepeken ilo linluwi.</b> (I use the internet.)</p><p><b>pona a!</b> (Yay!)</p>`,
-        quiz: [{q: "What is 'misikeke'?", options: ["Medicine", "Food", "Poison"], ans: 0}]
-    }
-];
-
-const advancedCurriculum = [
+        quiz: [
+    { type: "mc", q: "What is <b>'misikeke'</b>?", options: ["Medicine / Medical", "Magic", "Science"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Internet (Web group).'</b>", correctSentence: "kulupu linluwi", words: ["kulupu", "linluwi", "tomo", "ilo", "li"] },
+    { type: "mc", q: "Translate: <b>'jasima'</b>", options: ["Mirror / Reflection", "Screen", "Window"], ans: 0 },
+    { type: "mc", q: "What is <b>'kipisi'</b>?", options: ["Cut / Slice", "Hit", "Break"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Good job! (Exclamation)'</b>", correctSentence: "pona a", words: ["pona", "a", "ike", "kin", "li"] }
+]
+    },
     {
-        id: "A1", 
-        title: "Toki Pona Philosophy", 
-        desc: "Deep dive into nasin pona.",
-        vocab: [],
-        quiz: []
-    }
+    id: "5",
+    type: "test",
+    title: "Final Exam: Full Mastery",
+    desc: "The ultimate test of all 20 lessons and 120+ words.",
+    grammar: `
+        <h3>Review: Abstract & Advanced</h3>
+        <ul>
+            <li><strong>tan:</strong> Because of / From. (<em>mi lape <strong>tan</strong> ni</em>).</li>
+            <li><strong>pilin:</strong> Feeling / Heart. (<em>mi <strong>pilin</strong> pona</em>).</li>
+            <li><strong>Communication:</strong> <em>linluwi</em> (Internet), <em>misikeke</em> (Medicine).</li>
+        </ul>
+    `,
+    quiz: [
+    // --- BASICS (5) ---
+    { type: "mc", q: "Translate: <b>'toki pona'</b>", options: ["Simple/Good Language", "Talking People", "Bad Speech"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I eat fruit.'</b>", correctSentence: "mi moku e kili", words: ["mi", "moku", "e", "kili", "li", "pona"] },
+    { type: "mc", q: "Which word marks the <b>object</b>?", options: ["e", "li", "la"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'jan lili'</b>", options: ["Child / Small person", "Big person", "Parent"], ans: 0 },
+    { type: "builder", q: "Build: <b>'You are good.'</b>", correctSentence: "sina pona", words: ["sina", "pona", "li", "mi", "jan"] },
+
+    // --- INTERMEDIATE (5) ---
+    { type: "mc", q: "Translate: <b>'tenpo ni la'</b>", options: ["Now", "Later", "Never"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I can sleep.'</b>", correctSentence: "mi ken lape", words: ["mi", "ken", "lape", "wile", "li", "e"] },
+    { type: "mc", q: "What is <b>'seme'</b>?", options: ["What/Who", "Yes", "No"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'luka'</b>", options: ["Hand/Arm", "Foot", "Head"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Blue water.'</b>", correctSentence: "telo laso", words: ["telo", "laso", "jelo", "li", "e"] },
+
+    // --- ADVANCED (5) ---
+    { type: "mc", q: "Translate: <b>'pilin'</b>", options: ["Feeling / Heart", "Thinking", "Head"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I give money.'</b>", correctSentence: "mi pana e mani", words: ["mi", "pana", "e", "mani", "lanpan", "li"] },
+    { type: "mc", q: "What is <b>'tan'</b>?", options: ["Because / From", "To", "With"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'linluwi'</b>", options: ["Internet / Network", "Line", "Phone"], ans: 0 },
+    { type: "builder", q: "Build: <b>'Hospital' (Medicine House)</b>", correctSentence: "tomo misikeke", words: ["tomo", "misikeke", "linluwi", "li", "e"] },
+
+    // --- MASTERY (5) ---
+    { type: "mc", q: "Translate: <b>'pini'</b>", options: ["End / Past / Tip", "Start", "Middle"], ans: 0 },
+    { type: "builder", q: "Build: <b>'If you want, I go.'</b>", correctSentence: "sina wile la mi tawa", words: ["sina", "wile", "la", "mi", "tawa", "li", "e"] },
+    { type: "mc", q: "What is <b>'taso'</b>?", options: ["But / Only", "And", "Or"], ans: 0 },
+    { type: "mc", q: "Translate: <b>'ante'</b>", options: ["Different / Other", "Same", "New"], ans: 0 },
+    { type: "builder", q: "Build: <b>'I love my parent.'</b>", correctSentence: "mi olin e mama mi", words: ["mi", "olin", "e", "mama", "mi", "li", "ona"] }
+]
+    }   
+
 ];
