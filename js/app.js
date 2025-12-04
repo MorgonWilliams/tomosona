@@ -1,8 +1,3 @@
-/**
- * APPLICATION LOGIC
- * File: js/app.js
- */
-
 const app = {
     lang: 'en',
     currentView: 'home',
@@ -12,7 +7,7 @@ const app = {
         totalSlides: 0,
         score: 0,
         maxScore: 0,
-        source: 'path'
+        source: 'course'
     },
     
     toggleLang: () => {
@@ -34,7 +29,7 @@ const app = {
 
     renderCurrentView: () => {
         if(app.currentView === 'home') app.renderHome();
-        else if(app.currentView === 'path') app.renderPath();
+        else if(app.currentView === 'course') app.renderPath();
         else if(app.currentView === 'advanced') app.renderAdvanced();
         else if(app.currentView === 'dictionary') app.renderDictionary();
         else if(app.currentView === 'lesson') {
@@ -51,15 +46,15 @@ const app = {
         
         // Update nav state
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        const btnMap = {'home': 0, 'path': 1, 'advanced': 2, 'dictionary': 3};
+        const btnMap = {'home': 0, 'course': 1, 'advanced': 2, 'dictionary': 3};
         if(btnMap[view] !== undefined) document.querySelectorAll('.nav-btn')[btnMap[view]].classList.add('active');
 
         if (view === 'home') app.renderHome();
-        else if (view === 'path') app.renderPath();
+        else if (view === 'course') app.renderPath();
         else if (view === 'advanced') app.renderAdvanced();
         else if (view === 'lesson' && id) {
             const l = curriculum.find(c => c.id === id);
-            app.lessonState = { currentLessonId: id, currentSlide: 0, totalSlides: 3, score: 0, maxScore: l.quiz.length, source: 'path' }; // Vocab+Grammar, Story, Quiz
+            app.lessonState = { currentLessonId: id, currentSlide: 0, totalSlides: 3, score: 0, maxScore: l.quiz.length, source: 'course' }; // Vocab+Grammar, Story, Quiz
             app.renderLesson(id, false);
         }
         else if (view === 'advancedLesson' && id) {
@@ -69,7 +64,7 @@ const app = {
         }
         else if (view === 'test' && id) {
             const l = curriculum.find(c => c.id === id);
-            app.lessonState = { currentLessonId: id, currentSlide: 0, totalSlides: 2, score: 0, maxScore: l.quiz.length, source: 'path' }; // Info, Quiz
+            app.lessonState = { currentLessonId: id, currentSlide: 0, totalSlides: 2, score: 0, maxScore: l.quiz.length, source: 'course' }; // Info, Quiz
             app.renderTest(id);
         }
         else if (view === 'dictionary') app.renderDictionary();
@@ -96,7 +91,7 @@ const app = {
                     <div style="font-size: 3rem; margin-bottom: 1rem;">🏠✨</div>
                     <h1>${t.welcome}</h1>
                     <p>${t.intro}</p>
-                    <button class="btn" onclick="app.router('path')">${t.start} <span style="font-size:1.2em">→</span></button>
+                    <button class="btn" onclick="app.router('course')">${t.start} <span style="font-size:1.2em">→</span></button>
                 </div>
 
                 <section class="features-grid">
@@ -299,7 +294,7 @@ const app = {
         });
         quizHtml += '</div>';
 
-        const closeAction = isAdvanced ? "app.router('advanced')" : "app.router('path')";
+        const closeAction = isAdvanced ? "app.router('advanced')" : "app.router('course')";
 
         // Render Container
         root.innerHTML = `
@@ -370,7 +365,7 @@ const app = {
         root.innerHTML = `
             <div class="view-section active lesson-container">
                 <div class="progress-header">
-                    <button class="close-btn" onclick="app.router('path')">✕</button>
+                    <button class="close-btn" onclick="app.router('course')">✕</button>
                     <div class="progress-track">
                         <div id="lesson-progress" class="progress-fill" style="width: 50%;"></div>
                     </div>
@@ -459,7 +454,7 @@ const app = {
         else if(percent >= 80) message = t.good;
         else if(percent < 50) message = t.tryAgain;
 
-        const backAction = state.source === 'advanced' ? "app.router('advanced')" : "app.router('path')";
+        const backAction = state.source === 'advanced' ? "app.router('advanced')" : "app.router('course')";
 
         root.innerHTML = `
             <div class="view-section active lesson-container">
