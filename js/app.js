@@ -46,7 +46,7 @@ const app = {
         
         // Update nav state
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        const btnMap = {'home': 0, 'course': 1, 'advanced': 2, 'dictionary': 3};
+        const btnMap = {'home': 0, 'course': 1, 'dictionary': 2};
         if(btnMap[view] !== undefined) document.querySelectorAll('.nav-btn')[btnMap[view]].classList.add('active');
 
         if (view === 'home') app.renderHome();
