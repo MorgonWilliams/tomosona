@@ -669,3 +669,13 @@ const curriculum = [
         quiz: [{q: "What is 'misikeke'?", options: ["Medicine", "Food", "Poison"], ans: 0}]
     }
 ];
+
+const advancedCurriculum = [
+    {
+        id: "A1", 
+        title: "Toki Pona Philosophy", 
+        desc: "Deep dive into nasin pona.",
+        vocab: [],
+        quiz: []
+    }
+];
