@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tomo sona - Learn Toki Pona</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,14 +11,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <header>
         <div class="logo">tomo sona</div>
         <nav>
             <button class="nav-btn active" onclick="app.router('home')" data-icon="🏠"><span>Home</span></button>
-            <button class="nav-btn" onclick="app.router('path')" data-icon="🗺️"><span>Path</span></button>
-            <button class="nav-btn" onclick="app.router('advanced')" data-icon="🚀"><span>Advanced</span></button>
-            <button class="nav-btn" onclick="app.router('dictionary')" data-icon="📖"><span>Words</span></button>
+            <button class="nav-btn" onclick="app.router('course')" data-icon="🗺️"><span>Lessons</span></button>
+            <button class="nav-btn" onclick="app.router('dictionary')" data-icon="📖"><span>Dictionary</span></button>
             <button class="nav-btn lang-toggle" onclick="app.toggleLang()">EN / TP</button>
         </nav>
     </header>
@@ -29,7 +26,6 @@
             <h2>Loading...</h2>
         </div>
     </main>
-
     <script src="js/data.js" defer></script>
     <script src="js/app.js" defer></script>
 </body>
