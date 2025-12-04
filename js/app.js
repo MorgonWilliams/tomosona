@@ -22,8 +22,7 @@ const app = {
         if(navs.length >= 4) {
             navs[0].innerText = t.homeNav;
             navs[1].innerText = t.pathNav;
-            navs[2].innerText = t.advancedNav || "Advanced";
-            navs[3].innerText = t.wordsNav;
+            navs[2].innerText = t.wordsNav;
         }
     },
 
@@ -54,17 +53,36 @@ const app = {
         else if (view === 'advanced') app.renderAdvanced();
         else if (view === 'lesson' && id) {
             const l = curriculum.find(c => c.id === id);
-            app.lessonState = { currentLessonId: id, currentSlide: 0, totalSlides: 3, score: 0, maxScore: l.quiz.length, source: 'course' }; // Vocab+Grammar, Story, Quiz
+            // Dynamic slide count: Always has Vocab/Grammar (1). Has Story? (+1). Has Quiz? (+1).
+            const slideCount = 1 + (l.story ? 1 : 0) + (l.quiz && l.quiz.length > 0 ? 1 : 0);
+            
+            app.lessonState = { 
+                currentLessonId: id, 
+                currentSlide: 0, 
+                totalSlides: slideCount, 
+                score: 0, 
+                maxScore: l.quiz ? l.quiz.length : 0, 
+                source: 'course' 
+            };
             app.renderLesson(id, false);
         }
         else if (view === 'advancedLesson' && id) {
             const l = advancedCurriculum.find(c => c.id === id);
-            app.lessonState = { currentLessonId: id, currentSlide: 0, totalSlides: 3, score: 0, maxScore: l.quiz.length, source: 'advanced' }; 
+            const slideCount = 1 + (l.story ? 1 : 0) + (l.quiz && l.quiz.length > 0 ? 1 : 0);
+
+            app.lessonState = { 
+                currentLessonId: id, 
+                currentSlide: 0, 
+                totalSlides: slideCount, 
+                score: 0, 
+                maxScore: l.quiz ? l.quiz.length : 0, 
+                source: 'advanced' 
+            }; 
             app.renderLesson(id, true);
         }
         else if (view === 'test' && id) {
             const l = curriculum.find(c => c.id === id);
-            app.lessonState = { currentLessonId: id, currentSlide: 0, totalSlides: 2, score: 0, maxScore: l.quiz.length, source: 'course' }; // Info, Quiz
+            app.lessonState = { currentLessonId: id, currentSlide: 0, totalSlides: 2, score: 0, maxScore: l.quiz.length, source: 'course' }; 
             app.renderTest(id);
         }
         else if (view === 'dictionary') app.renderDictionary();
@@ -171,13 +189,9 @@ const app = {
 
         curriculum.forEach((item, index) => {
             // Calculate Position
-            // Using Math.sin to get a value between -1 and 1
             const sineValue = Math.sin(index * waveConfig.frequency); 
             const xOffset = sineValue * waveConfig.amplitude;
             
-            // Center is 50%, so we add xOffset px
-            // y is relative to start
-            const xPercent = 50; 
             const y = waveConfig.startY + (index * waveConfig.verticalGap);
             
             pathPoints.push({xOffset, y});
@@ -189,11 +203,9 @@ const app = {
             
             // Style variants
             let btnClass = 'path-icon-btn';
-            let startBubble = '';
             
             if(index === 0) {
                 btnClass += ' start-node';
-                startBubble = `<div class="start-bubble">${t.startNode}</div>`;
             }
             if(isTest) btnClass += ' test-node';
 
@@ -208,14 +220,11 @@ const app = {
                     </div>
                     <div class="${btnClass}" onclick="${clickFn}">
                         ${icon}
-                        ${startBubble}
                     </div>
                 </div>
             `;
         });
 
-        // Build SVG Curve (assuming fixed width container of 600px for SVG coordinate calc)
-        // Center X = 300px
         const svgCenter = 300;
         if (pathPoints.length > 0) {
             svgPath = `M ${svgCenter + pathPoints[0].xOffset} ${pathPoints[0].y}`;
@@ -250,53 +259,132 @@ const app = {
 
     renderLesson: (id, isAdvanced) => {
         const root = document.getElementById('app-root');
+        // Fetch the correct lesson data
         const lesson = isAdvanced 
             ? advancedCurriculum.find(l => l.id === id) 
             : curriculum.find(l => l.id === id);
+        
         const t = UI_TEXT[app.lang];
         const state = app.lessonState;
 
-        if(!lesson) return;
+        if(!lesson) return; // Guard clause
 
-        // 1. Vocabulary & Grammar Slide Combined
-        let cardsHtml = `<div class="vocab-grid">`;
-        lesson.vocab.forEach(v => {
-            cardsHtml += `
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <h3>${v.word}</h3>
-                            <small style="color:var(--text-light); font-weight:600;">${v.type}</small>
-                        </div>
-                        <div class="flashcard-back">
-                            <p><b>${v.def}</b></p>
-                            <p style="opacity:0.8; margin-top:5px; font-size:0.85rem;">"${v.ex}"</p>
+        // --- 1. PREPARE CONTENT ---
+
+        // A. Vocabulary Cards Generation
+        const vocabList = lesson.vocab || [];
+        let cardsHtml = '';
+        if (vocabList.length > 0) {
+            cardsHtml += `<div class="vocab-grid">`;
+            vocabList.forEach(v => {
+                cardsHtml += `
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <h3>${v.word}</h3>
+                                <small style="color:var(--text-light); font-weight:600;">${v.type}</small>
+                            </div>
+                            <div class="flashcard-back">
+                                <p><b>${v.def}</b></p>
+                                <p style="opacity:0.8; margin-top:5px; font-size:0.85rem;">"${v.ex}"</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
-        });
-        cardsHtml += `</div><p style="text-align:center; color:var(--text-light); font-size:0.9rem;">👇 ${t.tapToFlip}</p>`;
-
-        // 2. Quiz Slide Logic
-        let quizHtml = `<div class="quiz-container">`;
-        lesson.quiz.forEach((q, idx) => {
-            let options = '';
-            q.options.forEach((opt, optIdx) => {
-                options += `<div class="option-btn" onclick="app.checkAnswer(this, ${optIdx === q.ans})">${opt}</div>`;
+                `;
             });
-            quizHtml += `
-                <div class="question-card" style="margin-bottom:1.5rem;">
-                    <p style="font-weight:700; margin-bottom:1rem; font-size:1.1rem;">${idx+1}. ${q.q}</p>
-                    <div class="options-grid" style="display:grid; gap:10px;">${options}</div>
+            cardsHtml += `</div><p style="text-align:center; color:var(--text-light); font-size:0.9rem;">👇 ${t.tapToFlip}</p>`;
+        } else {
+            cardsHtml = `<p style="text-align:center; color:var(--text-muted); font-style:italic;">No new vocabulary in this lesson.</p>`;
+        }
+
+        // B. Quiz Content Generation (UPDATED FOR MIXED TYPES)
+        const quizList = lesson.quiz || [];
+        let quizHtml = '';
+        if (quizList.length > 0) {
+            quizHtml += `<div class="quiz-container">`;
+            
+            quizList.forEach((q, idx) => {
+                // Header
+                quizHtml += `<div class="question-card" id="q-card-${idx}" style="margin-bottom:2rem;">
+                    <p style="font-weight:700; margin-bottom:1rem; font-size:1.1rem;">${idx+1}. ${q.q}</p>`;
+
+                // Render based on Type
+                if (q.type === 'builder') {
+                    // --- BUILDER TYPE ---
+                    quizHtml += `
+                        <div class="builder-container" id="builder-${idx}">
+                            <div class="builder-slot" id="slot-${idx}"></div>
+                            <div class="word-bank" id="bank-${idx}">
+                                ${q.words.map((word) => 
+                                    `<button class="word-chip" onclick="app.handleBuilderClick(${idx}, this, '${word}')">${word}</button>`
+                                ).join('')}
+                            </div>
+                            <button class="btn btn-outline check-btn" onclick="app.checkBuilderAnswer(${idx}, '${q.correctSentence}')">Check Answer</button>
+                        </div>
+                    `;
+                } else {
+                    // --- MC TYPE (Default) ---
+                    let options = '';
+                    if(q.options) {
+                        q.options.forEach((opt, optIdx) => {
+                            options += `<div class="option-btn" onclick="app.checkAnswer(this, ${optIdx === q.ans})">${opt}</div>`;
+                        });
+                    }
+                    quizHtml += `<div class="options-grid" style="display:grid; gap:10px;">${options}</div>`;
+                }
+                
+                quizHtml += `</div>`;
+            });
+            quizHtml += '</div>';
+        }
+
+        // --- 2. BUILD SLIDES DYNAMICALLY ---
+        // We push HTML strings into an array so indices (0, 1, 2) always match logic
+        let slidesArray = [];
+
+        // SLIDE: Vocab & Grammar (Always exists)
+        const grammarContent = lesson.grammar || '';
+        slidesArray.push(`
+            <div class="lesson-slide ${state.currentSlide === slidesArray.length ? 'active' : ''}" id="slide-${slidesArray.length}">
+                <h2 style="text-align:center; color:var(--primary); margin-bottom:0.5rem;">${t.lesson} ${lesson.id}</h2>
+                <h1 style="text-align:center; font-size:2rem; margin-bottom:2rem;">${lesson.title}</h1>
+                <div class="vocab-section-card">
+                    <h3 class="vocab-badge">${t.vocab}</h3>
+                    ${cardsHtml}
                 </div>
-            `;
-        });
-        quizHtml += '</div>';
+                ${grammarContent ? `
+                <div style="margin-top:2rem;">
+                    <h2 style="color:var(--primary); margin-bottom:1.5rem;">${t.grammar}</h2>
+                    <div class="grammar-box">${grammarContent}</div>
+                </div>` : ''}
+            </div>
+        `);
 
+        // SLIDE: Story (Only if exists)
+        if (lesson.story) {
+            slidesArray.push(`
+                <div class="lesson-slide ${state.currentSlide === slidesArray.length ? 'active' : ''}" id="slide-${slidesArray.length}">
+                     <h2 style="color:var(--accent-dark); margin-bottom:1.5rem;">${t.story}</h2>
+                     <div class="story-box">
+                        ${lesson.story}
+                     </div>
+                </div>
+            `);
+        }
+
+        // SLIDE: Quiz (Only if exists)
+        if (quizList.length > 0) {
+            slidesArray.push(`
+                <div class="lesson-slide ${state.currentSlide === slidesArray.length ? 'active' : ''}" id="slide-${slidesArray.length}">
+                     <h2 style="color:var(--success); margin-bottom:1.5rem;">${t.quiz}</h2>
+                     ${quizHtml}
+                </div>
+            `);
+        }
+
+        // --- 3. RENDER CONTAINER ---
         const closeAction = isAdvanced ? "app.router('advanced')" : "app.router('course')";
-
-        // Render Container
+        
         root.innerHTML = `
             <div class="view-section active lesson-container">
                 <div class="progress-header">
@@ -306,38 +394,17 @@ const app = {
                     </div>
                 </div>
 
-                <div class="lesson-slide ${state.currentSlide === 0 ? 'active' : ''}" id="slide-0">
-                    <h2 style="text-align:center; color:var(--primary); margin-bottom:0.5rem;">${t.lesson} ${lesson.id}</h2>
-                    <h1 style="text-align:center; font-size:2rem; margin-bottom:2rem;">${lesson.title}</h1>
-                    <div class="vocab-section-card">
-                        <h3 class="vocab-badge">${t.vocab}</h3>
-                        ${cardsHtml}
-                    </div>
-                    <div style="margin-top:2rem;">
-                        <h2 style="color:var(--primary); margin-bottom:1.5rem;">${t.grammar}</h2>
-                        <div class="grammar-box">${lesson.grammar}</div>
-                    </div>
-                </div>
-
-                <div class="lesson-slide ${state.currentSlide === 1 ? 'active' : ''}" id="slide-1">
-                     <h2 style="color:var(--accent-dark); margin-bottom:1.5rem;">${t.story}</h2>
-                     <div class="story-box">
-                        ${lesson.story}
-                     </div>
-                </div>
-
-                <div class="lesson-slide ${state.currentSlide === 2 ? 'active' : ''}" id="slide-2">
-                     <h2 style="color:var(--success); margin-bottom:1.5rem;">${t.quiz}</h2>
-                     ${quizHtml}
-                </div>
+                ${slidesArray.join('')}
 
                 <div class="slide-footer">
                     <button class="btn btn-outline" id="prev-btn" onclick="app.changeSlide(-1)" disabled>←</button>
-                    <span class="slide-status" id="slide-status">1 / 3</span>
+                    <span class="slide-status" id="slide-status">1 / ${state.totalSlides}</span>
                     <button class="btn" id="next-btn" onclick="app.changeSlide(1)">${t.next} →</button>
                 </div>
             </div>
         `;
+
+        // Initialize UI state (progress bar, button text)
         app.updateSlideUI();
     },
 
@@ -347,19 +414,39 @@ const app = {
         const t = UI_TEXT[app.lang];
         const state = app.lessonState;
 
+        // UPDATED QUIZ RENDERING FOR TESTS
         let quizHtml = `<div class="quiz-container">`;
-        test.quiz.forEach((q, idx) => {
-            let options = '';
-            q.options.forEach((opt, optIdx) => {
-                options += `<div class="option-btn" onclick="app.checkAnswer(this, ${optIdx === q.ans})">${opt}</div>`;
+        if (test.quiz && test.quiz.length > 0) {
+            test.quiz.forEach((q, idx) => {
+                quizHtml += `<div class="question-card" id="q-card-${idx}" style="margin-bottom:1.5rem;">
+                    <p style="font-weight:700; margin-bottom:1rem; font-size:1.1rem;">${idx+1}. ${q.q}</p>`;
+
+                if (q.type === 'builder') {
+                     // Builder Type
+                     quizHtml += `
+                        <div class="builder-container" id="builder-${idx}">
+                            <div class="builder-slot" id="slot-${idx}"></div>
+                            <div class="word-bank" id="bank-${idx}">
+                                ${q.words.map((word) => 
+                                    `<button class="word-chip" onclick="app.handleBuilderClick(${idx}, this, '${word}')">${word}</button>`
+                                ).join('')}
+                            </div>
+                            <button class="btn btn-outline check-btn" onclick="app.checkBuilderAnswer(${idx}, '${q.correctSentence}')">Check Answer</button>
+                        </div>
+                    `;
+                } else {
+                    // Standard MC
+                    let options = '';
+                    if(q.options){
+                        q.options.forEach((opt, optIdx) => {
+                            options += `<div class="option-btn" onclick="app.checkAnswer(this, ${optIdx === q.ans})">${opt}</div>`;
+                        });
+                    }
+                    quizHtml += `<div class="options-grid" style="display:grid; gap:10px;">${options}</div>`;
+                }
+                quizHtml += `</div>`;
             });
-            quizHtml += `
-                <div class="question-card" style="margin-bottom:1.5rem;">
-                    <p style="font-weight:700; margin-bottom:1rem; font-size:1.1rem;">${idx+1}. ${q.q}</p>
-                    <div class="options-grid" style="display:grid; gap:10px;">${options}</div>
-                </div>
-            `;
-        });
+        }
         quizHtml += '</div>';
 
         root.innerHTML = `
@@ -402,13 +489,16 @@ const app = {
 
         if (newSlide >= 0 && newSlide < state.totalSlides) {
             // Hide current
-            document.getElementById(`slide-${state.currentSlide}`).classList.remove('active');
+            const currEl = document.getElementById(`slide-${state.currentSlide}`);
+            if(currEl) currEl.classList.remove('active');
             
             // Update State
             state.currentSlide = newSlide;
             
             // Show new
-            document.getElementById(`slide-${state.currentSlide}`).classList.add('active');
+            const nextEl = document.getElementById(`slide-${state.currentSlide}`);
+            if(nextEl) nextEl.classList.add('active');
+            
             app.updateSlideUI();
         } else if (newSlide >= state.totalSlides) {
             // Lesson Complete - Show Results
@@ -444,12 +534,15 @@ const app = {
         const root = document.getElementById('app-root');
         const t = UI_TEXT[app.lang];
         const state = app.lessonState;
-        const percent = Math.round((state.score / state.maxScore) * 100);
+        
+        let percent = 100;
+        if(state.maxScore > 0) {
+            percent = Math.round((state.score / state.maxScore) * 100);
+        }
         
         let message = t.good;
         if(percent === 100) {
             message = t.perfect;
-            app.triggerConfetti();
         }
         else if(percent >= 80) message = t.good;
         else if(percent < 50) message = t.tryAgain;
@@ -478,39 +571,93 @@ const app = {
     renderDictionary: () => {
         const root = document.getElementById('app-root');
         const t = UI_TEXT[app.lang];
+        
+        // 1. GATHER DATA
         let allVocab = [];
         curriculum.forEach(l => {
             if(l.vocab && l.vocab.length > 0) allVocab = [...allVocab, ...l.vocab];
         });
         
+        // Sort alphabetically
         allVocab.sort((a,b) => a.word.localeCompare(b.word));
 
+        // Deduplicate
         const uniqueVocab = Array.from(new Set(allVocab.map(a => a.word)))
-            .map(word => {
-                return allVocab.find(a => a.word === word);
-            });
+            .map(word => allVocab.find(a => a.word === word));
 
-        let listHtml = '<div class="vocab-grid">';
-        uniqueVocab.forEach(v => {
-            listHtml += `
-                <div class="feature-card" style="text-align: center;">
-                    <h3 style="color:var(--primary); font-size:1.5rem; margin-bottom:0.5rem;">${v.word}</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem; font-weight:bold; margin-bottom:0.5rem;"><i>${v.type}</i></p>
-                    <p>${v.def}</p>
-                </div>
-            `;
-        });
-        listHtml += '</div>';
-
+        // 2. RENDER THE SHELL (Static parts)
         root.innerHTML = `
             <div class="view-section active">
-                <div style="text-align:center; margin-bottom:3rem;">
+                <div style="text-align:center; margin-bottom:2rem;">
                     <h1 style="margin-bottom:0.5rem;">${t.dictTitle} (nimi ale)</h1>
-                    <p style="color:var(--text-light);">${t.dictDesc}</p>
+                    <p style="color:var(--text-muted);">${t.dictDesc}</p>
                 </div>
-                ${listHtml}
+
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="dict-search" 
+                    class="search-input" 
+                    autocomplete="off" 
+                    placeholder="${app.lang === 'en' ? 'Type a word (e.g., moku)...' : 'o alasa e nimi...'}">
+            </div>
+
+                <div id="dictionary-grid" class="vocab-grid"></div>
+                
+                <div id="no-results" style="display:none; text-align:center; padding:2rem; color:var(--text-muted);">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🤷‍♂️</div>
+                    <p>No words found. (nimi ala)</p>
+                </div>
             </div>
         `;
+
+        // 3. DEFINE DYNAMIC RENDERER
+        const gridEl = document.getElementById('dictionary-grid');
+        const noResEl = document.getElementById('no-results');
+
+        const renderGrid = (filter = "") => {
+            const cleanFilter = filter.toLowerCase().trim();
+            
+            // Filter Logic: Check Word OR Definition OR Type
+            const filtered = uniqueVocab.filter(v => 
+                v.word.toLowerCase().includes(cleanFilter) || 
+                v.def.toLowerCase().includes(cleanFilter) ||
+                v.type.toLowerCase().includes(cleanFilter)
+            );
+
+            if(filtered.length === 0) {
+                gridEl.style.display = 'none';
+                noResEl.style.display = 'block';
+                return;
+            }
+
+            gridEl.style.display = 'grid';
+            noResEl.style.display = 'none';
+
+            let listHtml = '';
+            filtered.forEach(v => {
+                listHtml += `
+                    <div class="feature-card" style="text-align: center;">
+                        <h3 style="color:var(--primary); font-size:1.5rem; margin-bottom:0.5rem;">${v.word}</h3>
+                        <p style="color:var(--text-muted); font-size:0.9rem; font-weight:bold; margin-bottom:0.5rem;"><i>${v.type}</i></p>
+                        <p>${v.def}</p>
+                    </div>
+                `;
+            });
+            gridEl.innerHTML = listHtml;
+        };
+
+        // 4. INITIAL RENDER & LISTENERS
+        renderGrid(); // Show all initially
+
+        const input = document.getElementById('dict-search');
+        input.addEventListener('keyup', (e) => {
+            renderGrid(e.target.value);
+        });
+        
+        // Auto-focus the search for better UX
+        input.focus();
     },
 
     checkAnswer: (btn, isCorrect) => {
@@ -528,22 +675,58 @@ const app = {
         }
     },
 
-    triggerConfetti: () => {
-        const colors = ['#f97316', '#0f766e', '#65a30d', '#facc15', '#ec4899'];
-        for(let i=0; i<100; i++) {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-            confetti.style.width = (Math.random() * 10 + 5) + 'px';
-            confetti.style.height = confetti.style.width;
-            document.body.appendChild(confetti);
+    // --- NEW BUILDER LOGIC ---
+    handleBuilderClick: (qIdx, btn, word) => {
+        const slot = document.getElementById(`slot-${qIdx}`);
+        const bank = document.getElementById(`bank-${qIdx}`);
+        const parent = btn.parentElement;
 
-            // Remove after animation
-            setTimeout(() => confetti.remove(), 4000);
+        // If button is in the bank, move to slot
+        if (parent === bank) {
+            btn.classList.add('in-slot');
+            slot.appendChild(btn); 
+        } 
+        // If button is in the slot, move back to bank
+        else {
+            btn.classList.remove('in-slot');
+            bank.appendChild(btn); 
         }
-    }
+        
+        // Visual toggle for empty/filled state
+        if(slot.children.length > 0) slot.classList.add('filled');
+        else slot.classList.remove('filled');
+    },
+
+    checkBuilderAnswer: (qIdx, correctSentence) => {
+        const slot = document.getElementById(`slot-${qIdx}`);
+        const container = document.getElementById(`builder-${qIdx}`);
+        const card = document.getElementById(`q-card-${qIdx}`);
+        
+        // Prevent re-answering
+        if (card.classList.contains('answered')) return;
+        
+        // Construct sentence from chips in the slot
+        const userWords = Array.from(slot.children).map(chip => chip.innerText);
+        const userSentence = userWords.join(' ');
+        
+        card.classList.add('answered');
+        
+        const checkBtn = container.querySelector('.check-btn');
+
+        if (userSentence === correctSentence) {
+            slot.classList.add('correct');
+            checkBtn.classList.add('btn-success');
+            checkBtn.innerHTML = 'Correct! ✅';
+            checkBtn.style.color = 'white';
+            app.lessonState.score++;
+        } else {
+            slot.classList.add('incorrect');
+            checkBtn.classList.add('incorrect'); 
+            checkBtn.innerHTML = `Incorrect. Answer: "${correctSentence}" ❌`;
+            // Disable chips
+            Array.from(slot.children).forEach(c => c.disabled = true);
+        }
+    },
 };
 
 window.onload = () => {
