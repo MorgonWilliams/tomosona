@@ -29,11 +29,9 @@ const app = {
     renderCurrentView: () => {
         if(app.currentView === 'home') app.renderHome();
         else if(app.currentView === 'course') app.renderPath();
-        else if(app.currentView === 'advanced') app.renderAdvanced();
         else if(app.currentView === 'dictionary') app.renderDictionary();
         else if(app.currentView === 'lesson') {
-            const isAdv = app.lessonState.source === 'advanced';
-            app.renderLesson(app.lessonState.currentLessonId, isAdv);
+            app.renderLesson(app.lessonState.currentLessonId);
         }
         else if(app.currentView === 'test') app.renderTest(app.lessonState.currentLessonId);
     },
@@ -50,9 +48,15 @@ const app = {
 
         if (view === 'home') app.renderHome();
         else if (view === 'course') app.renderPath();
-        else if (view === 'advanced') app.renderAdvanced();
         else if (view === 'lesson' && id) {
-            const l = curriculum.find(c => c.id === id);
+            // FIX: Use loose equality (==) to match String "1" with Number 1
+            const l = curriculum.find(c => c.id === String(id));
+            
+            if (!l) {
+                console.error("Lesson not found:", id);
+                return;
+            }
+
             // Dynamic slide count: Always has Vocab/Grammar (1). Has Story? (+1). Has Quiz? (+1).
             const slideCount = 1 + (l.story ? 1 : 0) + (l.quiz && l.quiz.length > 0 ? 1 : 0);
             
@@ -64,24 +68,11 @@ const app = {
                 maxScore: l.quiz ? l.quiz.length : 0, 
                 source: 'course' 
             };
-            app.renderLesson(id, false);
-        }
-        else if (view === 'advancedLesson' && id) {
-            const l = advancedCurriculum.find(c => c.id === id);
-            const slideCount = 1 + (l.story ? 1 : 0) + (l.quiz && l.quiz.length > 0 ? 1 : 0);
-
-            app.lessonState = { 
-                currentLessonId: id, 
-                currentSlide: 0, 
-                totalSlides: slideCount, 
-                score: 0, 
-                maxScore: l.quiz ? l.quiz.length : 0, 
-                source: 'advanced' 
-            }; 
-            app.renderLesson(id, true);
+            app.renderLesson(id);
         }
         else if (view === 'test' && id) {
-            const l = curriculum.find(c => c.id === id);
+            const l = curriculum.find(c => c.id === String(id));
+            if (!l) return;
             app.lessonState = { currentLessonId: id, currentSlide: 0, totalSlides: 2, score: 0, maxScore: l.quiz.length, source: 'course' }; 
             app.renderTest(id);
         }
@@ -138,34 +129,6 @@ const app = {
         `;
     },
 
-    renderAdvanced: () => {
-        const root = document.getElementById('app-root');
-        const t = UI_TEXT[app.lang];
-        
-        let listHtml = `<div class="outline-grid">`;
-        advancedCurriculum.forEach(c => {
-            listHtml += `
-            <div class="outline-item advanced-card" style="cursor:pointer" onclick="app.router('advancedLesson', '${c.id}')">
-                <div class="advanced-icon">🚀</div>
-                <div>
-                    <div style="font-size:0.85rem; text-transform:uppercase; color:var(--text-light);">${c.id}</div>
-                    <div>${c.title}</div>
-                </div>
-            </div>`;
-        });
-        listHtml += `</div>`;
-
-        root.innerHTML = `
-            <div class="view-section active">
-                <div style="text-align:center; margin-bottom:3rem;">
-                    <h1 style="color:var(--advanced); margin-bottom:0.5rem;">${t.advancedTitle || 'Advanced Studies'}</h1>
-                    <p style="color:var(--text-light);">${t.advancedDesc || 'Deep dives into complex topics.'}</p>
-                </div>
-                ${listHtml}
-            </div>
-        `;
-    },
-
     renderPath: () => {
         const root = document.getElementById('app-root');
         const t = UI_TEXT[app.lang];
@@ -199,7 +162,9 @@ const app = {
             const isTest = item.type === 'test';
             const icon = isTest ? '🏆' : '★';
             const displayId = isTest ? item.id : item.id;
-            const clickFn = isTest ? `app.router('test', '${item.id}')` : `app.router('lesson', ${item.id})`;
+            
+            // FIX: Ensure ID is wrapped in quotes '${item.id}' so strict string IDs work
+            const clickFn = isTest ? `app.router('test', '${item.id}')` : `app.router('lesson', '${item.id}')`;
             
             // Style variants
             let btnClass = 'path-icon-btn';
@@ -214,11 +179,11 @@ const app = {
 
             nodesHtml += `
                 <div class="path-node-container" style="top: ${y}px; left: calc(50% + ${xOffset}px);">
-                    <div class="path-card ${cardSide}" onclick="${clickFn}">
+                    <div class="path-card ${cardSide}" role="button" tabindex="0" onclick="${clickFn}">
                         <h3>${isTest ? t.test : t.lesson} ${displayId}</h3>
                         <p>${item.title}</p>
                     </div>
-                    <div class="${btnClass}" onclick="${clickFn}">
+                    <div class="${btnClass}" role="button" tabindex="0" onclick="${clickFn}">
                         ${icon}
                     </div>
                 </div>
@@ -257,12 +222,11 @@ const app = {
         `;
     },
 
-    renderLesson: (id, isAdvanced) => {
+    renderLesson: (id) => {
         const root = document.getElementById('app-root');
-        // Fetch the correct lesson data
-        const lesson = isAdvanced 
-            ? advancedCurriculum.find(l => l.id === id) 
-            : curriculum.find(l => l.id === id);
+        
+        // FIX: Use loose equality (==) to find the lesson safely
+        const lesson = curriculum.find(l => l.id === String(id));
         
         const t = UI_TEXT[app.lang];
         const state = app.lessonState;
@@ -282,7 +246,7 @@ const app = {
                         <div class="flashcard-inner">
                             <div class="flashcard-front">
                                 <h3>${v.word}</h3>
-                                <small style="color:var(--text-light); font-weight:600;">${v.type}</small>
+                                <small style="color:var(--text-muted); font-weight:600;">${v.type}</small>
                             </div>
                             <div class="flashcard-back">
                                 <p><b>${v.def}</b></p>
@@ -292,12 +256,12 @@ const app = {
                     </div>
                 `;
             });
-            cardsHtml += `</div><p style="text-align:center; color:var(--text-light); font-size:0.9rem;">👇 ${t.tapToFlip}</p>`;
+            cardsHtml += `</div><p style="text-align:center; color:var(--text-muted); font-size:0.9rem;">👇 ${t.tapToFlip}</p>`;
         } else {
             cardsHtml = `<p style="text-align:center; color:var(--text-muted); font-style:italic;">No new vocabulary in this lesson.</p>`;
         }
 
-        // B. Quiz Content Generation (UPDATED FOR MIXED TYPES)
+        // B. Quiz Content Generation
         const quizList = lesson.quiz || [];
         let quizHtml = '';
         if (quizList.length > 0) {
@@ -319,7 +283,10 @@ const app = {
                                     `<button class="word-chip" onclick="app.handleBuilderClick(${idx}, this, '${word}')">${word}</button>`
                                 ).join('')}
                             </div>
-                            <button class="btn btn-outline check-btn" onclick="app.checkBuilderAnswer(${idx}, '${q.correctSentence}')">Check Answer</button>
+                            <div class="button-group" style="margin-top:10px; display:flex; gap:10px;">
+                                <button class="btn btn-outline check-btn" onclick="app.checkBuilderAnswer(${idx}, '${q.correctSentence}')">Check Answer</button>
+                                <button class="btn btn-text" onclick="app.resetBuilder(${idx})" style="font-size:0.9rem; padding: 10px;">↺ Reset</button>
+                            </div>
                         </div>
                     `;
                 } else {
@@ -383,7 +350,7 @@ const app = {
         }
 
         // --- 3. RENDER CONTAINER ---
-        const closeAction = isAdvanced ? "app.router('advanced')" : "app.router('course')";
+        const closeAction = "app.router('course')";
         
         root.innerHTML = `
             <div class="view-section active lesson-container">
@@ -410,7 +377,8 @@ const app = {
 
     renderTest: (id) => {
         const root = document.getElementById('app-root');
-        const test = curriculum.find(l => l.id === id);
+        // FIX: Loose equality for test finding
+        const test = curriculum.find(l => l.id === String(id));
         const t = UI_TEXT[app.lang];
         const state = app.lessonState;
 
@@ -431,7 +399,10 @@ const app = {
                                     `<button class="word-chip" onclick="app.handleBuilderClick(${idx}, this, '${word}')">${word}</button>`
                                 ).join('')}
                             </div>
-                            <button class="btn btn-outline check-btn" onclick="app.checkBuilderAnswer(${idx}, '${q.correctSentence}')">Check Answer</button>
+                            <div class="button-group" style="margin-top:10px; display:flex; gap:10px;">
+                                <button class="btn btn-outline check-btn" onclick="app.checkBuilderAnswer(${idx}, '${q.correctSentence}')">Check Answer</button>
+                                <button class="btn btn-text" onclick="app.resetBuilder(${idx})" style="font-size:0.9rem; padding: 10px;">↺ Reset</button>
+                            </div>
                         </div>
                     `;
                 } else {
@@ -454,7 +425,7 @@ const app = {
                 <div class="progress-header">
                     <button class="close-btn" onclick="app.router('course')">✕</button>
                     <div class="progress-track">
-                        <div id="lesson-progress" class="progress-fill" style="width: 50%;"></div>
+                        <div id="lesson-progress" class="progress-fill" style="width: 0%;"></div>
                     </div>
                 </div>
 
@@ -547,7 +518,7 @@ const app = {
         else if(percent >= 80) message = t.good;
         else if(percent < 50) message = t.tryAgain;
 
-        const backAction = state.source === 'advanced' ? "app.router('advanced')" : "app.router('course')";
+        const backAction = "app.router('course')";
 
         root.innerHTML = `
             <div class="view-section active lesson-container">
@@ -559,7 +530,7 @@ const app = {
                         <span class="score-max">/ ${state.maxScore}</span>
                     </div>
                     
-                    <h2 style="color:var(--text-light); margin-bottom:2rem;">${message}</h2>
+                    <h2 style="color:var(--text-muted); margin-bottom:2rem;">${message}</h2>
                     <p>${percent}% ${app.lang === 'en' ? 'Correct' : 'pona'}</p>
 
                     <button class="btn" onclick="${backAction}">${t.back}</button>
@@ -727,8 +698,39 @@ const app = {
             Array.from(slot.children).forEach(c => c.disabled = true);
         }
     },
+
+resetBuilder: (idx) => {
+        const slot = document.getElementById(`slot-${idx}`);
+        const bank = document.getElementById(`bank-${idx}`);
+        const container = document.getElementById(`builder-${idx}`);
+        const card = document.getElementById(`q-card-${idx}`);
+        
+        // Reset card state if it was wrong
+        if (card.classList.contains('answered')) {
+             card.classList.remove('answered');
+             const checkBtn = container.querySelector('.check-btn');
+             checkBtn.classList.remove('incorrect', 'btn-success');
+             checkBtn.innerHTML = 'Check Answer';
+        }
+
+        // Move all children back to bank
+        while(slot.firstChild) {
+            let el = slot.firstChild;
+            if(el.tagName === 'BUTTON') {
+                el.classList.remove('in-slot');
+                el.disabled = false;
+                bank.appendChild(el);
+            } else { 
+                el.remove(); // Clean up non-button elements
+            } // <--- THIS BRACE WAS MISSING
+        } // <--- THIS BRACE WAS IMPLIED BUT FORMATTING WAS OFF
+        
+        slot.classList.remove('filled', 'correct', 'incorrect');
+    }
 };
 
 window.onload = () => {
     app.router('home');
 };
+
+window.app = app;
