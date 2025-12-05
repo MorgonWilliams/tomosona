@@ -694,6 +694,7 @@ main {
     box-shadow: 0 4px 0 #cbd5e1;
     transition: transform 0.1s;
     user-select: none;
+    margin: 4px;
 }
 
 .word-chip:active {
@@ -701,7 +702,6 @@ main {
     box-shadow: none;
 }
 
-/* State: When a word is moved to the slot */
 .word-chip.in-slot {
     background: var(--primary-light);
     border-color: var(--primary);
@@ -714,11 +714,11 @@ main {
     margin-top: 10px;
 }
 
-/* Feedback states for the Builder Slot */
 .builder-slot.correct {
     border-color: var(--success);
     background: var(--success-light);
 }
+
 .builder-slot.incorrect {
     border-color: var(--error);
     background: #fee2e2;
