@@ -1232,8 +1232,13 @@ header {
 
     /* Mobile Typography & Layout */
     .hero h1 { font-size: 2.2rem; }
+    
     .features-grid { grid-template-columns: 1fr; }
-    .vocab-grid { grid-template-columns: repeat(2, 1fr); }
+    
+    .vocab-grid { 
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+        gap: 1rem;
+    }
     
     /* Mobile Header */
     nav { 
@@ -1261,6 +1266,14 @@ header {
         font-weight: 900;       
         letter-spacing: 0.05em;  
         padding-top: 2px;        
+    }
+
+    .feature-card {
+    padding: 1rem !important;
+    }
+
+    .feature-card > div[style*="display:flex"] {
+    flex-wrap: wrap; 
     }
     
     /* Mobile Map */
