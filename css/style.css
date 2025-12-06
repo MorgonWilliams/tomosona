@@ -1271,33 +1271,38 @@ header {
     
     /* Mobile Header */
 nav {
-        display: none; /* Hidden by default */
-        position: absolute;
-        top: 100%; /* Push it exactly below the header */
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        align-items: stretch; /* Full width buttons */
-        
-        background: var(--bg-card);
-        padding: 1.5rem;
-        gap: 1rem;
-        
-        border-bottom: var(--border-width) solid var(--border-color);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        
-        /* Animation setup */
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        z-index: var(--z-sticky);
-    }
+    display: flex;     /* Keep flex layout, but hide via visibility */
+    visibility: hidden; /* Allows transition */
+    
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    
+    background: var(--bg-card);
+    padding: 1.5rem;
+    gap: 1rem;
+    
+    border-bottom: var(--border-width) solid var(--border-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; /* Add visibility to transition */
+    z-index: var(--z-sticky);
+    
+    /* Ensure no interaction when closed */
+    pointer-events: none; 
+}
 
-    nav.menu-open {
-        display: flex;
-        opacity: 1;
-        transform: translateY(0);
-    }
+nav.menu-open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Re-enable clicks */
+}
 
     .logo { 
     font-size: 1.2rem; /* Reduce slightly from 1.3rem */
