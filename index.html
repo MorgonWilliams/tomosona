@@ -1,32 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tomo sona - Learn Toki Pona</title>
+    <meta name="description" content="tomo sona - An interactive way to learn Toki Pona">
+    <meta name="theme-color" content="#0284c7"> <title>tomo sona - Learn Toki Pona</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
 </head>
 <body>
-    <header>
-        <div class="logo">tomo sona</div>
-        <nav>
-            <button class="nav-btn active" onclick="app.router('home')" data-icon="🏠"><span>Home</span></button>
-            <button class="nav-btn" onclick="app.router('course')" data-icon="🗺️"><span>Lessons</span></button>
-            <button class="nav-btn" onclick="app.router('dictionary')" data-icon="📖"><span>Dictionary</span></button>
-            <button class="nav-btn lang-toggle" onclick="app.toggleLang()">EN / TP</button>
+
+    <header role="banner">
+        <div class="logo" aria-label="Tomo Sona Logo">tomo sona</div>
+        
+        <nav role="navigation" aria-label="Main Menu">
+            <button class="nav-btn active" onclick="app.router('home')" data-icon="🏠" aria-label="Go to Home">
+                <span>Home</span>
+            </button>
+            <button class="nav-btn" onclick="app.router('course')" data-icon="🗺️" aria-label="Go to Lessons">
+                <span>Lessons</span>
+            </button>
+            <button class="nav-btn" onclick="app.router('media')" data-icon="📜" aria-label="Go to Media Library">
+                <span>Media</span>
+            </button>
+            <button class="nav-btn" onclick="app.router('dictionary')" data-icon="📖" aria-label="Go to Dictionary">
+                <span>Dictionary</span>
+            </button>
+            
+            <button class="nav-btn lang-toggle" onclick="app.toggleLang()" data-icon="EN" aria-label="Toggle Language">
+                <span>EN / TP</span>
+            </button>
         </nav>
     </header>
 
-    <main id="app-root">
-        <div style="text-align:center; padding-top: 50px; color: #0f766e;">
-            <h2>Loading...</h2>
+    <main id="app-root" role="main">
+        <div style="
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 60vh; 
+            color: var(--primary-dark, #075985); 
+            animation: fadeIn 0.5s ease;
+        ">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🏔️</div>
+            <h2 style="font-weight: 900; letter-spacing: -0.03em;">Loading...</h2>
         </div>
     </main>
+
     <script src="js/data.js" defer></script>
     <script src="js/app.js" defer></script>
+
 </body>
 </html>
-
