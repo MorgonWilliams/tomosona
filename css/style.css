@@ -1218,16 +1218,42 @@ header {
    12. MEDIA QUERIES (RESPONSIVE)
    ========================================= */
 @media (max-width: 760px) {
+
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    /* Ensure the main container doesn't force width */
+    main {
+        width: 100%;
+        overflow-x: hidden; /* Clips content that is too wide */
+    }
+
     /* Mobile Typography & Layout */
     .hero h1 { font-size: 2.2rem; }
     .features-grid { grid-template-columns: 1fr; }
     .vocab-grid { grid-template-columns: repeat(2, 1fr); }
     
     /* Mobile Header */
-    nav { display: flex; gap: 5px; }
-    .logo { font-size: 1.3rem; }
+    nav { 
+    display: flex; 
+    gap: 4px; /* Tighten the gap from 5px */
+    flex-shrink: 1; /* Allow nav to shrink if needed */
+    overflow-x: auto; /* Safety net: allow horizontal scroll if screen is TINY */
+}
+    .logo { 
+    font-size: 1.2rem; /* Reduce slightly from 1.3rem */
+    white-space: nowrap; /* Prevent logo wrapping */
+}
     .lang-toggle { margin-left: 5px; padding: 8px 12px; }
     
+    .nav-btn {
+    /* Reduce horizontal padding from 18px to 8px or 10px */
+    padding: 8px 10px; 
+    min-width: 44px; /* Ensure a hit-target size for fingers */
+}
+
     .nav-btn span { display: none; }
     .nav-btn::after {
         content: attr(data-icon);
