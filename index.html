@@ -19,6 +19,12 @@
     <header role="banner">
         <div class="logo" aria-label="Tomo Sona Logo">tomo sona</div>
         
+        <button class="mobile-menu-btn" onclick="app.ui.toggleMenu()" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
         <nav role="navigation" aria-label="Main Menu">
             <button class="nav-btn active" onclick="app.router('home')" data-icon="🏠" aria-label="Go to Home">
                 <span>Home</span>
