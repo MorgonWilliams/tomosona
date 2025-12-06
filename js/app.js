@@ -477,6 +477,31 @@ const app = {
             if (langBtn) langBtn.setAttribute('data-icon', app.state.lang.toUpperCase());
         },
 
+        updateNavState(view) {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        const idx = app.config.routes[view];
+        if (idx !== undefined && document.querySelectorAll('.nav-btn')[idx]) {
+            document.querySelectorAll('.nav-btn')[idx].classList.add('active');
+        }
+
+        // UX Fix: Close menu automatically when navigation occurs
+        const nav = document.getElementById('main-nav');
+        const btn = document.querySelector('.mobile-menu-btn');
+        if (nav && nav.classList.contains('menu-open')) {
+            nav.classList.remove('menu-open');
+            btn.classList.remove('open');
+        }
+        },
+
+        toggleMenu() {
+        const nav = document.getElementById('main-nav');
+        const btn = document.querySelector('.mobile-menu-btn');
+        
+        // Toggle classes
+        nav.classList.toggle('menu-open');
+        btn.classList.toggle('open');
+        },
+
         toggleTranslation() {
             const box = document.getElementById('trans-box');
             const btn = document.getElementById('toggle-btn');
