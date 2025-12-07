@@ -1,19 +1,34 @@
 /**
  * ============================================================================
- * TOMO APP ENGINE
- * Refactored for modularity, readability, and scale.
+ * TOMO SONA - APPLICATION CORE
  * ============================================================================
+ * A lightweight, dependency-free SPA framework tailored for language learning.
+ * * Architecture:
+ * 1. State: Holds the active session data (score, current slide).
+ * 2. Router: Manages view switching (Home -> Lesson -> Dictionary).
+ * 3. Controllers: Business logic (Starting a lesson, grading a quiz).
+ * 4. Views: Pure functions that return HTML strings based on state.
  */
+
+'use strict';
 
 const app = {
     // ========================================================================
-    // 1. STATE & CONFIGURATION
+    // 1. CONFIG & STATE
     // ========================================================================
+    config: {
+        storageKey: 'tomo-progress',
+        anim: {
+            wave: { amplitude: 60, frequency: 0.6, verticalGap: 120, startY: 60 }
+        },
+        routes: { 'home': 0, 'course': 1, 'media': 2, 'dictionary': 3 }
+    },
+
     state: {
-        lang: 'en',
+        lang: 'en',          // 'en' or 'tp'
         currentView: 'home',
         
-        // Active Lesson/Quiz State (formerly lessonState)
+        // Active Session (Lesson/Quiz) State
         session: {
             id: null,
             currentSlide: 0,
@@ -22,112 +37,131 @@ const app = {
             score: 0,
             maxScore: 0,
             source: 'course', // 'course' | 'reading'
-            quizDrafts: {}    // Stores temporary user selections
-        }
-    },
-
-    config: {
-        wave: { amplitude: 60, frequency: 0.6, verticalGap: 120, startY: 60 },
-        routes: { 'home': 0, 'course': 1, 'media': 2, 'dictionary': 3 }
-    },
-
-    // ========================================================================
-    // 2. STORAGE MANAGER (PERSISTENCE)
-    // ========================================================================
-    storage: {
-        getKey: () => 'tomo-progress',
-        
-        get() {
-            const saved = localStorage.getItem(this.getKey());
-            return saved ? JSON.parse(saved) : { completed: [], scores: {} };
-        },
-
-        save(lessonId, score) {
-            const data = this.get();
-            if (!data.completed.includes(String(lessonId))) {
-                data.completed.push(String(lessonId));
-            }
-            // Update high score
-            const currentHigh = data.scores[lessonId] || 0;
-            if (score > currentHigh) data.scores[lessonId] = score;
-            
-            localStorage.setItem(this.getKey(), JSON.stringify(data));
-        },
-
-        reset() {
-            if (confirm("⚠️ This will wipe all progress and scores. Are you sure?")) {
-                localStorage.removeItem(this.getKey());
-                location.reload();
-            }
-        },
-
-        unlockAll() {
-            if (!confirm("Olukin! (Watch out!)\n\nUnlock every lesson?")) return;
-            const data = this.get();
-            const allIds = curriculum.map(c => String(c.id));
-            data.completed = [...new Set([...data.completed, ...allIds])];
-            localStorage.setItem(this.getKey(), JSON.stringify(data));
-            app.core.router('course');
+            quizDrafts: {}    // Temporary storage for selected options before submitting
         }
     },
 
     // ========================================================================
-    // 3. CORE & ROUTING
+    // 2. CORE & ROUTING
     // ========================================================================
     core: {
+        /**
+         * Bootstrap the application.
+         */
         init() {
+            console.log("🏔️ Tomo Sona Loaded");
             app.core.router('home');
         },
 
+        /**
+         * Main Router - Switches the visible view.
+         * @param {string} view - The view name (home, course, lesson, etc.)
+         * @param {string|null} id - Optional ID for specific content (lesson ID)
+         */
         router(view, id = null) {
             app.state.currentView = view;
             const root = document.getElementById('app-root');
-            root.innerHTML = '';
+            
+            // Scroll to top on view change (Improve Mobile UX)
+            window.scrollTo(0, 0);
+            
+            // Cleanup: Close mobile menu if open
+            if(app.ui.closeMenu) app.ui.closeMenu();
 
-            // Update Navigation UI
+            // Update UI State (Active Tabs)
             app.ui.updateNavState(view);
 
-            // Route Logic
+            // Render Logic
+            root.innerHTML = ''; // Clear current view
+            
             switch (view) {
                 case 'home':        app.views.renderHome(root); break;
                 case 'course':      app.views.renderPath(root); break;
                 case 'media':       app.views.renderMediaList(root); break;
                 case 'dictionary':  app.views.renderDictionary(root); break;
                 
+                // Content Views
                 case 'reader':      
                     if(id) app.views.renderReadingDetail(root, id); 
                     break;
-
                 case 'readingQuiz':
                     if(id) app.controllers.initReadingQuiz(id);
                     break;
-
                 case 'lesson':      
                     if(id) app.controllers.initLesson(id); 
                     break;
-
                 case 'test':        
                     if(id) app.controllers.initTest(id); 
                     break;
+                
+                default:
+                    console.error("Unknown route:", view);
+                    app.views.renderHome(root);
             }
         },
 
+        /**
+         * Toggles between English and Toki Pona UI text.
+         */
         toggleLang() {
             app.state.lang = app.state.lang === 'en' ? 'tp' : 'en';
+            // Re-render current view to apply language change
             app.core.router(app.state.currentView, app.state.session.id);
             app.ui.updateNavText();
         }
     },
 
     // ========================================================================
-    // 4. CONTROLLERS (LOGIC GLUE)
+    // 3. STORAGE MANAGER
+    // ========================================================================
+    storage: {
+        get() {
+            const saved = localStorage.getItem(app.config.storageKey);
+            return saved ? JSON.parse(saved) : { completed: [], scores: {} };
+        },
+
+        save(lessonId, score) {
+            const data = this.get();
+            const strId = String(lessonId);
+            
+            if (!data.completed.includes(strId)) {
+                data.completed.push(strId);
+            }
+            // Track High Score
+            const currentHigh = data.scores[strId] || 0;
+            if (score > currentHigh) data.scores[strId] = score;
+            
+            localStorage.setItem(app.config.storageKey, JSON.stringify(data));
+        },
+
+        reset() {
+            if (confirm("⚠️ This will wipe all progress. Are you sure?")) {
+                localStorage.removeItem(app.config.storageKey);
+                location.reload();
+            }
+        },
+
+        unlockAll() {
+            if (!confirm("O lukin! (Watch out!)\n\nUnlock every lesson?")) return;
+            const data = this.get();
+            const allIds = curriculum.map(c => String(c.id));
+            data.completed = [...new Set([...data.completed, ...allIds])];
+            localStorage.setItem(app.config.storageKey, JSON.stringify(data));
+            app.core.router('course');
+        }
+    },
+
+    // ========================================================================
+    // 4. CONTROLLERS (LOGIC)
     // ========================================================================
     controllers: {
+        /**
+         * Prepares state for a standard Lesson.
+         */
         initLesson(id) {
             const l = curriculum.find(c => c.id === String(id));
-            if (!l) return;
+            if (!l) return console.error("Lesson not found:", id);
 
-            // Logic Check: Safe access to quiz length
             const slideCount = 1 + (l.story ? 1 : 0) + (l.quiz?.length > 0 ? 1 : 0);
             
             app.state.session = {
@@ -143,14 +177,17 @@ const app = {
             app.views.renderLesson(document.getElementById('app-root'), id);
         },
 
+        /**
+         * Prepares state for a Test/Checkpoint.
+         */
         initTest(id) {
             const l = curriculum.find(c => c.id === String(id));
-            if (!l) return;
+            if (!l) return console.error("Test not found:", id);
 
             app.state.session = {
                 id: id,
                 currentSlide: 0,
-                totalSlides: 2,
+                totalSlides: 2, // Intro + Quiz
                 currentQuizIndex: 0,
                 score: 0,
                 maxScore: l.quiz.length,
@@ -160,9 +197,14 @@ const app = {
             app.views.renderTest(document.getElementById('app-root'), id);
         },
 
+        /**
+         * Prepares state for a Reading Comprehension Quiz.
+         */
         initReadingQuiz(id) {
             const story = mediaLibrary.find(r => r.id === id);
-            // Only reset state if we are entering fresh or switching stories
+            if (!story) return;
+
+            // Only reset state if we are entering fresh
             if (app.state.session.id !== id || app.state.session.source !== 'reading') {
                 app.state.session = {
                     id: id,
@@ -186,6 +228,7 @@ const app = {
         renderHome(root) {
             const t = UI_TEXT[app.state.lang];
             
+            // Generate Outline List
             const outlineHtml = curriculum.filter(c => c.type !== 'test').map(c => `
                 <div class="outline-item lesson-item">
                     <span class="outline-icon">📚</span> 
@@ -199,7 +242,7 @@ const app = {
                         <div style="font-size: 3rem; margin-bottom: 1rem;">🏠✨</div>
                         <h1>${t.welcome}</h1>
                         <p>${t.intro}</p>
-                        <button class="btn" onclick="app.core.router('course')">${t.start} <span style="font-size:1.2em">→</span></button>
+                        <button class="btn" onclick="app.router('course')">${t.start} <span style="font-size:1.2em">→</span></button>
                     </div>
                     ${app.components.features(t)}
                     <div class="card">
@@ -254,7 +297,7 @@ const app = {
 
             root.innerHTML = `
                 <div class="view-section active lesson-container">
-                    <button class="btn btn-outline" onclick="app.core.router('media')" style="margin-bottom:1rem;">← ${t.back}</button>
+                    <button class="btn btn-outline" onclick="app.router('media')" style="margin-bottom:1rem;">← ${t.back}</button>
                     <div class="card" style="border-top: 8px solid ${item.type === 'audio' ? 'var(--advanced)' : 'var(--primary)'};">
                         <h2 style="text-align:center; margin-bottom:0.5rem;">${item.tpTitle}</h2>
                         <p style="text-align:center; font-size:0.9rem; color:var(--text-muted); margin-bottom:2rem;">${item.title}</p>
@@ -270,7 +313,7 @@ const app = {
                         
                         <div style="display:flex; gap:10px; flex-wrap:wrap;">
                             <button id="toggle-btn" class="btn btn-outline" onclick="app.ui.toggleTranslation()" style="flex:1;">👁️ ${t.reveal}</button>
-                            ${item.quiz ? `<button class="btn" onclick="app.core.router('readingQuiz', '${id}')" style="flex:1;">🧠 Quiz</button>` : ''}
+                            ${item.quiz ? `<button class="btn" onclick="app.router('readingQuiz', '${id}')" style="flex:1;">🧠 Quiz</button>` : ''}
                         </div>
                         
                         <div id="trans-box" class="hidden" style="margin-top:1.5rem; background:#f8fafc; padding:1.5rem; border-radius:12px; border:2px dashed #cbd5e1;">
@@ -284,6 +327,8 @@ const app = {
 
         renderDictionary(root) {
             const t = UI_TEXT[app.state.lang];
+            const placeholder = app.state.lang === 'en' ? 'Type a word (e.g., moku)...' : 'o alasa e nimi...';
+            
             root.innerHTML = `
                 <div class="view-section active">
                     <div style="text-align:center; margin-bottom:2rem;">
@@ -293,7 +338,7 @@ const app = {
                     <div class="search-container">
                         <span class="search-icon">🔍</span>
                         <input type="text" id="dict-search" class="search-input" autocomplete="off" 
-                               placeholder="${app.state.lang === 'en' ? 'Type a word (e.g., moku)...' : 'o alasa e nimi...'}"
+                               placeholder="${placeholder}"
                                onkeyup="app.ui.filterDictionary(this.value)">
                     </div>
                     <div id="dictionary-grid" class="vocab-grid"></div>
@@ -303,7 +348,7 @@ const app = {
                     </div>
                 </div>
             `;
-            // Initial Render
+            // Initial Render of all words
             app.ui.filterDictionary('');
         },
 
@@ -312,7 +357,9 @@ const app = {
             const t = UI_TEXT[app.state.lang];
             const s = app.state.session;
 
-            // Slide 1: Content
+            // --- BUILD SLIDES ---
+            
+            // Slide 1: Vocabulary & Grammar
             const slide1 = `
                 <div class="lesson-slide ${s.currentSlide === 0 ? 'active' : ''}" id="slide-0">
                     <h2 style="text-align:center; color:var(--primary); margin-bottom:0.5rem;">${t.lesson} ${lesson.id}</h2>
@@ -328,7 +375,7 @@ const app = {
                 </div>
             `;
 
-            // Slide 2: Story
+            // Slide 2: Story (Optional)
             let slide2 = '';
             if (lesson.story) {
                 slide2 = `
@@ -339,7 +386,7 @@ const app = {
                 `;
             }
 
-            // Slide 3: Quiz
+            // Slide 3: Quiz (Optional)
             let slide3 = '';
             if (lesson.quiz?.length) {
                 const slideIndex = 1 + (lesson.story ? 1 : 0);
@@ -353,7 +400,7 @@ const app = {
 
             root.innerHTML = app.components.lessonWrapper(
                 [slide1, slide2, slide3].join(''), 
-                `app.core.router('course')`
+                `app.router('course')`
             );
             app.ui.updateSlideControls();
         },
@@ -383,7 +430,7 @@ const app = {
 
             root.innerHTML = app.components.lessonWrapper(
                 slide1 + slide2, 
-                `app.core.router('course')`
+                `app.router('course')`
             );
             app.ui.updateSlideControls();
         },
@@ -407,32 +454,35 @@ const app = {
 
             root.innerHTML = app.components.lessonWrapper(
                 content, 
-                `app.core.router('media', '${id}')`, // Goes back to media list
+                `app.router('media', '${id}')`, // Back goes to media detail
                 true // isReadingMode
             );
             
             // Manual Progress Bar update for reading mode
             const pct = ((s.currentQuizIndex) / s.maxScore) * 100;
-            document.getElementById('lesson-progress').style.width = `${pct}%`;
+            const bar = document.getElementById('lesson-progress');
+            if (bar) bar.style.width = `${pct}%`;
         },
 
         renderResults(root) {
             const t = UI_TEXT[app.state.lang];
             const s = app.state.session;
             
-            // Logic for score message
+            // Determine Message
             const percent = Math.round((s.score / s.maxScore) * 100);
             let msg = percent === 100 ? t.perfect : (percent >= 80 ? t.good : t.tryAgain);
             if (s.source === 'reading') msg = percent >= 80 ? "pona mute!" : "o kama sona sin.";
 
-            // Save Progress (Course only)
+            // Save Progress (Only for Course, not extra reading practice)
             if (s.source === 'course') app.storage.save(s.id, s.score);
 
             const isReading = s.source === 'reading';
+            
+            // Conditional Buttons based on context
             const buttons = isReading 
                 ? `<button class="btn btn-outline" onclick="app.handlers.retryReading('${s.id}')">Retry</button>
-                   <button class="btn" onclick="app.core.router('reader', '${s.id}')">Back to Story</button>`
-                : `<button class="btn" onclick="app.core.router('course')">${t.back}</button>`;
+                   <button class="btn" onclick="app.router('reader', '${s.id}')">Back to Story</button>`
+                : `<button class="btn" onclick="app.router('course')">${t.back}</button>`;
 
             const themeColor = isReading ? 'var(--advanced)' : 'var(--highlight)';
 
@@ -453,7 +503,7 @@ const app = {
     },
 
     // ========================================================================
-    // 6. UI HELPERS & UPDATERS
+    // 6. UI HELPERS (DOM MANIPULATION)
     // ========================================================================
     ui: {
         updateNavState(view) {
@@ -477,29 +527,20 @@ const app = {
             if (langBtn) langBtn.setAttribute('data-icon', app.state.lang.toUpperCase());
         },
 
-        updateNavState(view) {
-        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        const idx = app.config.routes[view];
-        if (idx !== undefined && document.querySelectorAll('.nav-btn')[idx]) {
-            document.querySelectorAll('.nav-btn')[idx].classList.add('active');
-        }
-
-        // UX Fix: Close menu automatically when navigation occurs
-        const nav = document.getElementById('main-nav');
-        const btn = document.querySelector('.mobile-menu-btn');
-        if (nav && nav.classList.contains('menu-open')) {
-            nav.classList.remove('menu-open');
-            btn.classList.remove('open');
-        }
+        toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            const btn = document.querySelector('.mobile-menu-btn');
+            nav.classList.toggle('menu-open');
+            btn.classList.toggle('open');
         },
 
-        toggleMenu() {
-        const nav = document.getElementById('main-nav');
-        const btn = document.querySelector('.mobile-menu-btn');
-        
-        // Toggle classes
-        nav.classList.toggle('menu-open');
-        btn.classList.toggle('open');
+        closeMenu() {
+            const nav = document.getElementById('main-nav');
+            const btn = document.querySelector('.mobile-menu-btn');
+            if (nav && nav.classList.contains('menu-open')) {
+                nav.classList.remove('menu-open');
+                btn.classList.remove('open');
+            }
         },
 
         toggleTranslation() {
@@ -515,12 +556,14 @@ const app = {
             const grid = document.getElementById('dictionary-grid');
             const noRes = document.getElementById('no-results');
             
+            // Aggregate all vocabulary from curriculum
             let allVocab = [];
             curriculum.forEach(l => { if (l.vocab) allVocab = [...allVocab, ...l.vocab]; });
             
-            // Unique Filter
+            // Deduplicate logic
             const unique = Array.from(new Set(allVocab.map(a => a.word)))
-                .map(w => allVocab.find(a => a.word === w));
+                .map(w => allVocab.find(a => a.word === w))
+                .sort((a, b) => a.word.localeCompare(b.word));
 
             const matches = unique.filter(v => 
                 v.word.toLowerCase().includes(clean) || 
@@ -542,21 +585,23 @@ const app = {
             const s = app.state.session;
             const t = UI_TEXT[app.state.lang];
             
-            // Progress Bar
+            // 1. Progress Bar
             const pct = ((s.currentSlide + 1) / s.totalSlides) * 100;
             const bar = document.getElementById('lesson-progress');
             if(bar) bar.style.width = `${pct}%`;
 
-            // Status Text
+            // 2. Status Text
             const status = document.getElementById('slide-status');
             if(status) status.innerText = `${s.currentSlide + 1} / ${s.totalSlides}`;
 
-            // Buttons
+            // 3. Navigation Buttons
             const prev = document.getElementById('prev-btn');
             if(prev) prev.disabled = s.currentSlide === 0;
 
             const next = document.getElementById('next-btn');
             const activeSlide = document.querySelector('.lesson-slide.active');
+            
+            // If the current slide contains a quiz, hide the standard Next button
             const hasQuiz = activeSlide?.querySelector('.quiz-container');
 
             if (hasQuiz) {
@@ -575,7 +620,7 @@ const app = {
     },
 
     // ========================================================================
-    // 7. EVENT HANDLERS
+    // 7. EVENT HANDLERS (INTERACTIVITY)
     // ========================================================================
     handlers: {
         changeSlide(dir) {
@@ -592,17 +637,22 @@ const app = {
             }
         },
 
-        // --- Quiz Handlers ---
-        
+        /**
+         * Selects an option in a Multiple Choice quiz.
+         */
         selectOption(btn, qIdx, optIdx) {
             const s = app.state.session;
             const card = document.getElementById(`q-card-${qIdx}`);
             if (card.classList.contains('answered')) return;
 
+            // Visual toggle
             card.querySelectorAll('.option-btn').forEach(o => o.classList.remove('selected'));
             btn.classList.add('selected');
+            
+            // Save draft
             s.quizDrafts[qIdx] = optIdx;
 
+            // Enable Check button
             const check = document.getElementById(`check-btn-${qIdx}`);
             if (check) { 
                 check.disabled = false; 
@@ -611,6 +661,9 @@ const app = {
             }
         },
 
+        /**
+         * Submits a Multiple Choice answer.
+         */
         submitChoice(qIdx, correctIdx) {
             const s = app.state.session;
             const card = document.getElementById(`q-card-${qIdx}`);
@@ -629,6 +682,8 @@ const app = {
                 opts[selected].classList.remove('selected');
                 opts[selected].classList.add('incorrect');
                 opts[selected].innerHTML += ' <span style="float:right">❌</span>';
+                // Highlight correct
+                opts[correctIdx].classList.add('correct');
             }
 
             document.getElementById(`check-btn-${qIdx}`).style.display = 'none';
@@ -641,6 +696,7 @@ const app = {
             const slot = document.getElementById(`slot-${qIdx}`);
             const bank = document.getElementById(`bank-${qIdx}`);
             
+            // Move button between Bank and Slot
             if (btn.parentElement === bank) {
                 btn.classList.add('in-slot');
                 slot.appendChild(btn);
@@ -648,6 +704,7 @@ const app = {
                 btn.classList.remove('in-slot');
                 bank.appendChild(btn);
             }
+            // Style update if slot has items
             if(slot.children.length > 0) slot.classList.add('filled');
             else slot.classList.remove('filled');
         },
@@ -669,6 +726,7 @@ const app = {
             } else {
                 slot.classList.add('incorrect');
                 checkBtn.classList.add('incorrect');
+                // Lock chips
                 Array.from(slot.children).forEach(c => c.disabled = true);
             }
             
@@ -683,6 +741,7 @@ const app = {
             const nextBtn = document.getElementById('next-q-btn');
             const checkBtn = document.getElementById(`check-btn-${qIdx}`);
 
+            // Reset UI state if was answered
             if (card.classList.contains('answered')) {
                 card.classList.remove('answered');
                 if (nextBtn) nextBtn.classList.add('hidden');
@@ -690,11 +749,10 @@ const app = {
                     checkBtn.style.display = 'block';
                     checkBtn.className = 'btn btn-outline check-btn';
                     checkBtn.innerText = 'Check Answer';
-                    checkBtn.classList.remove('incorrect', 'btn-success');
                 }
             }
 
-            // Using while loop like original to be safe with NodeList changes
+            // Move all chips back to bank
             while (slot.firstChild) {
                 let el = slot.firstChild;
                 if (el.tagName === 'BUTTON') {
@@ -712,17 +770,15 @@ const app = {
             const s = app.state.session;
             s.currentQuizIndex++;
             
-            // Logic Split: Course vs Reading
             if (s.source === 'course') {
                 const lesson = curriculum.find(l => l.id === String(s.id));
+                // If no more questions, move to next slide (Results or next content)
                 if (s.currentQuizIndex >= lesson.quiz.length) {
                     app.handlers.changeSlide(1);
                 } else {
-                    if (app.state.currentView === 'test') {
-                        app.views.renderTest(document.getElementById('app-root'), s.id);
-                    } else {
-                        app.views.renderLesson(document.getElementById('app-root'), s.id);
-                    }
+                    // Re-render to show next question
+                    const renderFn = app.state.currentView === 'test' ? app.views.renderTest : app.views.renderLesson;
+                    renderFn(document.getElementById('app-root'), s.id);
                 }
             } else if (s.source === 'reading') {
                 app.views.renderReadingQuiz(document.getElementById('app-root'), s.id);
@@ -733,18 +789,19 @@ const app = {
             const next = document.getElementById('next-q-btn');
             if (next) {
                 next.classList.remove('hidden');
+                // Auto focus for accessibility
                 next.focus();
             }
         },
 
         retryReading(id) {
-            app.state.session.id = null; // Force reset
+            app.state.session.id = null; // Force state reset
             app.core.router('readingQuiz', id);
         }
     },
 
     // ========================================================================
-    // 8. COMPONENTS (HTML SNIPPETS)
+    // 8. COMPONENTS (HTML HELPERS)
     // ========================================================================
     components: {
         features: (t) => `
@@ -771,7 +828,7 @@ const app = {
             const isAudio = r.type === 'audio';
             const color = isAudio ? 'var(--advanced)' : 'var(--primary)';
             return `
-                <div class="feature-card" onclick="app.core.router('reader', '${r.id}')" style="cursor:pointer">
+                <div class="feature-card" onclick="app.router('reader', '${r.id}')" style="cursor:pointer">
                     <div style="font-size:2rem; margin-bottom:10px;">${isAudio ? '🎧' : '📜'}</div>
                     <h3 style="color:${color}">${r.tpTitle}</h3>
                     <p style="font-size:0.9rem; margin-bottom:1rem;">${r.title}</p>
@@ -890,87 +947,88 @@ const app = {
     // 9. UTILITIES
     // ========================================================================
     utils: {
+        /**
+         * Generates the SVG Path and Node HTML for the course map.
+         * Uses a sine wave function to create the "winding path" effect.
+         */
         generateMap(items, progress) {
-    const { amplitude, frequency, verticalGap, startY } = app.config.wave;
-    const points = [];
-    
-    // 1. Generate Nodes
-    let nodes = items.map((item, i) => {
-        const sine = Math.sin(i * frequency);
-        const x = sine * amplitude;
-        const y = startY + (i * verticalGap);
-        points.push({ x, y });
+            const { amplitude, frequency, verticalGap, startY } = app.config.anim.wave;
+            const points = [];
+            
+            // 1. Generate Nodes & Coordinates
+            let nodes = items.map((item, i) => {
+                const sine = Math.sin(i * frequency);
+                const x = sine * amplitude;
+                const y = startY + (i * verticalGap);
+                points.push({ x, y });
 
-        const id = String(item.id);
-        const isCompleted = progress.completed.includes(id);
-        const isFirst = i === 0;
-        const prevId = i > 0 ? String(items[i - 1].id) : null;
-        
-        // A level is unlocked if it is the first one, OR if the previous one is completed
-        const isUnlocked = isFirst || (prevId && progress.completed.includes(prevId));
-        
-        // --- NEW LOGIC START ---
-        // Determine if the level is strictly locked (not complete and not unlocked)
-        const isLocked = !isCompleted && !isUnlocked;
-        // Create the class string to hide the popup card
-        const lockedClass = isLocked ? 'is-locked' : '';
-        // --- NEW LOGIC END ---
+                const id = String(item.id);
+                const isCompleted = progress.completed.includes(id);
+                const isFirst = i === 0;
+                const prevId = i > 0 ? String(items[i - 1].id) : null;
+                
+                // Logic: A level is unlocked if it's the first one, OR if previous is complete
+                const isUnlocked = isFirst || (prevId && progress.completed.includes(prevId));
+                const isLocked = !isCompleted && !isUnlocked;
+                const lockedClass = isLocked ? 'is-locked' : '';
 
-        let cls = 'path-icon-btn';
-        let icon = '★';
-        let onclick = "alert('O open e sona pini! (Finish previous lesson first!)')";
-        const isTest = item.type === 'test';
+                let cls = 'path-icon-btn';
+                let icon = '★';
+                let onclick = "alert('O open e sona pini! (Finish previous lesson first!)')";
+                const isTest = item.type === 'test';
 
-        if (isTest) { cls += ' test-node'; icon = '🏆'; }
-        if (i === 0) cls += ' start-node';
+                if (isTest) { cls += ' test-node'; icon = '🏆'; }
+                if (i === 0) cls += ' start-node';
 
-        if (isCompleted) {
-            cls += ' completed';
-            icon = '✅';
-            onclick = isTest ? `app.core.router('test', '${id}')` : `app.core.router('lesson', '${id}')`;
-        } else if (isUnlocked) {
-            cls += ' active-node';
-            onclick = isTest ? `app.core.router('test', '${id}')` : `app.core.router('lesson', '${id}')`;
-        } else {
-            cls += ' locked';
-            icon = '🔒';
+                if (isCompleted) {
+                    cls += ' completed';
+                    icon = '✅';
+                    onclick = isTest ? `app.router('test', '${id}')` : `app.router('lesson', '${id}')`;
+                } else if (isUnlocked) {
+                    cls += ' active-node';
+                    onclick = isTest ? `app.router('test', '${id}')` : `app.router('lesson', '${id}')`;
+                } else {
+                    cls += ' locked';
+                    icon = '🔒';
+                }
+
+                // Render Node HTML
+                return `
+                    <div class="path-node-container" style="top: ${y}px; left: calc(50% + ${x}px);">
+                        <div class="path-card ${x > 0 ? 'left' : 'right'} ${lockedClass}" onclick="${onclick}" role="button" tabindex="0">
+                            <h3>${isTest ? 'Test' : 'Lesson'} ${item.id.replace('c','')}</h3>
+                            <p>${item.title}</p>
+                        </div>
+                        <div class="${cls}" onclick="${onclick}" role="button" tabindex="0">${icon}</div>
+                    </div>
+                `;
+            }).join('');
+
+            // 2. Generate SVG Path (Bezier Curves)
+            const center = 300; // Center of SVG width (600px)
+            let path = '';
+            if (points.length) {
+                path = `M ${center + points[0].x} ${points[0].y}`;
+                for (let i = 0; i < points.length - 1; i++) {
+                    const p1 = points[i];
+                    const p2 = points[i+1];
+                    // Control points for smooth curve
+                    const cp1x = center + p1.x;
+                    const cp1y = p1.y + (verticalGap / 2);
+                    const cp2x = center + p2.x;
+                    const cp2y = p2.y - (verticalGap / 2);
+                    path += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${center + p2.x} ${p2.y}`;
+                }
+            }
+
+            return { html: nodes, path, height: startY + (items.length * verticalGap) + 100 };
         }
-
-        return `
-            <div class="path-node-container" style="top: ${y}px; left: calc(50% + ${x}px);">
-                <div class="path-card ${x > 0 ? 'left' : 'right'} ${lockedClass}" onclick="${onclick}" role="button" tabindex="0">
-                    <h3>${isTest ? 'Test' : 'Lesson'} ${item.id.replace('c','')}</h3>
-                    <p>${item.title}</p>
-                </div>
-                <div class="${cls}" onclick="${onclick}" role="button" tabindex="0">${icon}</div>
-            </div>
-        `;
-    }).join('');
-
-    // 2. Generate SVG Path
-    const center = 300;
-    let path = '';
-    if (points.length) {
-        path = `M ${center + points[0].x} ${points[0].y}`;
-        for (let i = 0; i < points.length - 1; i++) {
-            const p1 = points[i];
-            const p2 = points[i+1];
-            const cp1x = center + p1.x;
-            const cp1y = p1.y + (verticalGap / 2);
-            const cp2x = center + p2.x;
-            const cp2y = p2.y - (verticalGap / 2);
-            path += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${center + p2.x} ${p2.y}`;
-        }
-    }
-
-    return { html: nodes, path, height: startY + (items.length * verticalGap) + 100 };
-},
     },
 
     // ========================================================================
-    // 10. COMPATIBILITY LAYER
-    // Ensures index.html buttons (which use app.router) still work
+    // 10. PUBLIC API / COMPATIBILITY
     // ========================================================================
+    // These aliases allow the HTML onclick="app.router()" calls to work nicely.
     router: (view, id) => app.core.router(view, id),
     toggleLang: () => app.core.toggleLang(),
     updateNav: () => app.ui.updateNavText()

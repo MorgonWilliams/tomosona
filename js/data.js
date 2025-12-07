@@ -1,10 +1,7 @@
-/*/**
+/**
  * TOKI PONA EDUCATIONAL DATA
  * File: js/data.js
- * * Structure:
- * 1. UI_TEXT: Localization strings (English/Toki Pona).
- * 2. LESSONS: Individual lesson data defined as constants.
- * 3. CURRICULUM: Aggregated array of all lessons.
+ * * PART 1: UI & FOUNDATIONS (Lessons 1-4 + CP1)
  */
 
 // =========================================
@@ -12,8 +9,8 @@
 // =========================================
 const UI_TEXT = {
     en: {
-        welcome:      "Nasin Toki: The Complete Course",
-        intro:        "Master the language of good. 130+ words, 20 lessons, zero clutter.",
+        welcome:      "Welcome to tomo sona",
+        intro:        "Master the language of good. From philosophy to fluency, content for all levels.",
         start:        "Start Course",
         lesson:       "Lesson",
         test:         "Test",
@@ -33,7 +30,7 @@ const UI_TEXT = {
         modularTitle: "Modular",
         modularDesc:  "Combine words like lego bricks to create meaning.",
         positiveTitle: "Positive",
-        positiveDesc: "A language designed to frame thoughts in a good way.",
+        positiveDesc:  "A language designed to frame thoughts in a good way.",
         dictTitle:    "Dictionary",
         dictDesc:     "All words learned so far.",
         startNode:    "Start",
@@ -42,7 +39,7 @@ const UI_TEXT = {
         tryAgain:     "Try Again",
         homeNav:      "Home",
         pathNav:      "Course",
-        wordsNav:     "Words",
+        wordsNav:     "Dictionary",
         mediaNav:     "Media",
         readTitle:    "Reading Library",
         readDesc:     "Practice with stories and texts.",
@@ -52,38 +49,38 @@ const UI_TEXT = {
 
     tp: {
         welcome:      "kama pona",
-        intro:        "o kama sona e toki pona. nimi ale li lon.",
-        start:        "o kama sona e toki pona",
-        lesson:       "sona",
-        test:         "utala sona",
+        intro:        "o kama sona e toki pona. o kama sona e nasin sona pi toki pona. o sona e toki pona ale.",
+        start:        "o kama sona",
+        lesson:       "lipu sona",
+        test:         "utala sona suli",
         vocab:        "nimi sin",
         grammar:      "nasin toki",
         story:        "sitelin musi",
         quiz:         "utala sona lili",
-        next:         "TAWA",
-        finish:       "AWEN ALA SONA",
-        score:        "AWEN ALA PONA!",
+        next:         "tawa",
+        finish:       "awen ala sona",
+        score:        "awen ala utala sona!",
         scoreMsg:     "nanpa sina:",
-        back:         "tawa",
-        outline:      "lukin nasin",
+        back:         "tawa monsi",
+        outline:      "nasin pi kama sona",
         tapToFlip:    "o luka e lipu",
-        simpleTitle:  "pona",
-        simpleDesc:   "toki e ijo suli kepeken nimi lili.",
-        modularTitle: "lili",
-        modularDesc:  "o kama sona e ijo lili. o wan e ona.",
-        positiveTitle: "pilin",
-        positiveDesc: "toki ni li tawa pilin pona.",
+        simpleTitle:  "lili pona",
+        simpleDesc:   "toki e ale kepeken nasin pona.",
+        modularTitle: "kipisi mute",
+        modularDesc:  "nimi ale li ken kama wan tawa nimi sin.",
+        positiveTitle: "pilin pona",
+        positiveDesc: "toki pona li pana e pilin pona tawa sina.",
         dictTitle:    "lipu nimi",
         dictDesc:     "nimi ale pi kama sona.",
         startNode:    "open",
         perfect:      "pona mute!",
         good:         "pona!",
         tryAgain:     "o kama sona sin.",
-        homeNav:      "tomo",
-        pathNav:      "nasin",
-        wordsNav:     "nimi",
-        readNav:      "lukin",
-        readTitle:    "lipu lukin",
+        homeNav:      "open",
+        pathNav:      "nasin pi kama sona",
+        wordsNav:     "lipu nimi",
+        mediaNav:     "lipu musi",
+        readTitle:    "lipu sitelen",
         readDesc:     "o lukin e sitelin musi.",
         reveal:       "o lukin e toki Inli",
         hide:         "o len e toki Inli",
@@ -102,9 +99,9 @@ const LESSON_01 = {
     desc: "Introduction to the philosophy of simplicity (nasin) and the phonology (kalama) of Toki Pona.",
     vocab: [
         { word: "jan",  type: "content word", def: "A person, human, somebody.", ex: "mi jan. (I am a person.)" },
-        { word: "pona", type: "content word", def: "Good, simple, positive, fixing.", ex: "toki pona. (Simple language / Good language.)" },
-        { word: "ike",  type: "content word", def: "Bad, complex, negative, difficult.", ex: "ni li ike. (This is complex/bad.)" },
-        { word: "toki", type: "content word", def: "Speech, language, talking.", ex: "toki pona. (Simple language.)" }
+        { word: "pona", type: "content word", def: "Positive, fix, make better, good, .", ex: "toki pona. (Simple language / Good language.)" },
+        { word: "ike",  type: "content word", def: "Negative, bad, problem.", ex: "ni li ike. (This is complex/bad.)" },
+        { word: "toki", type: "content word", def: "Communication, language, to speak.", ex: "toki pona. (Simple language.)" }
     ],
     grammar: `
         <h3>1. The Mindset</h3>
@@ -121,7 +118,7 @@ const LESSON_01 = {
             <li><strong>Capitalization:</strong> Loan words are the only words that are capitalized.</li>
             <li><strong>The Adjective Rule:</strong> Loan words act like content words but cannot occur as the "head" (main word) of a phrase. They must modify a Toki Pona noun.</li>
         </ul>
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <p><strong>Examples:</strong></p>
             <ul>
                 <li>❌ <em>Mary li toki.</em> (Incorrect. 'Mary' cannot stand alone).</li>
@@ -132,7 +129,7 @@ const LESSON_01 = {
 
         <h3>3. Pronunciation</h3>
         <p>While the interpretation is flexible, the sounds are consistent.</p>
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <p><strong>The 5 Vowels:</strong></p>
             <ul>
                 <li><strong>a:</strong> "Ah" like <strong>a</strong> in "F<strong>a</strong>ther". (Example: <em>jan</em>).</li>
@@ -154,7 +151,7 @@ const LESSON_01 = {
                 <li><strong>t:</strong> Like <strong>t</strong> in "S<strong>t</strong>op". (Example: <em>toki</em>).</li>
                 <li><strong>w:</strong> Like <strong>w</strong> in "<strong>W</strong>e". (Example: <em>wile</em>).</li>
             </ul>
-            <p><strong>Stress:</strong> Always stress the <strong>first</strong> syllable of a word. (e.g., <em><strong>KA</strong>-la-ma</em>).</p>
+            <p><strong>Stress:</strong> Always stress the <strong>first</strong> syllable of a word. (e.g., <em><strong>KA</strong>-la-ma</em>).
         </div>
     `,
     story: `
@@ -178,11 +175,11 @@ const LESSON_02 = {
     title: "The Foundation of Being",
     desc: "Mastering the basic Subject-Predicate structure and the 'mi/sina' exception.",
     vocab: [
-        { word: "li",   type: "syntactical particle", def: "PARTICLE: Separates the subject from the verb.", ex: "jan li suli. (The person is big.)" },
+        { word: "li",   type: "syntactical particle", def: "Marks the start of the predicate in a sentence.", ex: "jan li suli. (The person is big.)" },
         { word: "mi",   type: "pronoun", def: "I, me, we, us.", ex: "mi jan. (I am a person.)" },
-        { word: "sina", type: "pronoun", def: "You, y'all.", ex: "sina pona. (You are good.)" },
-        { word: "suli", type: "content word", def: "Big, tall, long, important, adult.", ex: "jan li suli. (The person is important/big.)" },
-        { word: "lili", type: "content word", def: "Small, short, young, little.", ex: "soweli li lili. (The animal is small.)" }
+        { word: "sina", type: "pronoun", def: "You. (singular & plural)", ex: "sina pona. (You are good.)" },
+        { word: "suli", type: "content word", def: "Big, heavy, tall, wide, long, important.", ex: "jan li suli. (The person is important/big.)" },
+        { word: "lili", type: "content word", def: "Small, short, few, piece, young.", ex: "soweli li lili. (The animal is small.)" }
     ],
     grammar: `
         <h3>1. The Basic Sentence Structure</h3>
@@ -197,7 +194,7 @@ const LESSON_02 = {
         <h3>2. The "li" Omission Rule</h3>
         <p>The particle <strong>li</strong> is used in almost every sentence to mark the verb, but there is one critical exception you must memorize.</p>
         <p><strong>The Rule:</strong> If the subject is exactly <strong>mi</strong> (I/We) or exactly <strong>sina</strong> (You), you must <strong>omit</strong> the word <em>li</em>.</p>
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <p><strong>Compare these examples:</strong></p>
             <ul>
                  <li>✅ <strong>mi moku.</strong> (I eat. No 'li').</li>
@@ -215,9 +212,8 @@ const LESSON_02 = {
         </ul>
     `,
     story: `
-        <p><b>mi jan.</b> (I am a person.)</p>
-        <p><b>sina suli.</b> (You are important.)</p>
-        <p><b>jan li lili.</b> (The person is small.)</p>
+        <p><b>mi jan. sina jan. mi suli. sina lili. jan li toki. toki li pona. jan li ike. jan li suli.</b></p>
+        <p>I'm a person. You are a person. I am old, you are young. People speak. The language is good. people are bad. People are big</p>
     `,
     quiz: [
         { type: "builder", q: "Build: <b>'I am a person.'</b>", correctSentence: "mi jan", words: ["mi", "jan", "li", "suli", "sina"] },
@@ -245,12 +241,12 @@ const LESSON_03 = {
     title: "Objects & Causation",
     desc: "Using 'e' for objects and understanding causative verbs.",
     vocab: [
-        { word: "e",      type: "syntactical particle", def: "PARTICLE: Marks the direct object (receiver of action).", ex: "mi moku e kili. (I eat fruit.)" },
-        { word: "moku",   type: "content word", def: "To eat, drink, or food.", ex: "soweli li moku. (The animal eats.)" },
+        { word: "e",      type: "syntactical particle", def: "Marks the start of a direct object.", ex: "mi moku e kili. (I eat fruit.)" },
+        { word: "moku",   type: "content word", def: "To consume (food or liquid), food.", ex: "soweli li moku. (The animal eats.)" },
         { word: "kili",   type: "content word", def: "Edible parts of plants, fruit, vegetables.", ex: "kili li suwi. (Fruit is sweet.)" },
-        { word: "lukin",  type: "content word/preverb", def: "To see, look, watch, or eyes.", ex: "mi lukin e sina. (I see you.)" },
-        { word: "pali",   type: "content word", def: "To do, work, make, build.", ex: "mi pali e tomo. (I build a house.)" },
-        { word: "soweli", type: "content word", def: "Animal, beast, land mammal.", ex: "soweli li moku. (The animal eats.)" }
+        { word: "lukin",  type: "content word/preverb", def: "See, look, watch, read, or eyes.", ex: "mi lukin e sina. (I see you.)" },
+        { word: "pali",   type: "content word", def: "To do, work, make, product, task, work, labor.", ex: "mi pali e tomo. (I build a house.)" },
+        { word: "soweli", type: "content word", def: "warm blooded land mammal, beast.", ex: "soweli li moku. (The animal eats.)" }
     ],
     grammar: `
         <h3>1. The Object Marker "e"</h3>
@@ -260,7 +256,7 @@ const LESSON_03 = {
             <li><strong>Z (Direct Object):</strong> The thing receiving the action or the stimulus being experienced.</li>
             <li><strong>e:</strong> The particle that alerts the listener "Here comes the object!" It marks the object or stimulus.</li>
         </ul>
-        <div class="grammar-box" style="border-color:var(--success)">
+        <div class="grammar-box" style="border-left-color:var(--success)">
             <p><strong>Example:</strong> <em>soweli li moku e kili.</em></p>
             <ul>
                 <li><strong>soweli:</strong> The animal (Subject)</li>
@@ -268,26 +264,10 @@ const LESSON_03 = {
                 <li><strong>kili:</strong> Fruit (Direct Object, marked by 'e').</li>
             </ul>
         </div>
-
-        <h3>2. Transitives & "Make it X"</h3>
-        <p>In Toki Pona, almost any word can be a transitive verb. When you use <em>e</em> with a word that is usually an adjective or noun, it implies <strong>causation</strong>: "X causes Z to be Y".</p>
-        <ul>
-            <li><strong>mi pona.</strong> (I am good).</li>
-            <li><strong>mi pona e tomo.</strong> ("I make the house good" = I repair/fix the house).</li>
-            <li><strong>mi tomo e waso.</strong> ("I make the bird into a house" OR "I put the bird into a house").</li>
-        </ul>
-        
-        <h3>3. Movement vs. Moving Something</h3>
-        <p>This distinction is crucial for words like <em>tawa</em> (to go/move):</p>
-        <ul>
-            <li><strong>mi tawa tomo.</strong> ("I go to the house." Here, <em>tawa</em> is a preposition, so no <em>e</em> is used).</li>
-            <li><strong>mi tawa e soweli.</strong> ("I move the animal." Here, <em>e</em> makes it causative: I cause the animal to move).</li>
-        </ul>
     `,
     story: `
-        <p><b>mi moku e kili.</b> (I eat fruit.)</p>
-        <p><b>soweli li lukin e mi.</b> (The animal watches me.)</p>
-        <p><b>mi pona e ilo.</b> (I fix the tool.)</p>
+        <p><b>mi lukin e soweli. soweli li suli. soweli li moku e kili. sina lukin e kili. sina pali. sina moku e kili. moku li pona.</b></p>
+        <p>I see the animal. The animal is big. The animal eats fruit. You see the fruit. You work. You eat the fruit. Eating is good.</p>
     `,
     quiz: [
         { type: "builder", q: "Build: <b>'I eat fruit.'</b>", correctSentence: "mi moku e kili", words: ["mi", "kili", "e", "moku", "li", "soweli"] },
@@ -315,17 +295,17 @@ const LESSON_04 = {
     title: "Describing Things",
     desc: "Adding specificity through modifiers and the particle 'pi'.",
     vocab: [
-        { word: "pi",   type: "syntactical particle", def: "PARTICLE: Regroups modifiers (of/related to).", ex: "poki pi telo wawa. (Container of strong water.)" },
-        { word: "loje", type: "content word", def: "Red.", ex: "kili loje. (Red fruit.)" },
-        { word: "tomo", type: "content word", def: "House, building, room.", ex: "tomo mi. (My house.)" },
+        { word: "pi",   type: "syntactical particle", def: "Groups following words into one modifer for previous word.", ex: "poki pi telo wawa. (Container of strong water.)" },
+        { word: "loje", type: "content word", def: "Reddish pigment.", ex: "kili loje. (Red fruit.)" },
+        { word: "tomo", type: "content word", def: "Indoor space, dwelling.", ex: "tomo mi. (My house.)" },
         { word: "ilo",  type: "content word", def: "Tool, device, machine.", ex: "ilo moku. (Eating tool / Fork.)" },
-        { word: "wawa", type: "content word", def: "Strong, powerful, energetic, intense.", ex: "telo wawa. (Strong water / Alcohol or Coffee.)" }
+        { word: "wawa", type: "content word", def: "Confidence, power, energy, intense.", ex: "telo wawa. (Coffee.)" }
     ],
     grammar: `
         <h3>1. Phrases and Modifiers</h3>
         <p>To be specific, we build phrases. A phrase consists of a <strong>head</strong> (the main word) followed by <strong>modifiers</strong>.</p>
         <p><strong>The Golden Rule:</strong> Modifiers always follow the head.</p>
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <ul>
                  <li><strong>tomo waso</strong> = "House of bird" -> A birdhouse (Head is 'house').</li>
                  <li><strong>waso tomo</strong> = "Bird of house" -> A housebird/pet (Head is 'bird').</li>
@@ -349,9 +329,8 @@ const LESSON_04 = {
         </ul>
     `,
     story: `
-        <p><b>mi jo e ilo moku.</b> (I have a fork/eating-tool.)</p>
-        <p><b>tomo loje li suli.</b> (The red house is big.)</p>
-        <p><b>mi moku e telo wawa.</b> (I drink coffee/strong-water.)</p>
+        <p><b>mi lukin e tomo. tomo li loje. tomo li suli. soweli wawa li lon. sina pali e ilo. ilo li ilo pi pali tomo. sina moku e kili. kili li kili pi tomo loje.</b></p>
+        <p>I see a house. The house is red. The house is big. The strong animal is there. You work with a tool. The tool is a tool for working on houses. You eat fruit. The fruit is fruit from the red house.</p>
     `,
     quiz: [
         { type: "builder", q: "Build: <b>'Red house.'</b>", correctSentence: "tomo loje", words: ["tomo", "loje", "pi", "li", "e"] },
@@ -420,17 +399,18 @@ const LESSON_05 = {
     title: "Prepositions & Negation",
     desc: "Understanding prepositions, and the 'Causative' trap.",
     vocab: [
-        { word: "ala",     type: "particle", def: "PARTICLE: No, not, zero.", ex: "mi moku ala. (I am not eating.)" },
-        { word: "lape",    type: "content word", def: "Sleep, rest, or a state of dormancy.", ex: "o lape. (Go to sleep.)" },
-        { word: "tawa",    type: "content word/preposition", def: "PREP: To, towards. VERB: To move.", ex: "mi tawa tomo. (I go to the house.)" },
-        { word: "lon",     type: "content word/preposition", def: "PREP: In, at, on. VERB: To exist.", ex: "mi lon ma. (I am on the land.)" },
-        { word: "en",      type: "syntactical particle", def: "PARTICLE: And (Joins SUBJECTS only).", ex: "mi en sina. (Me and you.)" },
-        { word: "kepeken", type: "content word/preposition", def: "PREP: Using, with. VERB: To use.", ex: "mi kepeken ilo. (I use a tool.)" }
+        { word: "ala",     type: "content word/particle", def: "No, nothing, erase, delete, negate, zero.", ex: "mi moku ala. (I am not eating.)" },
+        { word: "lape",    type: "content word", def: "Sleep, rest, a state of dormancy.", ex: "o lape. (Go to sleep.)" },
+        { word: "sama",   type: "content word/preposition", def: "Same, similar, peer, similar to, same as.", ex: "ona li sama mi. (She is like me.)" },
+        { word: "tawa",    type: "content word/preposition", def: "motion, to, for, marks recipient", ex: "mi tawa tomo. (I go to the house.)" },
+        { word: "lon",     type: "content word/preposition", def: "exist, real, true, physical, marks context (location or time)", ex: "mi lon ma. (I am on the land.)" },
+        { word: "en",      type: "syntactical particle", def: "connects multiple subjects", ex: "mi en sina. (Me and you.)" },
+        { word: "kepeken", type: "content word/preposition", def: "Using, by means of, To use.", ex: "mi kepeken ilo. (I use a tool.)" }
     ],
     grammar: `
         <h3>1. Prepositions (Location & Direction)</h3>
         <p>Prepositions describe relationships (location, direction, origin). In Toki Pona, they mark indirect objects and do <strong>not</strong> use the particle <em>e</em>.</p>
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <ul>
                 <li><strong>lon (In/At/On):</strong> <br><em>mi lon tomo.</em> ("I am in the house").</li>
                 <li><strong>tawa (To/Towards):</strong> <br><em>mi tawa tomo.</em> ("I go to the house").</li>
@@ -446,7 +426,7 @@ const LESSON_05 = {
 
         <h3>2. The "Causative" Trap (tawa vs tawa e)</h3>
         <p>Using <em>e</em> changes the meaning completely. If you add <em>e</em>, you are "causing" the action to happen to the object.</p>
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <ul>
                  <li>✅ <strong>mi tawa tomo.</strong> ("I go to the house." Intransitive motion).</li>
                  <li>⚠️ <strong>mi tawa e tomo.</strong> ("I move the house." Causative: I cause the house to move).</li>
@@ -469,9 +449,8 @@ const LESSON_05 = {
         </ul>
     `,
     story: `
-        <p><b>mi lon tomo.</b> (I am in the house.)</p>
-        <p><b>mi kepeken ilo.</b> (I use a tool.)</p>
-        <p><b>mi tawa e kiwen.</b> (I move the rock.)</p>
+        <p><b>mi li tawa tomo. soweli li lon ala. sina lape lon tomo. mi lape ala. mi pali kepeken ilo. mi sama ala sina.</b></p>
+        <p>I'm going to the house. The animal is not there. You are sleeping in the house. I am not sleeping. I work using a tool. I am not the same as you.</p>
     `,
     quiz: [
         { type: "builder", q: "Build: <b>'I am not sleeping.'</b>", correctSentence: "mi lape ala", words: ["mi", "lape", "ala", "li", "e", "tawa"] },
@@ -499,11 +478,11 @@ const LESSON_06 = {
     title: "Context & Complex Thoughts",
     desc: "Using 'la' for context and splitting complex sentences.",
     vocab: [
-        { word: "la",    type: "syntactical particle", def: "PARTICLE: Context marker (If, When, In context of).", ex: "tenpo ni la mi lape. (Now, I sleep.)" },
-        { word: "tenpo", type: "content word", def: "Time, moment, duration.", ex: "tenpo suno. (Sun-time / Day.)" },
-        { word: "ni",    type: "pronoun", def: "This, that.", ex: "jan ni. (That person.)" },
-        { word: "sona",  type: "content word/preverb", def: "To know, understand, wisdom.", ex: "mi sona e ni. (I know this.)" },
-        { word: "wile",  type: "content word/preverb", def: "To want, need, desire.", ex: "mi wile moku. (I want to eat.)" }
+        { word: "la",    type: "syntactical particle", def: "marks the previous information as context for the next statement.", ex: "tenpo ni la mi lape. (Now, I sleep.)" },
+        { word: "tenpo", type: "content word", def: "Time, event, moment, duration.", ex: "tenpo suno. (Sun-time / Day.)" },
+        { word: "ni",    type: "pronoun", def: "This, that, these, those", ex: "jan ni. (That person.)" },
+        { word: "sona",  type: "content word/preverb", def: "knowledge, data, to know, to know how to.", ex: "mi sona e ni. (I know this.)" },
+        { word: "wile",  type: "content word/preverb", def: "want, wish, desire, to want to, must, should", ex: "mi wile moku. (I want to eat.)" }
     ],
     grammar: `
         <h3>1. The Context Formula (la)</h3>
@@ -519,7 +498,7 @@ const LESSON_06 = {
         <p>In English, we embed sentences inside others (e.g., "The man <em>who walks</em> is good"). <strong>Toki Pona does not allow this</strong>.</p>
         <p>Instead, you must split the thought into two separate sentences. We often use the word <strong>ni</strong> (this/that) to bridge them together.</p>
         
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <p><strong>Example:</strong> "The dog that sleeps is cute."</p>
             <ul>
                 <li>❌ <strong>soweli pi lape li suwi.</strong> (Incorrect grammar).</li>
@@ -529,9 +508,8 @@ const LESSON_06 = {
         </div>
     `,
     story: `
-        <p><b>tenpo ni la mi lape.</b> (Now, I sleep.)</p>
-        <p><b>sina wile la mi tawa.</b> (If you want, I go.)</p>
-        <p><b>jan ni li suli: ona li moku mute.</b> (This person is big: they eat a lot.)</p>
+        <p><b>tenpo ni la sina lape. sina sona ala e ni: soweli li kama. soweli ni li wile moku. mi wile tawa weka. mi wile e ilo wawa. soweli la mi lili.</b></p>
+        <p>you are sleeping right now. you dont know that the animal is coming. The animal is hungry. I want to escape. I want a tool of power. I am small compared to the animal.</p>
     `,
     quiz: [
         { type: "builder", q: "Build: <b>'If you want, I go.'</b>", correctSentence: "sina wile la mi tawa", words: ["sina", "wile", "la", "mi", "tawa", "li", "e"] },
@@ -559,12 +537,12 @@ const LESSON_07 = {
     title: "Numbers & Ordinals",
     desc: "Mastering the number system and order.",
     vocab: [
-        { word: "nanpa", type: "content word", def: "Number, ordinal marker.", ex: "jan nanpa wan. (First person.)" },
-        { word: "wan",   type: "content word", def: "One.", ex: "jan wan. (One person.)" },
-        { word: "tu",    type: "content word", def: "Two.", ex: "jan tu. (Two people.)" },
-        { word: "luka",  type: "content word", def: "Five (literally 'hand').", ex: "jan luka. (Five people.)" },
-        { word: "mute",  type: "content word", def: "Many, or Twenty.", ex: "jan mute. (Twenty people / Many people.)" },
-        { word: "ale",   type: "content word/particle", def: "All, Everything, or 100.", ex: "jan ale. (100 people.)" }
+        { word: "nanpa", type: "content word/particle", def: "Number, count, measure, ordinal marker.", ex: "jan nanpa wan. (First person.)" },
+        { word: "wan",   type: "content word", def: "One, singular, combine, mix, join", ex: "jan wan. (One person.)" },
+        { word: "tu",    type: "content word", def: "Two, separate, split, divide", ex: "jan tu. (Two people.)" },
+        { word: "luka",  type: "content word", def: "Five, hand, arm, to use hand to do something", ex: "jan luka. (Five people.)" },
+        { word: "mute",  type: "content word", def: "Many, several, very, twenty.", ex: "jan mute. (Twenty people / Many people.)" },
+        { word: "ale",   type: "content word/particle", def: "All, every, universe, everything, one hundred.", ex: "jan ale. (100 people.)" }
     ],
     grammar: `
         <h3>1. The Basics (0-99)</h3>
@@ -576,7 +554,7 @@ const LESSON_07 = {
              <li><strong>tu:</strong> 2</li>
              <li><strong>wan:</strong> 1</li>
         </ul>
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <p><strong>Example: 36</strong></p>
              <p><em>mute luka luka luka wan</em> (20 + 5 + 5 + 5 + 1).</p>
         </div>
@@ -610,8 +588,8 @@ const LESSON_07 = {
         </ul>
     `,
     story: `
-        <p><b>mi jo e mani mute.</b> (I have much money.)</p>
-        <p><b>jan nanpa wan li lon.</b> (The first person is here.)</p>
+        <p><b>tenpo ni la soweli mute li kama. soweli tu li suli. soweli nanpa wan li wile moku e sina. soweli nanpa tu li wile moku e mi. mi kepeken ilo luka. ilo nanpa wan li wawa. tenpo lili la soweli ale li tawa.</b></p>
+        <p>Currenly many animals are coming. Two animals are big. The first animal wants to eat you. The second animal wants to eat me. I am using hand tools. The first still is strong. In a short time the animals will leave</p>
     `,
     quiz: [
         { type: "builder", q: "Build: <b>'Two people'</b>", correctSentence: "jan tu", words: ["jan", "tu", "wan", "nanpa", "li"] },
@@ -639,13 +617,13 @@ const LESSON_08 = {
     title: "Questions & Preverbs",
     desc: "Mastering the art of asking questions and using preverbs to modify actions.",
     vocab: [
-        { word: "seme",  type: "syntactical particle", def: "What? Who? (Question word).", ex: "ni li seme? (What is this?)" },
-        { word: "kama",  type: "content word/preverb", def: "PREVERB: To become, to start, to arrive at a state.", ex: "mi kama sona. (I learn / start to know.)" },
-        { word: "ken",   type: "content word/preverb", def: "PREVERB: Can, able to, allowed to.", ex: "mi ken toki. (I can speak.)" },
-        { word: "wile",  type: "content word/preverb", def: "PREVERB: Want, need, must.", ex: "mi wile lape. (I want to sleep.)" },
-        { word: "sona",  type: "content word/preverb", def: "PREVERB: To know how to.", ex: "ona li sona pali. (They know how to build.)" },
-        { word: "awen",  type: "content word/preverb", def: "PREVERB: To keep doing, continue, stay.", ex: "o awen pali. (Keep working.)" },
-        { word: "alasa", type: "content word/preverb", def: "PREVERB: To try, attempt.", ex: "mi alasa pini. (I try to finish.)" }
+        { word: "seme",  type: "syntactical particle", def: "What, who, which.", ex: "ni li seme? (What is this?)" },
+        { word: "kama",  type: "content word/preverb", def: "to arrive, come, future, become, manage to", ex: "mi kama sona. (I learn / start to know.)" },
+        { word: "ken",   type: "content word/preverb", def: "ability, permission, possibility, maybe, to allow, to enable, to be able to", ex: "mi ken toki. (I can speak.)" },
+        { word: "wile",  type: "content word/preverb", def: "to want, to wish, desire, to want to, must, should", ex: "mi wile moku. (I want to eat.)" },
+        { word: "sona",  type: "content word/preverb", def: "knowledge, data, to know, to know how to.", ex: "mi sona e ni. (I know this.)" },
+        { word: "awen",  type: "content word/preverb", def: "to stay, remain, wait, pause, protect, continue, continue to", ex: "o awen pali. (Keep working.)" },
+        { word: "alasa", type: "content word/preverb", def: "hunt, search, attempt, try to", ex: "mi alasa pini. (I try to finish.)" }
     ],
     grammar: `
         <h3>1. Forming Questions</h3>
@@ -674,7 +652,7 @@ const LESSON_08 = {
 
         <h3>2. Preverbs</h3>
          <p>Preverbs are special words placed <strong>before</strong> the predicate to change the nature of the action (volition, ability, process, etc.). The structure is: <strong>X li [Preverb] Y</strong>.</p>
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <ul>
                  <li><strong>wile</strong> (Want/Need): <em>mi wile pana.</em> ("I want to give").</li>
                  <li><strong>sona</strong> (Know how): <em>waso li sona pali.</em> ("Birds know how to build").</li>
@@ -686,9 +664,8 @@ const LESSON_08 = {
         </div>
     `,
     story: `
-        <p><b>sina wile seme?</b> (What do you want?)</p>
-        <p><b>mi alasa sona e toki.</b> (I am trying to learn the language.)</p>
-        <p><b>sina ken ala ken tawa?</b> (Can you move?)</p>
+        <p><b>sina lape ala lape? soweli li kama. sina sona ala sona e ni? soweli ni li seme? mi sona ala. mi ken ala awen lon ni. mi wile tawa. mi alasa tawa ma sin. sina wile kama tawa anu seme?</b></p>
+        <p>Are you sleeping? Animals came. Did you know that? What are those animals? I dont know. I cannot stay here. I want to go. I am trying to go to a new land. Do you want to come or what?</p>
     `,
     quiz: [
         { type: "builder", q: "Build: <b>'What is this?'</b>", correctSentence: "ni li seme", words: ["ni", "li", "seme", "e", "jan", "kama"] },
@@ -765,11 +742,11 @@ const LESSON_09 = {
     title: "Commands & Connections",
     desc: "Giving orders, offering choices, and the 'And' rules.",
     vocab: [
-        { word: "o",      type: "syntactical particle", def: "PARTICLE: Vocative (Hey!) or Imperative (Do it!).", ex: "jan o! (Hey person!)" },
-        { word: "anu",    type: "syntactical particle", def: "PARTICLE: Or.", ex: "telo anu kili? (Water or fruit?)" },
-        { word: "taso",   type: "syntactical particle", def: "PARTICLE: But, however, only.", ex: "mi wile, taso mi ken ala. (I want, but I can't.)" },
-        { word: "kin",    type: "syntactical particle", def: "PARTICLE: Indeed, too, also.", ex: "mi kin. (Me too.)" },
-        { word: "namako", type: "content word", def: "Extra, spice, accessory.", ex: "moku namako. (Spicy/Fancy food.)" }
+        { word: "o",      type: "syntactical particle", def: "marks a vocative or an imperative, should.", ex: "jan o! (Hey person!)" },
+        { word: "anu",    type: "content word/ particle", def: "seperatives multiple possibilities, choice, select, decide.", ex: "telo anu kili? (Water or fruit?)" },
+        { word: "taso",   type: "syntactical particle", def: "marks a sentence as qualifying or contradictory.", ex: "mi wile, taso mi ken ala. (I want, but I can't.)" },
+        { word: "kin",    type: "syntactical particle", def: "too, also, as well.", ex: "mi kin. (Me too.)" },
+        { word: "namako", type: "content word", def: "spice, ornament, extra, additional.", ex: "moku namako. (Spicy/Fancy food.)" }
     ],
     grammar: `
         <h3>1. Commands & Wishes (o)</h3>
@@ -782,7 +759,7 @@ const LESSON_09 = {
 
         <h3>2. The "And" Rules</h3>
         <p>Toki Pona does not have a single word for "and" that connects everything. You must use specific particles based on what you are connecting.</p>
-        <div class="grammar-box" style="background:var(--bg-card)">
+        <div class="grammar-box">
             <ul>
                 <li><strong>Connecting Subjects (en):</strong> Use <strong>en</strong>. <br><em>jan <strong>en</strong> soweli li moku.</em> ("Person and animal eat").</li>
                 <li><strong>Connecting Predicates (li):</strong> Repeat <strong>li</strong>. <br><em>ona <strong>li</strong> moku <strong>li</strong> lape.</em> ("They eat and sleep").</li>
@@ -799,9 +776,8 @@ const LESSON_09 = {
         </ul>
     `,
     story: `
-        <p><b>jan o, o kute!</b> (Hey people, listen!)</p>
-        <p><b>mi wile moku, taso mi jo ala e mani.</b> (I want to eat, but I have no money.)</p>
-        <p><b>mi moku e kili e pan.</b> (I eat fruit and bread.)</p>
+        <p><b>jan lili o, sina o kama! mi en sina li tawa li alasa. mi wile lukin e ma e suno. sina wile e moku anu telo? mi jo e ilo taso. taso mi kin wile e moku. kili li namako. sewi o, ma o pona!</b></p>
+        <p>Hey kid, you come here! You and me are traveling and hunting. I want to see world and the sun. do you want food or water? I only have tools. But, i also want food. fruits are treats. Oh sky, let the land be good.</p>
     `,
     quiz: [
         { type: "builder", q: "Build: <b>'Hey person!' (Vocative)</b>", correctSentence: "jan o", words: ["jan", "o", "li", "e", "ni"] },
@@ -830,11 +806,11 @@ const LESSON_10 = {
     desc: "Words for gender, family, and groups.",
     vocab: [
         { word: "ona",    type: "pronoun", def: "He, she, it, they.", ex: "ona li pona. (They are good.)" },
-        { word: "mama",   type: "content word", def: "Parent, mother, father, creator.", ex: "mama mi. (My parent.)" },
+        { word: "mama",   type: "content word", def: "caretaker, guardian, originator, creator.", ex: "mama mi. (My parent.)" },
         { word: "mije",   type: "content word", def: "Man, husband, male.", ex: "mije ni. (That man.)" },
         { word: "meli",   type: "content word", def: "Woman, wife, female.", ex: "meli pona. (Good woman.)" },
         { word: "tonsi",  type: "content word", def: "Non-binary, trans, gender-non-conforming.", ex: "jan tonsi. (Non-binary person.)" },
-        { word: "kulupu", type: "content word", def: "Group, community, society, company.", ex: "kulupu toki. (Language community.)" }
+        { word: "kulupu", type: "content word", def: "Group, community, society, team, crowd, company.", ex: "kulupu toki. (Language community.)" }
     ],
     grammar: `
         <h3>Usage Note</h3>
@@ -870,15 +846,15 @@ const LESSON_11 = {
     title: "The Body",
     desc: "Parts of the physical self.",
     vocab: [
-        { word: "luka",   type: "content word", def: "Hand, arm.", ex: "luka mi. (My hand.)" },
-        { word: "noka",   type: "content word", def: "Foot, leg.", ex: "noka mi. (My foot.)" },
-        { word: "uta",    type: "content word", def: "Mouth, lips.", ex: "uta mi. (My mouth.)" },
-        { word: "sijelo", type: "content word", def: "Body, torso, physical state.", ex: "sijelo mi. (My body.)" },
-        { word: "lawa",   type: "content word", def: "Head, mind, to control/lead.", ex: "jan lawa. (Leader/Head person.)" },
-        { word: "insa",   type: "content word", def: "Inside, stomach, center.", ex: "insa mi. (My stomach/inside.)" },
-        { word: "sinpin", type: "content word", def: "Face, front, wall.", ex: "sinpin tomo. (Wall of house.)" },
+        { word: "luka",  type: "content word", def: "Five, hand, arm, to use hand to do something.", ex: "jan luka. (Five people.)" },
+        { word: "noka",   type: "content word", def: "Foot, leg, roots, base, to use foot or leg to do something.", ex: "noka mi. (My foot.)" },
+        { word: "uta",    type: "content word", def: "Mouth, lips, throat, to use mouth or throat to do something.", ex: "uta mi. (My mouth.)" },
+        { word: "sijelo", type: "content word", def: "Body, form, physical state, torso.", ex: "sijelo mi. (My body.)" },
+        { word: "lawa",   type: "content word", def: "Head, mind, brain, control, lead, guide, rule, law", ex: "jan lawa. (Leader/Head person.)" },
+        { word: "insa",   type: "content word", def: "Inside, internal, center, guts, core, within, insert.", ex: "insa mi. (My stomach/inside.)" },
+        { word: "sinpin", type: "content word", def: "vertical surface, wall, opposite of 'supa'", ex: "sinpin tomo. (Wall of house.)" },
         { word: "monsi",  type: "content word", def: "Back, rear, behind.", ex: "lon monsi. (At the back.)" },
-        { word: "selo",   type: "content word", def: "The outer layer, skin, bark, or shell.", ex: "selo mi. (My skin.)" }
+        { word: "selo",   type: "content word", def: "Outer layer, boundary, to protect something that is at risk, to fully surround", ex: "selo mi. (My skin.)" }
     ],
     grammar: `
         <h3>Body Metaphors</h3>
@@ -914,15 +890,15 @@ const LESSON_12 = {
     title: "Nature & Elements",
     desc: "The physical world around us.",
     vocab: [
-        { word: "ma",    type: "content word", def: "Land, earth, country, place.", ex: "ma pona. (Good land.)" },
+        { word: "ma",    type: "content word", def: "Land, earth, country, place, world, outdoors, territory.", ex: "ma pona. (Good land.)" },
         { word: "suno",  type: "content word", def: "Sun, light, brightness.", ex: "suno li wawa. (The sun is strong.)" },
-        { word: "mun",   type: "content word", def: "Moon, star, night sky object.", ex: "mun li loje. (The moon is red.)" },
-        { word: "telo",  type: "content word", def: "Water, liquid, wet.", ex: "telo kili. (Fruit juice.)" },
-        { word: "kon",   type: "content word", def: "Air, wind, spirit, soul.", ex: "kon li lete. (The wind is cold.)" },
-        { word: "lete",  type: "content word", def: "Cold, chill, or bleakness.", ex: "telo lete. (Cold water.)" },
-        { word: "ko",    type: "content word", def: "Powder, paste, clay, semi-solid.", ex: "ko jaki. (Mud/dirt.)" },
-        { word: "seli",  type: "content word", def: "Fire, heat, warm.", ex: "telo seli. (Hot water.)" },
-        { word: "kiwen", type: "content word", def: "Stone, rock, hard object, metal.", ex: "ilo kiwen. (Metal tool.)" }
+        { word: "mun",   type: "content word", def: "Moon, star, planet, celestial body.", ex: "mun li loje. (The moon is red.)" },
+        { word: "telo",  type: "content word", def: "Water, liquid, wet, to wet.", ex: "telo kili. (Fruit juice.)" },
+        { word: "kon",   type: "content word", def: "Air, wind, spirit, soul, meaning, breath.", ex: "kon li lete. (The wind is cold.)" },
+        { word: "lete",  type: "content word", def: "Cold, freeze, raw.", ex: "telo lete. (Cold water.)" },
+        { word: "ko",    type: "content word", def: "an object that is not 'telo' or 'kiwen'.", ex: "ko jaki. (Mud/dirt.)" },
+        { word: "seli",  type: "content word", def: "Fire, heat, warm, to burn, to cook (with fire).", ex: "telo seli. (Hot water.)" },
+        { word: "kiwen", type: "content word", def: "Hard objects, metal, rock, stiff", ex: "ilo kiwen. (Metal tool.)" }
     ],
     grammar: `
         <h3>Nature Words</h3>
@@ -999,20 +975,20 @@ const CHECKPOINT_03 = {
     ]
 };
 
-    // --- LESSON 13: Life Forms ---
+   // --- LESSON 13: Life Forms ---
 const LESSON_13 = {
     id: "13",
     type: "lesson",
     title: "Life Forms",
     desc: "Plants, animals, and existence.",
     vocab: [
-        { word: "kasi",  type: "content word", def: "Plant, tree, leaf, herb, wood.", ex: "kasi suli. (Big tree.)" },
+        { word: "kasi",  type: "content word", def: "non-edible vegetation", ex: "kasi suli. (Big tree.)" },
         { word: "soko",  type: "content word", def: "Fungus, mushroom.", ex: "moku soko. (Mushroom food.)" },
-        { word: "akesi", type: "content word", def: "Reptile, amphibian, non-cute animal.", ex: "akesi lili. (Lizard.)" },
+        { word: "akesi", type: "content word", def: "Reptile, amphibian.", ex: "akesi lili. (Lizard.)" },
         { word: "waso",  type: "content word", def: "Bird, flying creature.", ex: "waso li tawa sewi. (Bird flies up.)" },
         { word: "kala",  type: "content word", def: "Fish, sea creature.", ex: "kala li lon telo. (Fish is in water.)" },
         { word: "pipi",  type: "content word", def: "Bug, insect, spider.", ex: "pipi mute. (Many bugs.)" },
-        { word: "moli",  type: "content word", def: "Death, to die, to kill.", ex: "ona li moli. (He is dead.)" },
+        { word: "moli",  type: "content word", def: "Death, die, kill.", ex: "ona li moli. (He is dead.)" },
         { word: "pan",   type: "content word", def: "Starchy staple foods (rice, wheat, corn, bread).", ex: "mi moku e pan. (I eat bread.)" }
     ],
     grammar: `
@@ -1050,12 +1026,12 @@ const LESSON_14 = {
     desc: "Visual description and creativity.",
     vocab: [
         { word: "kule",    type: "content word", def: "Color, colorful, to paint.", ex: "kule li pona. (Color is good.)" },
-        { word: "jelo",    type: "content word", def: "Yellow, light green.", ex: "suno jelo. (Yellow sun.)" },
-        { word: "laso",    type: "content word", def: "Blue, green (nature colors).", ex: "telo laso. (Blue water.)" },
+        { word: "jelo",    type: "content word", def: "Yellow-light green pigment.", ex: "suno jelo. (Yellow sun.)" },
+        { word: "laso",    type: "content word", def: "Blue-green pigment.", ex: "telo laso. (Blue water.)" },
         { word: "pimeja",  type: "content word", def: "Black, dark.", ex: "tomo pimeja. (Dark room.)" },
         { word: "walo",    type: "content word", def: "White, light, pale.", ex: "ma walo. (Snow/White land.)" },
-        { word: "sitelen", type: "content word", def: "Image, picture, writing, symbol.", ex: "sitelen mi. (My writing/drawing.)" },
-        { word: "musi",    type: "content word", def: "Fun, art, game, entertainment.", ex: "kalama musi. (Music.)" }
+        { word: "sitelen", type: "content word", def: "Symbol, picture, writing, representation.", ex: "sitelen mi. (My writing/drawing.)" },
+        { word: "musi",    type: "content word", def: "Fun, art, game, entertainment, interesting.", ex: "kalama musi. (Music.)" }
     ],
     grammar: `
         <h3>Combining Colors</h3>
@@ -1092,16 +1068,16 @@ const LESSON_15 = {
     desc: "Interacting with physical things.",
     vocab: [
         { word: "ijo",    type: "content word", def: "Thing, object, something.", ex: "ijo ni. (This thing.)" },
-        { word: "ilo",    type: "content word", def: "Tool, machine, device.", ex: "ilo toki. (Phone/Speech tool.)" },
-        { word: "lipu",   type: "content word", def: "Paper, book, flat object, card.", ex: "lipu sona. (Book of knowledge.)" },
-        { word: "poki",   type: "content word", def: "Container, box, cup, bowl.", ex: "poki telo. (Water cup.)" },
-        { word: "len",    type: "content word", def: "Clothing, cloth, fabric, hidden.", ex: "len mi. (My clothes.)" },
-        { word: "supa",   type: "content word", def: "Horizontal surface, furniture, table, chair.", ex: "supa lape. (Bed.)" },
-        { word: "leko",   type: "content word", def: "Block, square, stairs.", ex: "leko kiwen. (Brick.)" },
+        { word: "lipu",   type: "content word", def: "document, website, book, flat bendable object, leaf.", ex: "lipu sona. (Book of knowledge.)" },
+        { word: "poki",   type: "content word", def: "Container of things.", ex: "poki telo. (Water cup.)" },
+        { word: "len",    type: "content word", def: "Clothing, cloth, to hide, hidden, secret, private.", ex: "len mi. (My clothes.)" },
+        { word: "supa",   type: "content word", def: "Horizontal surface, surface that can have things on it.", ex: "supa lape. (Bed.)" },
+        { word: "leko",   type: "content word", def: "Block, square, tile, blocky object.", ex: "leko kiwen. (Brick.)" },
         { word: "palisa", type: "content word", def: "Stick, rod, long solid object.", ex: "palisa kasi. (Branch.)" },
-        { word: "open",   type: "content word", def: "Activation, start, or to open.", ex: "o open e lupa. (Open the door.)" },
-        { word: "sike",   type: "content word", def: "Round objects (circles, balls, wheels) and cycles.", ex: "sike li tawa. (The wheel moves.)" },
-        { word: "linja",  type: "content word", def: "Long, flexible objects such as string, rope, hair.", ex: "linja lawa. (Hair.)" }
+        { word: "open",   type: "content word", def: "To begin, start, open, beginning, access.", ex: "o open e lupa. (Open the door.)" },
+        { word: "sike",   type: "content word", def: "Circle, sphere, spiral, round thing, cycle, loop.", ex: "sike li tawa. (The wheel moves.)" },
+        { word: "linja",  type: "content word", def: "Long flexible object, to connect.", ex: "linja lawa. (Hair.)" },
+        { word: "kiki",   type: "content word", def: "Spiky, sharp, angle, triangular.", ex: "kasi kiki. (Cactus.)"}
     ],
     grammar: `
         <h3>Compound Words</h3>
@@ -1137,13 +1113,13 @@ const LESSON_16 = {
     title: "Space & Movement",
     desc: "Describing where things are.",
     vocab: [
-        { word: "anpa",  type: "content word", def: "Down, low, bottom, floor, humble.", ex: "ona li anpa. (He is low/humble.)" },
-        { word: "sewi",  type: "content word", def: "Up, high, sky, divine.", ex: "tomo sewi. (Tower/Church.)" },
-        { word: "weka",  type: "content word", def: "Away, absent, removed.", ex: "ona li weka. (He is away.)" },
-        { word: "poka",  type: "content word", def: "Side, next to, nearby, with.", ex: "lon poka mi. (By my side.)" },
-        { word: "nasin", type: "content word", def: "Way, path, road, method, doctrine.", ex: "nasin pona. (The good path.)" },
-        { word: "nena",  type: "content word", def: "Bump, hill, nose, button.", ex: "nena ma. (Hill.)" },
-        { word: "lupa",  type: "content word", def: "Hole, door, window, orifice.", ex: "lupa tomo. (Door.)" }
+        { word: "anpa",  type: "content word", def: "Down, bottom, below, shame, defeat, humble.", ex: "ona li anpa. (He is low/humble.)" },
+        { word: "sewi",  type: "content word", def: "Up, top, above, sky, divine, inspiring, sacred, raise.", ex: "tomo sewi. (Tower/Church.)" },
+        { word: "weka",  type: "content word", def: "Absent, remove, vanish, ignore, omit, away, missing, loss, delete, abandon, leave, far.", ex: "ona li weka. (He is away.)" },
+        { word: "poka",  type: "content word", def: "Nearby, side, next to, nearby, hip.", ex: "lon poka mi. (By my side.)" },
+        { word: "nasin", type: "content word", def: "Way, path, direction, road, custom, method, doctrine.", ex: "nasin pona. (The good path.)" },
+        { word: "nena",  type: "content word", def: "Bump, hill, nose, button, protrusion.", ex: "nena ma. (Hill.)" },
+        { word: "lupa",  type: "content word", def: "Hole, door, window, orifice, entrance, to dig, gap", ex: "lupa tomo. (Door.)" }
     ],
     grammar: `
         <h3>Direction</h3>
@@ -1227,17 +1203,18 @@ const LESSON_17 = {
     title: "Senses & Emotion",
     desc: "Feeling and communicating.",
     vocab: [
-        { word: "pilin",  type: "content word", def: "Feeling, emotion, heart, touch.", ex: "pilin pona. (Good feeling.)" },
-        { word: "olin",   type: "content word", def: "Love, respect (emotional).", ex: "mi olin e sina. (I love you.)" },
-        { word: "kute",   type: "content word", def: "Ear, to hear, to listen, to obey.", ex: "o kute! (Listen!)" },
-        { word: "kalama", type: "content word", def: "Sound, noise, voice.", ex: "kalama suli. (Loud noise.)" },
-        { word: "nimi",   type: "content word", def: "Word, name.", ex: "nimi mi li... (My name is...)" },
+        { word: "pilin",  type: "content word", def: "Feeling, emotion, heart, touch, opinion.", ex: "pilin pona. (Good feeling.)" },
+        { word: "olin",   type: "content word", def: "affection, appreciation, respect, compassion.", ex: "mi olin e sina. (I love you.)" },
+        { word: "kute",   type: "content word", def: "Ear, hear, listen, obey.", ex: "o kute! (Listen!)" },
+        { word: "kalama", type: "content word", def: "Sound, noise, voice, vibration, to produce a sound.", ex: "kalama suli. (Loud noise.)" },
+        { word: "nimi",   type: "content word", def: "Word, name, define.", ex: "nimi mi li... (My name is...)" },
         { word: "unpa",   type: "content word", def: "Sexual activity, erotic.", ex: "unpa li musi. (Sex is fun.)" },
         { word: "mu",     type: "content word", def: "Animal noise (Woof, Meow, Moo).", ex: "soweli li toki e mu. (The animal says mu.)" },
-        { word: "suwi",   type: "content word", def: "Pleasant sensory experiences, sweet, cute.", ex: "soweli suwi. (Cute animal.)" },
+        { word: "suwi",   type: "content word", def: "Pleasant sensory experiences, sweet, cute, fragrant.", ex: "soweli suwi. (Cute animal.)" },
         { word: "jaki",   type: "content word", def: "Unpleasant sensory experiences, dirty, gross, toxic.", ex: "telo jaki. (Dirty water.)" },
         { word: "nasa",   type: "content word", def: "Strange, weird, silly, crazy, drunk.", ex: "jan nasa. (Crazy/Silly person.)" },
-        { word: "utala",  type: "content word", def: "Conflict, contest, war, attack.", ex: "o utala ala. (Do not fight.)" }
+        { word: "utala",  type: "content word", def: "Fight, compete, battle, challenge, struggle, competition, attack.", ex: "o utala ala. (Do not fight.)" },
+        { word: "monsuta", type: "content word", def: "Fear, nervousness, dread, scary, monster.", ex: "mi monsuta. (I'm scared.)" }
     ],
     grammar: `
         <h3>Feelings</h3>
@@ -1273,13 +1250,11 @@ const LESSON_18 = {
     title: "Abstract Concepts I",
     desc: "Change, sameness, and truth.",
     vocab: [
-        { word: "ante",   type: "content word", def: "Different, other, changed.", ex: "ma ante. (Other land.)" },
-        { word: "sama",   type: "content word/preposition", def: "Same, similar, like.", ex: "ona li sama mi. (She is like me.)" },
-        { word: "sin",    type: "content word", def: "New, fresh, another.", ex: "ilo sin. (New tool.)" },
-        { word: "pini",   type: "content word", def: "End, tip, finished, past.", ex: "mi pini moku. (I finish eating.)" },
-        { word: "namako", type: "content word", def: "Extra, spice, accessory.", ex: "moku namako. (Spice.)" },
-        { word: "pakala", type: "content word", def: "Mistake, break, accident, damn!", ex: "ilo li pakala. (The tool is broken.)" },
-        { word: "awen",   type: "content word", def: "Resistance to change, remaining, staying, waiting.", ex: "mi awen lon tomo. (I stay in the house.)" }
+        { word: "ante",   type: "content word", def: "Different, other, changed, to modify, to transform.", ex: "ma ante. (Other land.)" },
+        { word: "sin",    type: "content word", def: "New, fresh, repeat, update, additionally, another.", ex: "ilo sin. (New tool.)" },
+        { word: "pini",   type: "content word", def: "finish, end, shut, close, quit, stop, past.", ex: "mi pini moku. (I finish eating.)" },
+        { word: "pakala", type: "content word", def: "Broken, destroyed, mistake, hurt, fail.", ex: "ilo li pakala. (The tool is broken.)" },
+        { word: "isipin", type: "content word", def: "to think, brainstorm, ponder.", ex: "mi isipin e seli moku. (I'm thinking about cooking.)"}
     ],
     grammar: `
         <h3>Time Modifiers</h3>
@@ -1315,13 +1290,13 @@ const LESSON_19 = {
     title: "Abstract Concepts II",
     desc: "Exchange and causality.",
     vocab: [
-        { word: "alasa",  type: "content word", def: "To hunt, forage, seek, try.", ex: "mi alasa e moku. (I hunt for food.)" },
-        { word: "pana",   type: "content word", def: "To give, send, emit, release.", ex: "mi pana e ijo. (I give a thing.)" },
+        { word: "pana",   type: "content word", def: "To give, send, provide, submit, release.", ex: "mi pana e ijo. (I give a thing.)" },
         { word: "jo",     type: "content word", def: "To have, hold, carry, contain.", ex: "mi jo e ilo. (I have a tool.)" },
         { word: "lanpan", type: "content word", def: "To take, seize, steal, catch.", ex: "ona li lanpan e kili. (He stole the fruit.)" },
-        { word: "mani",   type: "content word", def: "Money, large domesticated animal, wealth.", ex: "mi jo e mani. (I have money.)" },
+        { word: "mani",   type: "content word", def: "Money, think of value, large domesticated animal, wealth.", ex: "mi jo e mani. (I have money.)" },
         { word: "esun",   type: "content word", def: "Market, shop, trade, business.", ex: "tomo esun. (Shop/Market.)" },
-        { word: "tan",    type: "content word/preposition", def: "From, because of, cause.", ex: "mi kama tan ma. (I come from the land.)" }
+        { word: "tan",    type: "content word/preposition", def: "From, because of, cause, origin.", ex: "mi kama tan ma. (I come from the land.)" },
+        { word: "usawi",  type: "content word", def: "Magic, supernatural, occult, incomprehensible", ex: "ona utala mi kepeken toki usawi. (they attacked me with enchantments.)" }
     ],
     grammar: `
         <h3>Cause and Effect</h3>
@@ -1363,7 +1338,7 @@ const LESSON_20 = {
         { word: "majuna",   type: "content word", def: "Old, ancient.", ex: "jan majuna. (Old person.)" },
         { word: "kipisi",   type: "content word", def: "To cut, split, slice.", ex: "ilo kipisi. (Knife/Scissors.)" },
         { word: "meso",     type: "content word", def: "Middle, average, medium.", ex: "lon meso. (In the middle.)" },
-        { word: "a",        type: "particle", def: "Ah! Ha! (Emotion word).", ex: "pona a! (Good, wow!)" }
+        { word: "a",        type: "particle", def: "Ah! Ha!", ex: "pona a! (Good, wow!)" }
     ],
     grammar: `
         <h3>Course Complete!</h3>
@@ -1533,68 +1508,171 @@ const curriculum = [
 ];
 
 // =========================================
-// 4. READING LIBRARY
+// 4. MEDIA LIBRARY
 // =========================================
 const mediaLibrary = [
     {
         id: "r1",
         type: "text",
-        title: "The Little Prince (Intro)",
-        tpTitle: "jan lawa lili",
-        level: "Easy",
-        text: `
-    <span class="vocab-tip" data-tooltip="Past time / Long ago">tenpo pini</span> la mi lukin e sitelin. sitelin ni li lon <span class="vocab-tip" data-tooltip="Book">lipu</span> pi nasin ma.
-    sitelin li ni: <span class="vocab-tip" data-tooltip="Animal">soweli</span> suli li moku e soweli lili.
-    mi <span class="vocab-tip" data-tooltip="Draw / Write">sitelin</span> e sitelin nanpa wan mi. mi toki e ni tawa jan suli: "sitelin ni li <span class="vocab-tip" data-tooltip="Scary / Bad">ike</span> tawa sina anu seme?"
-    jan suli li toki e ni: "tan seme la <span class="vocab-tip" data-tooltip="Hat (Loan word)">hatu</span> li ike? ni li hatu."
-    taso sitelin mi li hatu ala. ona li soweli suli. soweli suli li moku e soweli lili.
-    `,
-        translation: `A long time ago, I saw a picture. This picture was in a book about nature.
-        The picture was this: A big animal (boa constrictor) eating a small animal.
-        I drew my Drawing Number One. I said this to the adults: "Is this picture scary to you?"
-        The adults said: "Why is a hat scary? This is a hat."
-        But my picture was not a hat. It was a big animal. The big animal was eating a small animal.`,
+        title: "jan Telakoman (lipu tenpo - nanpa akesi)",
+        tpTitle: "lipu tenpo o kama pona",
+        level: "Medium",
+        text: `<p>toki pona li seme? toki pona li nasin toki suli anu toki lili suwi taso? mi mute li sona e ni: toki pona li ijo suli li nasin pona. taso jan mute li sona ala e ni. tenpo pini lili la mi mute li toki e ni: kulupu ISO li pana ala e nimi lili ilo tawa toki pona tan seme? kulupu ISO la toki pona li toki suli ala tan seme? jan mute li kepeken toki pona. taso lipu anu sitelen tawa anu ijo sama ni la ijo pi nanpa lili li lon toki pona.</p>
+
+<p>ni la mi mute li toki e ni: mi o pali e lipu tenpo! <span class="vocab-tip" data-tooltip= "periodical magazine in toki pona">lipu tenpo</span> li seme? lipu tenpo li lipu sama ni: kulupu pi jan sitelen li pali e lipu sin lon tenpo mute. lipu sin ale pi lipu tenpo li jo e nimi sama, taso lipu sin ale li jo e nanpa ante. lipu tenpo pi sona sin li ken pana e lipu sin lon tenpo suno ale. lipu tenpo pi nasin ante li ken pana e lipu sin lon tenpo mun ale anu tenpo sike suno ale.</p>
+
+<p>lipu tenpo li ken pona mute tawa toki pona! jan pi toki pona li pali e lipu tenpo la ken la kulupu ISO li lukin e ni li toki e ni: toki pona li nasin toki suli! taso <span class="vocab-tip" data-tooltip= "small defining tool">nimi lili ilo</span> pi kulupu ISO li suli ala. lipu tenpo li ken pana e ijo ante pona tawa toki pona.</p>
+
+<p>jan wan li taso la ona li ken pana e lipu. taso ona li ken ala pali e lipu mute. ante la lipu ona li ken weka. lipu ona li awen la jan ante li ken weka e sona ona. taso lipu tenpo la jan pona mute pi toki pona li kama kulupu sitelen. jan ale lon kulupu sitelen li kepeken e wawa ona tawa ijo sama. jan ale li kepeken e sona pona li kepeken e tenpo wile tawa ni: ona li pana e ijo pini pi pona mute. lipu wan pi lipu nanpa li awen lon tenpo suli. jan mute li lukin e ona li kama sona e ijo tan ona lon tenpo suli.</p>
+
+<p>ni li lipu tenpo nanpa wan lon toki pona. taso mi mute li toki ala e ni: mi mute taso li ken pali e lipu tenpo. sina o pali e lipu tenpo ante! seme li suli tawa sina? seme pi pali sina li mute a? moku pona anu nasin pilin anu sitelen musi li pona tawa sina, anu seme? o pali e lipu tenpo tawa ona!</p>
+
+<p>lipu tenpo sina la sina ken pali e lipu sin lon tenpo suno ale anu <span class="vocab-tip" data-tooltip= "year">sike suno</span> ale. ni li suli ala. ken la lipu sina li lili li jo e lipu lili pi nanpa lili taso. ale li pona. ijo suli li ni: o pana e ijo pona lon toki pona. sina pali e ni la o pana e ona tawa mi mute, o pana e ona tawa jan ale!</p>`,
+        
+        translation: `<p>What is Toki Pona? Is Toki Pona a major language system, or just a cute little talk? We know this: Toki Pona is a significant thing and a good system. But many people do not know this. A short time ago, we said this: Why does the ISO group not give a code (small tool name) to Toki Pona? Does the ISO group think Toki Pona is not a major language? Many people use Toki Pona. However, regarding books, films, or similar things, there are few numbered items in Toki Pona.</p>
+<p>Therefore, we said this: We should create a periodical (lipu tenpo)! What is a periodical? A periodical is a document like this: A group of writers creates a new document many times. Every new issue of the periodical has the same name, but every new issue has a different number. A periodical of new knowledge might release a new document every day. A periodical of different ways might release a new document every month or every year.</p>
+<p>A periodical can be very good for Toki Pona! If Toki Pona speakers create a periodical, perhaps the ISO group will look at this and say: Toki Pona is a major language! But, the ISO group's code is not the big thing. A periodical can provide other good things for Toki Pona.</p>
+<p>If there is only one person, they can release a book. But they cannot create many books. Otherwise, their books might disappear. If their book stays, other people might forget their knowledge. However, with a periodical, many good friends of Toki Pona become a writing group. Everyone in the writing group uses their power for the same thing. Everyone uses good knowledge and uses willing time for this: they release a finished thing of great goodness.</p>
+<p>One issue of a numbered document stays for a long time. Many people read it and learn things from it for a long time.</p>
+<p>This is the first lipu tenpo in Toki Pona. But we do not say this: Only we can create a periodical. You should create a different periodical! What is important to you? Which of your works are plentiful? Is good food, or philosophy, or comics good to you, or something else? Create a periodical for that!</p>
+<p>As for your periodical, you can create a new issue every day or every year. This is not important. Maybe your document is small and has only a few small pages. Everything is good. The important thing is this: Give good things in Toki Pona. If you do this, give it to us, give it to everyone!</p>`,
         quiz: [
-            { type: "mc", q: "jan li lukin e sitelin lon tenpo seme?", options: ["tenpo ni (Now)", "tenpo pini (Past)", "tenpo kama (Future)"], ans: 1 },
-            { type: "mc", q: "sitelin li lon lipu seme?", options: ["lipu pi nasin ma (Nature book)", "lipu musi (Comic)", "lipu nanpa (Math book)"], ans: 0 },
-            { type: "mc", q: "soweli suli li moku e seme?", options: ["kili (Fruit)", "soweli lili (Small animal)", "jan (Person)"], ans: 1 },
-            { type: "mc", q: "jan li sitelin e sitelin nanpa seme?", options: ["nanpa wan", "nanpa tu", "nanpa mute"], ans: 0 },
-            { type: "mc", q: "jan suli li toki e ni: sitelin li ____.", options: ["soweli (Animal)", "atu (Hat)", "ike (Bad)"], ans: 1 },
-            { type: "mc", q: "sitelin li hatu anu seme?", options: ["ona li hatu", "ona li hatu ala", "mi sona ala"], ans: 1 },
-            { type: "mc", q: "jan li toki tawa jan seme?", options: ["jan lili (Children)", "jan suli (Adults)", "jan ala (Nobody)"], ans: 1 },
-            { type: "mc", q: "soweli suli li seme?", options: ["ona li lape", "ona li moku", "ona li tawa"], ans: 1 },
-            { type: "mc", q: "jan li wile sona e ni: sitelin li ____ tawa jan suli.", options: ["pona (Good)", "ike (Scary/Bad)", "suli (Big)"], ans: 1 },
-            { type: "mc", q: "ni li sitelin pi jan lawa lili. ni li lon ala lon?", options: ["lon (True)", "lon ala (False)"], ans: 0 }
-        ]
+  {
+    type: "mc",
+    q: "jan mute li pilin e ni: toki pona li seme?",
+    options: [
+      "nasin toki suli",
+      "toki lili suwi taso",
+      "ilo pi kulupu ISO",
+      "moku pona"
+    ],
+    ans: 0
+  },
+  {
+    type: "mc",
+    q: "jan sitelen li toki e kulupu seme?",
+    options: [
+      "kulupu ISO",
+      "kulupu pi lipu tenpo",
+      "jan Telakoman",
+      "kulupu UN"
+    ],
+    ans: 1
+  },
+  {
+    type: "mc",
+    q: "lipu tenpo li seme?",
+    options: [
+      "jan wan li pali e lipu wan taso",
+      "lipu li jo e nanpa lili",
+      "kulupu li pali e lipu sin lon tenpo mute",
+      "lipu pi nasin pilin taso"
+    ],
+    ans: 2
+  },
+  {
+    type: "mc",
+    q: "lipu tenpo pi 'sona sin' en lipu tenpo pi 'nasin ante' li ante tan seme?",
+    options: [
+      "tenpo pana",
+      "jan pali",
+      "ma",
+      "kalama"
+    ],
+    ans: 1
+  },
+  {
+    type: "mc",
+    q: "jan sitelen li wile pali e lipu tenpo tan ijo ISO. ona li wile pali e lipu tan seme kin?",
+    options: [
+      "ona li wile e mani",
+      "lipu tenpo li ken pana e ijo pona tawa toki pona",
+      "ona li wile e moku",
+      "ona li wile ala pali"
+    ],
+    ans: 1
+  },
+  {
+    type: "mc",
+    q: "jan wan li pali e lipu la ike li seme?",
+    options: [
+      "ona li ken ala pali e lipu mute",
+      "ona li suli mute",
+      "lipu ona li pona mute",
+      "jan ante li lukin mute e lipu ona"
+    ],
+    ans: 0
+  },
+  {
+    type: "mc",
+    q: "kulupu sitelen li pona tan seme?",
+    options: [
+      "jan ale li pali e ijo ante",
+      "jan ale li lape",
+      "jan ale li kepeken e wawa tawa ijo sama",
+      "ona li jo e mani mute"
+    ],
+    ans: 2
+  },
+  {
+    type: "mc",
+    q: "lipu ni li seme?",
+    options: [
+      "lipu tenpo nanpa wan",
+      "lipu tenpo nanpa tu",
+      "lipu pi kulupu ISO",
+      "lipu pi jan Telakoman taso"
+    ],
+    ans: 0
+  },
+  {
+    type: "mc",
+    q: "jan sitelen li toki e ijo seme tawa pali lipu?",
+    options: [
+      "moku pona, nasin pilin, sitelen musi",
+      "ilo utala, moli, pakala",
+      "mani, esun, tomo",
+      "kalama musi taso"
+    ],
+    ans: 0
+  },
+  {
+    type: "mc",
+    q: "ijo suli li seme?",
+    options: [
+      "lipu li suli",
+      "sina pana e lipu lon tenpo suno ale",
+      "sina pana e ijo pona lon toki pona",
+      "lipu li jo e nanpa mute"
+    ],
+    ans: 2
+  }
+]
     },
     {
         id: "r2",
-        title: "The Wind and the Sun",
-        tpTitle: "kon en suno",
-        level: "Medium",
-        text: `tenpo pini la kon en suno li utala. ona li toki e ni: "mi wawa. sina wawa lili."
-        jan li kama. ona li jo e len suli.
-        kon li toki: "o lukin. mi tawa wawa la jan li weka e len ona."
-        kon li tawa wawa. taso jan li awen e len. jan li lete la ona li awen wawa e len.
-        suno li kama. suno li seli. jan li pilin seli. tenpo lili la jan li weka e len.
-        kon li kute e ni: suno li wawa mute.`,
-        translation: `A long time ago, the Wind and the Sun fought. They said: "I am strong. You are weak."
-        A person arrived. They had a big coat (clothing).
-        The Wind said: "Watch. If I blow (move) strongly, the person will remove their coat."
-        The Wind blew hard. But the person kept the coat. Because the person was cold, they held the coat tightly.
-        The Sun arrived. The Sun was hot. The person felt hot. Shortly, the person removed the coat.
-        The Wind understood this: The Sun is very strong.`,
+        title: "jan Telakoman (lipu tenpo - nanpa akesi)",
+        tpTitle: "tenpo pini pi toki pona",
+        level: "Easy",
+        text: `<p>open la (2001) jan Sonja li pana e lipu tawa jan ale lon linluwi1. lipu ni la ona li pana e sona pi toki sin. nimi pi toki sin ni li toki pona. </p>
+               <p>tenpo kama ni la kulupu pi toki pona li kama lon. jan mute li kama sona e toki pona. jan Sonja en jan kulupu li toki e ijo mute pi toki pona. ona mute li pali e nimi sin li ante e nimi li pali e nasin toki sin tawa toki pona. ni li tenpo open pi toki pona. </p>
+               <p>tenpo sike kama la jan Sonja li pana e lipu pu tawa ma ale. lipu ni la jan Sonja li pana e nasin ona pi toki pona. jan mute li kepeken toki pona lon nasin ante lili. taso tenpo kama ni la jan li ken toki e ni: nasin toki mi li weka mute anu weka lili tan lipu pu.</p>`,
+        translation: `
+        <p>beginning in 2001, Sonja gave a book to everyone on the internet. This book gives the knowledge of a new language. the name of this new language is Toki Pona.</p>
+        <p>Afterwards, the Toki Pona community emerged. many people started to learn Toki Pona. Sanja and the community discussed the many aspects about Toki Pona. they created new words, changed words, and created new grammar for toki pona. this was the beginning of Toki Pona.</p>
+        <p>in the comming years, Sonja released the book "Pu" to the world. In this book, Sonja shared her way of using Toki Pona. Others used Toki Pona in slightly different ways. but in the coming times, people can say my way of talking is very different or slightly different from the book "Pu."
+        `,
         quiz: [
-            { type: "mc", q: "jan li lukin e sitelin lon tenpo seme?", options: ["tenpo ni (Now)", "tenpo pini (Past)", "tenpo kama (Future)"], ans: 1 },
-            { type: "mc", q: "sitelin li lon lipu seme?", options: ["lipu pi nasin ma (Nature book)", "lipu musi (Comic)", "lipu nanpa (Math book)"], ans: 0 },
-            { type: "mc", q: "soweli suli li moku e seme?", options: ["kili (Fruit)", "soweli lili (Small animal)", "jan (Person)"], ans: 1 },
-            { type: "mc", q: "jan li sitelin e sitelin nanpa seme?", options: ["nanpa wan", "nanpa tu", "nanpa mute"], ans: 0 },
-            { type: "mc", q: "jan suli li toki e ni: sitelin li ____.", options: ["soweli (Animal)", "atu (Hat)", "ike (Bad)"], ans: 1 },
-            { type: "mc", q: "sitelin li hatu anu seme?", options: ["ona li hatu", "ona li hatu ala", "mi sona ala"], ans: 1 },
-            { type: "mc", q: "jan li toki tawa jan seme?", options: ["jan lili (Children)", "jan suli (Adults)", "jan ala (Nobody)"], ans: 1 },
-            { type: "mc", q: "soweli suli li seme?", options: ["ona li lape", "ona li moku", "ona li tawa"], ans: 1 },
-            { type: "mc", q: "jan li wile sona e ni: sitelin li ____ tawa jan suli.", options: ["pona (Good)", "ike (Scary/Bad)", "suli (Big)"], ans: 1 },
-            { type: "mc", q: "ni li sitelin pi jan lawa lili. ni li lon ala lon?", options: ["lon (True)", "lon ala (False)"], ans: 0 }
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
         ]
     },
     {
