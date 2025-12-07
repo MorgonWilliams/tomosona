@@ -1654,7 +1654,7 @@ const mediaLibrary = [
         title: "jan Telakoman (lipu tenpo - nanpa akesi)",
         tpTitle: "tenpo pini pi toki pona",
         level: "Easy",
-        text: `<p>open la (2001) jan Sonja li pana e lipu tawa jan ale lon linluwi1. lipu ni la ona li pana e sona pi toki sin. nimi pi toki sin ni li toki pona. </p>
+        text: `<p>open la (2001) jan Sonja li pana e lipu tawa jan ale lon linluwi. lipu ni la ona li pana e sona pi toki sin. nimi pi toki sin ni li toki pona. </p>
                <p>tenpo kama ni la kulupu pi toki pona li kama lon. jan mute li kama sona e toki pona. jan Sonja en jan kulupu li toki e ijo mute pi toki pona. ona mute li pali e nimi sin li ante e nimi li pali e nasin toki sin tawa toki pona. ni li tenpo open pi toki pona. </p>
                <p>tenpo sike kama la jan Sonja li pana e lipu pu tawa ma ale. lipu ni la jan Sonja li pana e nasin ona pi toki pona. jan mute li kepeken toki pona lon nasin ante lili. taso tenpo kama ni la jan li ken toki e ni: nasin toki mi li weka mute anu weka lili tan lipu pu.</p>`,
         translation: `
