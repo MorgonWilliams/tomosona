@@ -1654,7 +1654,7 @@ const mediaLibrary = [
         title: "jan Telakoman (lipu tenpo - nanpa akesi)",
         tpTitle: "tenpo pini pi toki pona",
         level: "Easy",
-        text: `<p>open la (2001) jan Sonja li pana e lipu tawa jan ale lon linluwi. lipu ni la ona li pana e sona pi toki sin. nimi pi toki sin ni li toki pona. </p>
+        text: `<p>open la (2001) jan Sonja li pana e lipu tawa jan ale lon linluwi1. lipu ni la ona li pana e sona pi toki sin. nimi pi toki sin ni li toki pona. </p>
                <p>tenpo kama ni la kulupu pi toki pona li kama lon. jan mute li kama sona e toki pona. jan Sonja en jan kulupu li toki e ijo mute pi toki pona. ona mute li pali e nimi sin li ante e nimi li pali e nasin toki sin tawa toki pona. ni li tenpo open pi toki pona. </p>
                <p>tenpo sike kama la jan Sonja li pana e lipu pu tawa ma ale. lipu ni la jan Sonja li pana e nasin ona pi toki pona. jan mute li kepeken toki pona lon nasin ante lili. taso tenpo kama ni la jan li ken toki e ni: nasin toki mi li weka mute anu weka lili tan lipu pu.</p>`,
         translation: `
@@ -1678,13 +1678,78 @@ const mediaLibrary = [
     {
         id: "a1",
         type: "audio",
-        title: "Podcast: The Good Path",
-        tpTitle: "kalama: nasin pona",
-        level: "Medium",
-        src: "assets/audio/podcast_01.mp3",
-        text: `jan o, kute! tenpo ni la mi toki e nasin pona.
-        nasin pona li simple. ona li jo ala e ike.
-        sina wile e pilin pona la, o lukin e ijo lili lon poka sina.`,
+        title: "jan usawi",
+        tpTitle: "tawa lon linja",
+        level: "hard",
+        src: "assets/audio/tawalonlinja.mp3",
+        text: `jan seme li ken olin
+e pona mi e ike mi?
+jan seme li pona tawa mi?
+mi awen wan
+ni li ike e mi
+
+selo la mi pona tawa sina
+insa mi kin li pona
+taso ona li pakala lili
+sina wile la mi ken monsuta ala
+taso mi wile ala pakala
+
+mi lukin e sina li tawa lon linja
+sama jasima mi ante jasima sina
+olin la mi tawa lon linja
+sina wile e ona la o anu ala e mi
+e mi 
+e mi
+o anu ala e mi
+e mi
+o olin e mi
+taso o anu ala e mi
+
+mi ken jan olin lon jasima
+sina wile e ona anu seme?
+o
+tenpo pimeja la pilin sina li toki mute e jan pi sama sina
+e jan pi ante mi
+taso mi ken ala lukin ala e linja loje ni
+mi sewi mute a
+mute li lon anpa 
+o kama jo e luka mi
+
+selo la mi pona tawa sina
+insa mi kin li…
+ken jo e olin sina
+taso sina wile la 
+mi monsuta ala
+taso tenpo kama la 
+mi tu li pakala
+
+mi lukin e sina li tawa lon linja
+sama jasima mi ante jasima sina
+olin la mi tawa lon linja
+sina wile e ona la o anu ala e mi
+e mi 
+e mi
+o anu ala e mi
+e mi
+o olin e mi
+taso o anu ala e
+
+nasin ike ni
+sina sona, mi sona
+sina pona poka ona
+o pana ala e pilin ike tawa mi
+mi wile olin taso a! 
+
+mi lukin e sina li tawa lon linja
+sama jasima mi ante jasima sina
+olin la mi tawa lon linja
+sina wile e ona la o anu ala e mi
+e mi 
+e mi
+o anu ala e mi
+e mi
+o olin e mi
+taso o anu ala e mi`,
         translation: `People, listen! Right now I am talking about the simple path (Toki Pona philosophy).
         The simple path is simple. It has no negativity.
         If you want a good feeling, look at the small things beside you.`,
