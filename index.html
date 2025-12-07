@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="tomo sona - An interactive way to learn Toki Pona">
-    <meta name="theme-color" content="#0284c7"> <title>tomo sona - Learn Toki Pona</title>
+    <meta name="description" content="Master the philosophy and vocabulary of Toki Pona through interactive lessons and stories.">
+    <meta name="theme-color" content="#0284c7"> 
+    
+    <title>tomo sona - Learn Toki Pona</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +14,20 @@
 
     <link rel="stylesheet" href="css/style.css">
     
+    <style>
+        /* Ensures the loading screen is centered and colored before JS/External CSS takes over */
+        .loading-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            color: var(--primary-dark, #075985); /* Uses variable with fallback */
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
 </head>
 <body>
@@ -19,42 +35,34 @@
     <header role="banner">
         <div class="logo" aria-label="Tomo Sona Logo">tomo sona</div>
         
-        <button class="mobile-menu-btn" onclick="app.ui.toggleMenu()" aria-label="Toggle Menu">
+        <button class="mobile-menu-btn" onclick="app.ui.toggleMenu()" aria-label="Toggle Menu" aria-expanded="false">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
 
         <nav id="main-nav" role="navigation" aria-label="Main Menu">
-            <button class="nav-btn active" onclick="app.router('home')" data-icon="🏠" aria-label="Go to Home">
+            <button class="nav-btn active" onclick="app.router('home')" data-icon="🏠">
                 <span>Home</span>
             </button>
-            <button class="nav-btn" onclick="app.router('course')" data-icon="🗺️" aria-label="Go to Lessons">
+            <button class="nav-btn" onclick="app.router('course')" data-icon="🗺️">
                 <span>Lessons</span>
             </button>
-            <button class="nav-btn" onclick="app.router('media')" data-icon="📜" aria-label="Go to Media Library">
+            <button class="nav-btn" onclick="app.router('media')" data-icon="📜">
                 <span>Media</span>
             </button>
-            <button class="nav-btn" onclick="app.router('dictionary')" data-icon="📖" aria-label="Go to Dictionary">
+            <button class="nav-btn" onclick="app.router('dictionary')" data-icon="📖">
                 <span>Dictionary</span>
             </button>
             
-            <button class="nav-btn lang-toggle" onclick="app.toggleLang()" data-icon="EN" aria-label="Toggle Language">
+            <button class="nav-btn lang-toggle" onclick="app.toggleLang()" data-icon="EN" aria-label="Switch Language">
                 <span>EN / TP</span>
             </button>
         </nav>
     </header>
 
     <main id="app-root" role="main">
-        <div style="
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 60vh; 
-            color: var(--primary-dark, #075985); 
-            animation: fadeIn 0.5s ease;
-        ">
+        <div class="loading-state">
             <div style="font-size: 4rem; margin-bottom: 1rem;">🏔️</div>
             <h2 style="font-weight: 900; letter-spacing: -0.03em;">Loading...</h2>
         </div>
