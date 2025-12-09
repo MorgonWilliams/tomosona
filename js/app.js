@@ -295,13 +295,33 @@ const app = {
             const item = mediaLibrary.find(r => r.id === id);
             if (!item) return;
 
+            // 1. Generate Credit HTML (Creator + License)
+            const creditHtml = item.creator ? `
+                <div class="credit-box">
+                    <span style="font-size:0.9rem; font-weight:700; color:var(--text-muted);">Created by:</span>
+                    <a href="${item.url || '#'}" target="_blank" class="credit-link">
+                        ${item.creator} ${item.url ? '↗' : ''}
+                    </a>
+                    
+                    ${item.license ? `
+                        <a href="${item.licenseUrl || '#'}" target="_blank" class="license-tag" title="View License Deed">
+                            ${item.license}
+                        </a>
+                    ` : ''}
+                </div>
+            ` : '';
+
             root.innerHTML = `
                 <div class="view-section active lesson-container">
                     <button class="btn btn-outline" onclick="app.router('media')" style="margin-bottom:1rem;">← ${t.back}</button>
                     <div class="card" style="border-top: 8px solid ${item.type === 'audio' ? 'var(--advanced)' : 'var(--primary)'};">
                         <h2 style="text-align:center; margin-bottom:0.5rem;">${item.tpTitle}</h2>
-                        <p style="text-align:center; font-size:0.9rem; color:var(--text-muted); margin-bottom:2rem;">${item.title}</p>
+                        <p style="text-align:center; font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem;">${item.title}</p>
                         
+                        ${creditHtml}
+                        
+                        <hr style="margin: 1.5rem 0; opacity:0.1;">
+
                         ${item.type === 'audio' ? app.components.audioPlayer(item.src, t) : ''}
                         
                         <h4 style="color:var(--text-muted); margin-bottom:1rem;">${item.type === 'audio' ? 'Transcript' : 'Story Text'}</h4>
@@ -825,20 +845,21 @@ const app = {
         `,
 
         mediaCard: (r) => {
-            const isAudio = r.type === 'audio';
-            const color = isAudio ? 'var(--advanced)' : 'var(--primary)';
-            return `
-                <div class="feature-card" onclick="app.router('reader', '${r.id}')" style="cursor:pointer">
-                    <div style="font-size:2rem; margin-bottom:10px;">${isAudio ? '🎧' : '📜'}</div>
-                    <h3 style="color:${color}">${r.tpTitle}</h3>
-                    <p style="font-size:0.9rem; margin-bottom:1rem;">${r.title}</p>
-                    <div style="display:flex; gap:8px; justify-content:center; width:100%;">
-                        <span class="vocab-badge" style="background:${color}">${isAudio ? 'Listen' : 'Read'}</span>
-                        <span class="vocab-badge" style="background:#64748b">${r.level}</span>
-                    </div>
-                </div>
-            `;
-        },
+    const isAudio = r.type === 'audio';
+    const color = isAudio ? 'var(--advanced)' : 'var(--primary)';
+    // Added creator check below title
+    return `
+        <div class="feature-card" onclick="app.router('reader', '${r.id}')" style="cursor:pointer">
+            <div style="font-size:2rem; margin-bottom:10px;">${isAudio ? '🎧' : '📜'}</div>
+            <h3 style="color:${color}">${r.tpTitle}</h3>
+            ${r.creator ? `<p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">By ${r.creator}</p>` : ''}
+            <div style="display:flex; gap:8px; justify-content:center; width:100%;">
+                <span class="vocab-badge" style="background:${color}">${isAudio ? 'Listen' : 'Read'}</span>
+                <span class="vocab-badge" style="background:#64748b">${r.level}</span>
+            </div>
+        </div>
+    `;
+},
 
         flashcard: (v) => `
             <div class="flashcard" onclick="this.classList.toggle('flipped')">

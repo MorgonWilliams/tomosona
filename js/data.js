@@ -1514,9 +1514,12 @@ const mediaLibrary = [
     {
         id: "r1",
         type: "text",
-        title: "jan Telakoman (lipu tenpo - nanpa akesi)",
         tpTitle: "lipu tenpo o kama pona",
         level: "Medium",
+        creator: "jan Telakoman",
+        url: "https://liputenpo.org/lipu/nanpa-akesi/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
         text: `<p>toki pona li seme? toki pona li nasin toki suli anu toki lili suwi taso? mi mute li sona e ni: toki pona li ijo suli li nasin pona. taso jan mute li sona ala e ni. tenpo pini lili la mi mute li toki e ni: kulupu ISO li pana ala e nimi lili ilo tawa toki pona tan seme? kulupu ISO la toki pona li toki suli ala tan seme? jan mute li kepeken toki pona. taso lipu anu sitelen tawa anu ijo sama ni la ijo pi nanpa lili li lon toki pona.</p>
 
 <p>ni la mi mute li toki e ni: mi o pali e lipu tenpo! <span class="vocab-tip" data-tooltip= "periodical magazine in toki pona">lipu tenpo</span> li seme? lipu tenpo li lipu sama ni: kulupu pi jan sitelen li pali e lipu sin lon tenpo mute. lipu sin ale pi lipu tenpo li jo e nimi sama, taso lipu sin ale li jo e nanpa ante. lipu tenpo pi sona sin li ken pana e lipu sin lon tenpo suno ale. lipu tenpo pi nasin ante li ken pana e lipu sin lon tenpo mun ale anu tenpo sike suno ale.</p>
@@ -1651,9 +1654,12 @@ const mediaLibrary = [
     },
     {
         id: "r2",
-        title: "jan Telakoman (lipu tenpo - nanpa akesi)",
         tpTitle: "tenpo pini pi toki pona",
         level: "Easy",
+        creator: "jan Telakoman",
+        url: "https://liputenpo.org/lipu/nanpa-akesi/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
         text: `<p>open la (2001) jan Sonja li pana e lipu tawa jan ale lon linluwi1. lipu ni la ona li pana e sona pi toki sin. nimi pi toki sin ni li toki pona. </p>
                <p>tenpo kama ni la kulupu pi toki pona li kama lon. jan mute li kama sona e toki pona. jan Sonja en jan kulupu li toki e ijo mute pi toki pona. ona mute li pali e nimi sin li ante e nimi li pali e nasin toki sin tawa toki pona. ni li tenpo open pi toki pona. </p>
                <p>tenpo sike kama la jan Sonja li pana e lipu pu tawa ma ale. lipu ni la jan Sonja li pana e nasin ona pi toki pona. jan mute li kepeken toki pona lon nasin ante lili. taso tenpo kama ni la jan li ken toki e ni: nasin toki mi li weka mute anu weka lili tan lipu pu.</p>`,
@@ -1675,13 +1681,294 @@ const mediaLibrary = [
             { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
         ]
     },
+        {
+        id: "r3",
+        tpTitle: "sowelo suli",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-1/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "soweli suwi li lon! mi lukin e soweli suwi. Kute pi soweli suwi li suli. soweli li lukin e mi. n... soweli li wile e seme? soweli li lukin e mi tan seme? mi sona ala. a, soweli li tawa. tawa pona, soweli o!"
+        `,
+        translation: `
+        "There is a cute animal! I see the cute animal. The cute animal's ears are big. The animal looks at me. hm... What does the animal want? Why is the animal looking at me? I don't know. Ah, the animal is moving. Goodbye animal!"
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
+    {
+        id: "r4",
+        tpTitle: "ilo sitelen",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-2/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "mama mi lo jo e ilo. ilo li ken pali e sitelen. ilo li mani mute. mi wile kepeken ilo. taso, mama li wile ala e ni. mi awen, mi awen, mi awen. tenpo ni la, mi mama li lukin ala. mi tawa ilo. mi wile kama jo e ilo. taso ilo li suli! luka mi li lili. ilo li tawa anpa. pakala a!"
+        `,
+        translation: `
+        "my parent has a tool. The tool can make pictures. The tool is very expensive. I want to use the tool. But, my parent doesnt want me to. I wait, I wait, I wait. Now, my parent is not watching. I go towards the tool. I want to get the tool. But the tool is big! My hands are small. The tool falls. Damn it!"
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
+    {
+        id: "r5",
+        tpTitle: "supa monsi pi palisa kiwen tu wan",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-3/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "o kama lukin e supa monsi. ona li lili mute a li tawa ni: sina tawa lon ma li wile e supa lon tenpo lili taso. ‘supa’ li kiwen ala, li len. nasin li ni: sina wile ala kepeken supa la o pini e ona. ona li pini la palisa kiwen tu wan li lon li sama palisa suli wan. kiwen sike li wan e palisa kiwen tu wan lon insa. len loje li wan e palisa kiwen lon sewi. sina wile kepeken supa la o open e supa. ni la palisa kiwen tu wan li kama wan ala lon sewi lon anpa. lon anpa la, palisa kiwen tu wan li ken awen pona lon ma. lon sewi la, palisa kiwen tu wan li supa e len loje.
+
+tenpo pini la mi jo e supa ante pi nasin sama, taso kule ona li laso. mi weka e ona lon ma pi sona mi ala. ni la mi wile esun e ona sin. mi lukin e ona lon tomo esun pi mani lili. mi esun e ona kepeken mani tu tu.
+
+ike la mi kepeken ala supa ni lon tenpo mute. mi tawa lon ma la ona li pona, taso mi ni lon tenpo mute ala. tenpo mute la mi awen lon insa pi tomo mi. a, mi lukin e supa ni la mi toki insa e ni tawa mi: mi o tawa lon ma!"
+        `,
+        translation: `
+        "Come look at the butt surface. It is oh so very small and for this: You are moving outside and need a surface for just a little time. The ‘surface’ is not hard, and is cloth. This is the way: When you do not want to use the surface, close it. When it is closed, three hard sticks exist and are like one big stick. A hard circle unites the three hard sticks in the middle. Red cloth unites the hard sticks at the top. When you want to use the surface, open the surface. With this, three hard sticks stop uniting at the top and the bottom. At the bottom, the three sticks can stay well on the earth. At the top, the three sticks can make the red fabric a surface.
+
+In the past I had another surface of the same system, but its colour was blue. I left it somewhere I don’t know. With this, I needed to buy a new one. I saw it at a small-money store. I bought it for four monies.
+
+Unfortunately I do not use the surface at many times. When I move outside it is good, but I do this at not many times. Many times, I stay at the inside of my house. Oh, When I see this surface I internally communicate this to myself: I should do movement outside!"
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
+    {
+        id: "r6",
+        tpTitle: "sike musi",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-4/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "suno li seli. taso, telo li lete pona. mi musi kepeken sike. mi musi mute a. sike li tawa sewi. sike li tawa anpa. sike li tawa weka. mi wile alasa! sike lon seme? a, mi jo e ona. taso, a! mi pilin pakala. mi jo ala e ijo ante... mi jo ala e jan musi poka."
+        `,
+        translation: `
+        "The sun is hot. But the water is cool. I play using a ball. I play a lot!  the ball goes towards the sky. the ball comes down. The ball goes away. I need to find it. Where is the ball? I have it. But, I feel upset. I do not have another thing. I do not have a nearby playmate."
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
+    {
+        id: "r7",
+        tpTitle: "kili sin",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-5/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "mi lukin e kili. mi sona ala e kili. kili li jelo lili laso lili li pona lukin. mi esun e kili sin. mi kama lon tomo mi. mi tu e kili. mi moku e kili ni kepeken nasin seme? sike lili pimeja kiwen li moku ala moku? mi wile kama sona. mi uta e sike pimeja. a, sona sin pi kili sin: sike pimeja li moku ala!"
+        `,
+        translation: `
+        "I see a fruit. I do not recognize the fruit. The fruit is a little yellow, a little blue, and looks appealing. I buy the new fruit. i come to my home. I split the fruit. How should I eat this fruit? Is the small dark round seed food? I want to find out. I put the seed in my mouth. Ah, new information about the new fruit: the seed is not food!"
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
+    {
+        id: "r8",
+        tpTitle: "tawa suli",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-6/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "mi tawa kepeken noka. mi lukin e nena suli mute. mi lukin e walo mute. mi lukin e jan ala. mi lukin e tomo ala. noka mi li pilin ike. mi wile lape. taso mi pilin lete. mi ken ala lape. mi tawa. mi tawa. mi tawa. mi lukin e tomo lili pimeja. a, sewi li pona! jan li pana e tomo e seli e moku. mi lape pona. tenpo suno kama la mi tawa."
+        `,
+        translation: `
+        "I walk. i see many mountains. I see a lot of snow. I see no people. I see no buildings. my feet hurt. I want to sleep. But, I am cold, I cannot sleep. I walk, I walk, I walk. I see a small dark cave. Ah, the Divine is good! Someone provided a shelter, warmth, and good. I rest well. The next day, I move."
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
+    {
+        id: "r9",
+        tpTitle: "esun mute",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-7/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "jan mute li lon esun. mi wile esun e kala. "o esun e kasi!" jan li toki.  mi wile e kala e kasi ala. "o esun e waso!" jan ante li toki. mi wile e kala e kasi ala e waso ala. "o esun e pan suwi!" jan ante li toki. mi lukin e pan suwi. ona li pona mute lukin. mi wile e kala e pan suwi e kasi ala e aso ala."
+        `,
+        translation: `
+        "Many people are at the market. I want to buy fish. "Buy flowers!" someone says. I want fish, not flowers. "Buy birds!" someone else says. I want a fish, no plants, and no birds. "Buy pastries!" someone else says. I see the pastries. They look beautiful. I want fish, and pastries, no plants, and no birds."
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
+    {
+        id: "r10",
+        tpTitle: "olin mun",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-8/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "mi en jan olin li lukin e mun. jan olin li sona mute e mun. mi sona ale e mun. jan olin li pana e sona mun. "mun ni li laso. a, mun ni li lete. a, ni li mun ma ala. ni li ilo jan." mi kute e toki ona. kalama uta ona li suwi tawa mi. mi pilin lape. lukin mi li pini. mi lape la mi lukin e mun mute pi jan olin mi."
+        `,
+        translation: `
+        "Me and my partner are looking at the night sky. My partner knows a lot about astronomy. I know nothing about astronomy. My partner teaches me about astronomy. "The night-sky is green. The astrological bodies are cold. that is not a planet. that is a satelite. I listen to him talk. His words are soothing to me. I feel sleepy. My eyes close. While I sleep, I see the many space objects my partner told me about. "
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
+    {
+        id: "r11",
+        tpTitle: "noke telo",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-9/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "ma li seli mute. mi pilin seli. mi wile e lete. jan mute li pilin sama mi. mi mute li alasa e lete. a, telo li lon. ona li lete ala lete? mi pilin e telo kepeken luka mi. telo li lete. mi weka e len pi noka mi. tenpo ni la, noka mi len ala. mi pana e noka mi tawa telo. pilin suwi a! pilin pona! jan mute li lukin e pali mi e pilin pona mi. ona kin li weka e len li pana e noka tawa telo. lon anpa pi suno seli la mi ale li pilin pona tan lete pi telo noka."
+        `,
+        translation: `
+        "the land is very hot. I feel hot. I want to cool down. many people feel like me. we are searching for the cold. Ah there is water here. Is it cold? I use my hand to feel the water. The water is cold. I take off my socks. At that time, my foot is exposed. I put my foot in the water. It felt good. A good feeling! Many people watch my work and my happiness. They too remove their socks and put their feet into the water. Under the hot sun, we all feel good because of the cold water on our feet."
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
+    {
+        id: "r12",
+        tpTitle: "pan mani",
+        level: "Easy",
+        creator: "jan Lakuse",
+        url: "https://raacz.neocities.org/toki-pona/beginner-material/stories/story-10/",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+        text: `
+        "mi tawa lon nasin pi tomo mute. mi pilin e kon pona suwi pi pan seli. kon li kama tan seme? noka mi li alasa e kon. mi kama lon tomo esun pan. "o kama pona a!" jan pali li toki. "tenpo pini poka la mi pini e pan sin. insa pan li jo e ko kili loje. ona li seli. sina o esun! mi toki, "mi o pana e mani seme?" "o pana e mani tutu." mi alasa e lipu mani tutu. mi pana tawa jan. jan li pana e pan seli tawa mi. esun pona. mi open e uta mi. mi lukin moku. taso pan li seli li pakala e uta mi. "ike!" mi toki. "o awen lili o pakala ala e sina." jan pali li toki.
+        `,
+        translation: `
+        "I move on a road in the city. I smell the pleasent scent of hot bread. Where is the smell coming from? my fear search for the smell. I arrive at a bread store. "Welcome!" the worker says. "I just finished new bread." "The bread's inside have a red fruit jam" It is hot, You should buy (some)!" I say, "How much is it?" "Give me four (dollars)." I search for the four (dollars). I give it to the person. The person gives me hot bread. Fair transaction. I open my mouth. I try to eat (it). But the bread is hot and damages my mouth. "Ouch!" I communicate. "Wait a little, and it wont hurt you." The working person says.
+        `,
+        quiz: [
+            { type: "mc", q: "open la (2001), jan Sonja li pana e lipu tawa jan ale lon seme?", options: ["lon tomo sona", "lon ma Kanata", "lon linluwi", "lon esun"], ans: 2 },
+            { type: "mc", q: "nimi pi toki sin ni li seme?", options: ["toki Inli", "toki pona", "toki Kanse", "toki Epelanto"], ans: 1 },
+            { type: "mc", q: "kulupu pi toki pona li kama lon anu seme?", options: ["lon", "lon ala", "ona li moli", "ona li awen lon"], ans: 0 },
+            { type: "mc", q: "jan Sonja en jan kulupu li pali e seme tawa nimi?", options: ["ona li weka e nimi ale", "ona li pali e nimi sin li ante e nimi", "ona li toki e ni: nimi li ike", "ona li pali ala"], ans: 1 },
+            { type: "mc", q: "tenpo sike kama la, jan Sonja li pana e lipu seme?", options: ["lipu ku", "lipu su", "lipu pu", "lipu tenpo"], ans: 2 },
+            { type: "mc", q: "lipu pu la, nasin pi jan seme li lon?", options: ["nasin pi jan ale", "nasin pi jan Sonja", "nasin pi jan Pije", "nasin pi jan Kipo"], ans: 1 },
+            { type: "mc", q: "jan mute li kepeken toki pona lon nasin seme?", options: ["lon nasin sama taso", "lon nasin ante lili", "lon nasin ike", "lon nasin pi lipu pu taso"], ans: 1 },
+            { type: "mc", q: "jan li ken ala ken toki e ni: 'nasin mi li weka tan lipu pu'?", options: ["ken", "ken ala", "jan Sonja taso li ken", "ni li ike"], ans: 0 },
+            { type: "mc", q: "lipu ni li toki e tenpo seme?", options: ["tenpo kama", "tenpo open", "tenpo pini suli", "tenpo moli"], ans: 1 },
+            { type: "mc", q: "jan mute li kama sona e toki pona anu seme?", options: ["jan lili taso", "jan mute", "jan ala", "jan Sonja taso"], ans: 1 }
+        ]
+    },
     {
         id: "a1",
         type: "audio",
-        title: "jan usawi",
         tpTitle: "tawa lon linja",
         level: "hard",
         src: "assets/audio/tawalonlinja.mp3",
+        creator: "jan Usawi",
+        url: "https://janusawi.bandcamp.com/track/tawa-lon-linja",
+        license: "CC BY-NC-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
         text: `jan seme li ken olin
 e pona mi e ike mi?
 jan seme li pona tawa mi?
@@ -1750,9 +2037,76 @@ o anu ala e mi
 e mi
 o olin e mi
 taso o anu ala e mi`,
-        translation: `People, listen! Right now I am talking about the simple path (Toki Pona philosophy).
-        The simple path is simple. It has no negativity.
-        If you want a good feeling, look at the small things beside you.`,
+        translation: `
+        who can love, 
+        the good and the bad in me?
+        who can be good to me?
+        I'm still alone,
+        it hurts me.
+
+        on the surface, I'm good for you,
+        my vibes are good too,
+        but they are a little broken.
+        if you want, I can stop being afraid,
+        but I don't want to break.
+
+        i see you walking on the tightrope,
+        the reflection of me is different from yours.
+        when I love, i walk on the tightrope.
+        if you want them, don't choose me.
+        (love) me,
+        (love) me,
+        don't choose me,
+        (love) me,
+        love me,
+        but don't choose me.
+
+        i can be the reflection of a loving person,
+        do you want this?
+        oh.
+        in the dark, your feelings tell a lot about people like you,
+        about people different than me.
+        but I can't unsee this red line.
+        I'm very high up,
+        many are below,
+        come hold my hand.
+
+        on the surface, I'm good for you,
+        my vibes are...
+        can have your love.
+        but if you want,
+        I won't be afraid,
+        but in the future,
+        we will break.
+
+        I see you walking on a tightrope,
+        the reflection of me is different from yours.
+        when I love, i walk on a tightrope.
+        if you want them, don't choose me.
+        (love) me,
+        (love) me,
+        don't choose me,
+        (love) me,
+        love me,
+        but don't choose of me.
+
+        this bad path,
+        you know, I know,
+        you are good around them.
+        dont give me bad feelings.
+        i only want to love!
+
+        I see you walking on a tightrope,
+        the reflection of me is different from yours.
+        when I love, i walk on a tightrope.
+        if you want them, don't choose me.
+        (love) me,
+        (love) me,
+        don't choose of me,
+        (love) me,
+        love me,
+        but don't choose of me.
+        `,
         quiz: [
             { type: "mc", q: "jan li lukin e sitelin lon tenpo seme?", options: ["tenpo ni (Now)", "tenpo pini (Past)", "tenpo kama (Future)"], ans: 1 },
             { type: "mc", q: "sitelin li lon lipu seme?", options: ["lipu pi nasin ma (Nature book)", "lipu musi (Comic)", "lipu nanpa (Math book)"], ans: 0 },
