@@ -15,14 +15,13 @@
     <link rel="stylesheet" href="css/style.css">
     
     <style>
-        /* Ensures the loading screen is centered and colored before JS/External CSS takes over */
         .loading-state {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 60vh;
-            color: var(--primary-dark, #075985); /* Uses variable with fallback */
+            color: var(--primary-dark, #075985);
             animation: fadeIn 0.5s ease;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
