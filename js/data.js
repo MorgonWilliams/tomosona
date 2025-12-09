@@ -1337,7 +1337,6 @@ const LESSON_20 = {
         { word: "jasima",   type: "content word", def: "Mirror, reflect, reverse.", ex: "ilo jasima. (Mirror.)" },
         { word: "majuna",   type: "content word", def: "Old, ancient.", ex: "jan majuna. (Old person.)" },
         { word: "kipisi",   type: "content word", def: "To cut, split, slice.", ex: "ilo kipisi. (Knife/Scissors.)" },
-        { word: "meso",     type: "content word", def: "Middle, average, medium.", ex: "lon meso. (In the middle.)" },
         { word: "a",        type: "particle", def: "Ah! Ha!", ex: "pona a! (Good, wow!)" }
     ],
     grammar: `
@@ -1357,13 +1356,13 @@ const LESSON_20 = {
         { type: "mc",      q: "Translate: <b>'majuna'</b>", options: ["Old / Ancient", "New", "Young"], ans: 0 },
         { type: "mc",      q: "Translate: <b>'Internet / Network'</b>", options: ["linluwi", "kon", "kulupu"], ans: 0 },
         { type: "mc",      q: "Translate: <b>'To cut / Split'</b>", options: ["kipisi", "tu", "pakala"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'Middle / Average'</b>", options: ["meso", "insa", "pini"], ans: 0 },
+        { type: "mc",      q: "Translate: <b>'Middle / Average'</b>", options: ["anpa", "insa", "pini"], ans: 1 },
         { type: "mc",      q: "What is a <b>'tomo misikeke'</b>?", options: ["Hospital", "Pharmacy", "Doctor's house"], ans: 0 },
         { type: "mc",      q: "What is an <b>'ilo kipisi'</b>?", options: ["Knife / Scissors", "Saw", "Both"], ans: 2 },
         { type: "mc",      q: "What does <b>'a'</b> add to a sentence?", options: ["Emotion / Emphasis", "Question", "Negation"], ans: 0 },
         { type: "mc",      q: "Which is <b>INCORRECT</b>? (Old house)", options: ["tomo majuna", "tomo pi majuna", "tomo li majuna (Sentence)"], ans: 1 },
-        { type: "builder", q: "Build: <b>'Look in the mirror.'</b>", correctSentence: "o lukin e jasima", words: ["o", "lukin", "e", "jasima", "meso", "mi"] },
-        { type: "mc",      q: "Translate: <b>'lon meso'</b>", options: ["In the middle", "At the end", "At the start"], ans: 0 }
+        { type: "builder", q: "Build: <b>'Look in the mirror.'</b>", correctSentence: "o lukin e jasima", words: ["o", "lukin", "e", "jasima", "insa", "mi"] },
+        { type: "mc",      q: "Translate: <b>'lon insa a'</b>", options: ["In the middle", "At the end", "At the start"], ans: 0 }
     ]
 };
 
