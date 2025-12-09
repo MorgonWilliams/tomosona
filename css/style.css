@@ -693,6 +693,63 @@ header {
 /* =========================================
    9. COMPONENTS: LESSON & QUIZ UI
    ========================================= */
+/* Media Credits */
+.license-tag {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--color-slate-300);
+    color: var(--color-slate-900);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.2s;
+}
+
+.license-tag:hover {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    cursor: pointer;
+}
+
+.credit-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--bg-body);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    margin: 0 auto 1rem;
+    width: fit-content;
+}
+
+.credit-link {
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all var(--speed-fast);
+}
+
+.credit-link:hover {
+    color: var(--primary-dark);
+    border-bottom-color: var(--primary-dark);
+}
+
+.license-tag {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--color-slate-300);
+    color: var(--color-slate-900);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 .lesson-container {
     max-width: 700px;
     margin: 0 auto;
