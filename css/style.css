@@ -1210,3 +1210,52 @@ header {
         scroll-behavior: auto !important;
     }
 }
+
+/* =========================================
+   STORY MODE: REVEAL MECHANIC
+   ========================================= */
+
+/* Groups the TP sentence and EN translation together */
+.story-pair {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-body);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    transition: background-color 0.2s ease;
+}
+
+.story-pair:hover {
+    background: white;
+    border-color: var(--primary-border);
+}
+
+/* The Target Language (Toki Pona) - Always visible */
+.tp-line {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* The Native Language (English) - Hidden by default */
+.en-line {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    
+    /* The Hiding Magic */
+    filter: blur(8px);       /* Blurs the text */
+    opacity: 0.4;            /* Fades it out slightly */
+    user-select: none;       /* Prevents accidental highlighting while hidden */
+    cursor: help;            /* Indicates interaction */
+    
+    transition: all 0.4s var(--ease-smooth);
+}
+
+/* Reveal on Hover */
+.story-pair:hover .en-line {
+    filter: blur(0);
+    opacity: 1;
+    user-select: text;
+}
