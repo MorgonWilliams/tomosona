@@ -2287,13 +2287,13 @@ const LESSON_10 = {
     ]
 };
 
-// UNIT 4
+// UNIT 4 {REFINED}
 
 const LESSON_11 = {
     id: "4.1",
     type: "lesson",
     title: "The Body",
-    desc: "",
+    desc: "Anatomy and the physical self.",
     vocab: [
         { word: "luka",    type: "content word", def: "Hand, arm, five.", ex: "jan luka. (Five people.)" },
         { word: "noka",    type: "content word", def: "Foot, leg, bottom, lower part.", ex: "noka mi. (My foot.)" },
@@ -2318,7 +2318,7 @@ const LESSON_11 = {
                     <tr>
                         <th style="padding: 12px; text-align: left;">Word</th>
                         <th style="padding: 12px; text-align: left;">Core Meaning</th>
-                        <th style="padding: 12px; text-align: left;">Extended Anatomy</th>
+                        <th style="padding: 12px; text-align: left;">Extended Meaning</th>
                     </tr>
                 </thead>
                 <tbody style="font-size: 0.95rem;">
@@ -2340,18 +2340,18 @@ const LESSON_11 = {
                     <tr style="border-bottom: 1px solid var(--color-slate-100);">
                         <td style="padding: 12px; font-weight: 800; color: var(--primary-dark);">uta</td>
                         <td style="padding: 12px;">Mouth</td>
-                        <td style="padding: 12px; color: var(--text-muted);">Lips, oral, speech</td>
+                        <td style="padding: 12px; color: var(--text-muted);">Lips, oral cavity</td>
                     </tr>
                     <tr>
                         <td style="padding: 12px; font-weight: 800; color: var(--primary-dark);">nena</td>
                         <td style="padding: 12px;">Bump</td>
-                        <td style="padding: 12px; color: var(--text-muted);">Nose, chin, knee, elbow</td>
+                        <td style="padding: 12px; color: var(--text-muted);">Nose, chin, knee, elbow, hill</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div style="background: var(--color-sky-100); border-left: 6px solid var(--primary); padding: 1.5rem; border-radius: var(--radius-md); margin: 2rem 0;">
+        <div style="background: var(--primary-light); border-left: 6px solid var(--primary); padding: 1.5rem; border-radius: var(--radius-md); margin: 2rem 0;">
             <strong style="color: var(--primary-dark); display: block; margin-bottom: 0.5rem;">💡 Note on <em>lawa</em></strong>
             <p style="margin: 0; font-size: 0.95rem;">
                 While <em>lawa</em> literally means "head," it is also the verb "to lead" or "to control." In Toki Pona, your head is literally your "controller."
@@ -2369,29 +2369,102 @@ const LESSON_11 = {
                 <strong>sijelo</strong>
                 <p style="font-size: 0.9rem; margin: 0;">Body parts map to functions.</p>
             </div>
+            <div class="feature-card">
+                <span class="feature-icon">🧠</span>
+                <strong>lawa</strong>
+                <p style="font-size: 0.9rem; margin: 0;">Head = Mind = Leader.</p>
+            </div>
         </div>
     </section>
     `,
     story: `
-        <div class="story-box">
-            <p style="font-size: 1.25rem; line-height: 1.8;">
-                <span style="color: var(--text-main);">o <strong>lawa</strong> e kulupu.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(Lead the group.)</span><br>
-                <span style="color: var(--text-main);"><strong>sijelo</strong> mi li pona.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(My body is good.)</span>
-            </p>
-        </div>
+    <div class="story-pair">
+        <p class="tp-line">Trainer: "o tawa e luka! o tawa e noka!"</p>
+        <p class="en-line">Trainer: "Move [your] arms! Move [your] legs!"</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">Athlete: "a... sijelo mi li wile lape."</p>
+        <p class="en-line">Athlete: "Ah... my body wants to sleep."</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">Trainer: "lawa sina li wawa. o pali!"</p>
+        <p class="en-line">Trainer: "Your mind is strong. Work!"</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">Athlete: "uta mi li toki ala. mi pali."</p>
+        <p class="en-line">Athlete: "My mouth is not speaking. I am working."</p>
+    </div>
     `,
     quiz: [
-        { type: "builder", q: "Build: <b>'My hand is small.'</b>", correctSentence: "luka mi li lili", words: ["luka", "mi", "li", "lili", "suli", "noka"] },
-        { type: "builder", q: "Build: <b>'Lead the group.'</b>", correctSentence: "o lawa e kulupu", words: ["o", "lawa", "e", "kulupu", "li", "jan"] },
-        { type: "mc",      q: "Translate: <b>'noka'</b>", options: ["Foot / Leg / Bottom", "Hand / Arm", "Head"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'uta'</b>", options: ["Mouth", "Luka", "Noka"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'Skin / Bark / Shell'</b>", options: ["selo", "sijelo", "sinpin"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'Head / To Lead'</b>", options: ["lawa", "luka", "sewi"], ans: 0 },
-        { type: "mc",      q: "What does <b>'jan lawa'</b> mean?", options: ["Head person (Leader)", "Hand person", "Tall person"], ans: 0 },
-        { type: "mc",      q: "If 'noka' is foot, what is <b>'noka tomo'</b>?", options: ["The house's floor/bottom", "The house's roof", "The house's door"], ans: 0 },
-        { type: "mc",      q: "Which is <b>INCORRECT</b>? (Possession)", options: ["luka mi", "luka pi mi", "luka sina"], ans: 1 },
-        { type: "builder", q: "Build: <b>'My body is good.'</b>", correctSentence: "sijelo mi li pona", words: ["sijelo", "mi", "li", "pona", "ike", "e"] },
-        { type: "mc",      q: "Translate: <b>'I have two hands.'</b>", options: ["mi jo e luka tu", "mi luka tu", "mi jo luka tu"], ans: 0 }
+        { 
+            type: "builder", 
+            q: "Build: <b>'My hand is small.'</b>", 
+            correctSentence: "luka mi li lili", 
+            words: ["luka", "mi", "li", "lili", "suli", "noka"] 
+        },
+        { 
+            type: "builder", 
+            q: "Build: <b>'Lead the group.'</b>", 
+            correctSentence: "o lawa e kulupu", 
+            words: ["o", "lawa", "e", "kulupu", "li", "jan"] 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'noka'</b>", 
+            options: ["Foot / Leg / Bottom", "Hand / Arm", "Head"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'uta'</b>", 
+            options: ["Mouth", "Luka", "Noka"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'Skin / Bark / Shell'</b>", 
+            options: ["selo", "sijelo", "sinpin"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'Head / To Lead'</b>", 
+            options: ["lawa", "luka", "sewi"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "What does <b>'jan lawa'</b> mean?", 
+            options: ["Head person (Leader)", "Hand person", "Tall person"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "If 'noka' is foot, what is <b>'noka tomo'</b>?", 
+            options: ["The house's floor/bottom", "The house's roof", "The house's door"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Which is <b>INCORRECT</b>? (Possession)", 
+            options: ["luka mi", "luka pi mi", "luka sina"], 
+            ans: 1 
+        },
+        { 
+            type: "builder", 
+            q: "Build: <b>'My body is good.'</b>", 
+            correctSentence: "sijelo mi li pona", 
+            words: ["sijelo", "mi", "li", "pona", "ike", "e"] 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'I have two hands.'</b>", 
+            options: ["mi jo e luka tu", "mi luka tu", "mi jo luka tu"], 
+            ans: 0 
+        }
     ]
 };
 
@@ -2399,7 +2472,7 @@ const LESSON_12 = {
     id: "4.2",
     type: "lesson",
     title: "The `pi` Solution",
-    desc: "",
+    desc: "How to group adjectives to create complex descriptions.",
     vocab: [
         { word: "pi",     type: "particle",     def: "Regroups modifiers (of).", ex: "poki pi telo wawa. (Cup of coffee.)" },
         { word: "kulupu", type: "content word", def: "Group, community, society.", ex: "kulupu toki. (Language community.)" },
@@ -2429,10 +2502,10 @@ const LESSON_12 = {
 
         <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
             <div style="background: var(--color-slate-100); padding: 10px; border-radius: 8px; font-family: monospace;">
-                <strong>No pi:</strong> A B C &nbsp;&nbsp;&nbsp;= <span style="color: var(--text-muted);">(A B) is C</span>
+                <strong>No pi:</strong> A B C &nbsp;&nbsp;&nbsp;= <span style="color: var(--text-muted);">(A B) described by C</span>
             </div>
             <div style="background: var(--advanced-bg); padding: 10px; border-radius: 8px; font-family: monospace; border: 1px solid var(--advanced);">
-                <strong>With pi:</strong> A <span style="color: var(--advanced); font-weight: 800;">pi</span> B C = <span style="color: var(--advanced);">A is (B C)</span>
+                <strong>With pi:</strong> A <span style="color: var(--advanced); font-weight: 800;">pi</span> B C = <span style="color: var(--advanced);">A described by (B C)</span>
             </div>
         </div>
     </div>
@@ -2453,7 +2526,7 @@ const LESSON_12 = {
         <h3>3. Case Study: The Loud Tool</h3>
         <p>Let's look at the difference between a "Big Instrument" and a "Loud Tool".</p>
 
-        <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
             
             <div class="feature-card" style="align-items: flex-start; text-align: left; border: 2px solid var(--border-color); box-shadow: none;">
                 <div style="background: var(--color-slate-200); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 800; margin-bottom: 1rem;">DEFAULT</div>
@@ -2530,30 +2603,85 @@ const LESSON_12 = {
     </section>
     `,
     story: `
-        <div class="story-box">
-            <p style="font-size: 1.25rem; line-height: 1.8;">
-                <span style="color: var(--text-main);">ona li <strong>mama</strong> mi.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(She is my parent.)</span><br>
-                <span style="color: var(--text-main);">kulupu li suli.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(The group is big.)</span>
-            </p>
-        </div>
+    <div class="story-pair">
+        <p class="tp-line">mi jo e len pi loje wawa.</p>
+        <p class="en-line">I have clothes of intense red (very red clothes).</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">o lukin e leko pi kiwen walo.</p>
+        <p class="en-line">Look at the block of white hard-material (white brick).</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">sike pi tawa wawa li ike.</p>
+        <p class="en-line">A wheel of fast movement (a spinning blade?) is dangerous.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">kulupu pi toki pona li suli.</p>
+        <p class="en-line">The community of Toki Pona (Good Language) is big.</p>
+    </div>
     `,
     quiz: [
-        { type: "builder", q: "Build: <b>'She is my parent.'</b>", correctSentence: "ona li mama mi", words: ["ona", "li", "mama", "mi", "e", "jan"] },
-        { type: "builder", q: "Build: <b>'The group speaks.'</b>", correctSentence: "kulupu li toki", words: ["kulupu", "li", "toki", "e", "mi", "ona"] },
-        { type: "mc",      q: "Translate: <b>'Group / Community'</b>", options: ["kulupu", "mute", "ale"], ans: 0 },
-        { type: "mc",      q: "What is a <b>'kulupu toki'</b>?", options: ["Language community/group", "Talking person", "Many words"], ans: 0 },
-        { type: "mc",      q: "What is <b>'kalama suli'</b>?", options: ["Loud noise / Big sound", "Long sound", "Music"], ans: 0 },
-        { type: "builder", q: "Build: <b>'A very good house.'</b>", correctSentence: "tomo pi pona mute", words: ["tomo", "pi", "pona", "mute", "li", "e"] }
+        { 
+            type: "mc", 
+            q: "Translate: <b>'leko'</b>", 
+            options: ["Block / Square / Stairs", "Circle / Ball", "Line / Hair"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'sike'</b>", 
+            options: ["Circle / Wheel / Round", "Square", "Stick"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'palisa'</b>", 
+            options: ["Stick / Rod", "Hair", "Cloth"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'linja'</b>", 
+            options: ["Line / String / Hair", "Stick", "Flat"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'len'</b>", 
+            options: ["Clothing / Layer", "Body", "Color"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "What is <b>'ilo pi kalama suli'</b>?", 
+            options: ["A loud tool (Siren)", "A big instrument (Piano)", "A broken tool"], 
+            ans: 0 
+        },
+        { 
+            type: "builder", 
+            q: "Build: <b>'A very good house.'</b>", 
+            correctSentence: "tomo pi pona mute", 
+            words: ["tomo", "pi", "pona", "mute", "li", "e"] 
+        },
+        { 
+            type: "mc", 
+            q: "Which uses <b>'pi'</b> correctly?", 
+            options: ["tomo pi loje (Red house)", "jan pi pona mute (Very good person)", "tomo pi mi (My house)"], 
+            ans: 1 
+        }
     ]
 };
 
-// UNIT 5
+// UNIT 5 {REFINED}
 
 const LESSON_13 = {
     id: "5.1",
     type: "lesson",
     title: "Location & Body Metaphors",
-    desc: "",
+    desc: "Using body parts to describe where things are (in, on, under, behind).",
     vocab: [
         { word: "lon",    type: "preposition", def: "In, at, on, true, real, existing.", ex: "mi lon ma. (I am on the land.)" },
         { word: "insa",   type: "content word", def: "Inside, stomach, center, internal.", ex: "insa mi. (My stomach/inside.)" },
@@ -2602,9 +2730,8 @@ const LESSON_13 = {
 
     <section style="margin-top: 3rem;">
         <h3>2. Exact Location (The Body Map)</h3>
-        <p>Toki Pona uses body metaphors for location. To say "inside," you say "at the stomach." To say "under," you say "at the feet."</p>
-        
-        <p>We use the <strong>pi</strong> rule (Lesson 4.2) to connect the specific part to the object.</p>
+        <p>To get specific ("inside", "under"), we use body parts or directions as nouns. We treat the location as a "possession" of the object.</p>
+        <p><em>Example: "Inside the house" = "At the house's stomach."</em></p>
 
         <div style="overflow-x: auto; border: var(--border-w) solid var(--border-color); border-radius: var(--radius-lg); box-shadow: 6px 6px 0 var(--border-color); margin-bottom: 2rem;">
             <table style="width: 100%; border-collapse: collapse; background: white;">
@@ -2618,28 +2745,28 @@ const LESSON_13 = {
                 <tbody style="font-size: 0.95rem;">
                     <tr style="border-bottom: 1px solid var(--color-slate-100);">
                         <td style="padding: 12px; font-weight: 800;">Inside</td>
-                        <td style="padding: 12px; color: var(--text-muted);">At the stomach</td>
-                        <td style="padding: 12px; font-family: monospace;">lon <strong>insa</strong> pi...</td>
+                        <td style="padding: 12px; color: var(--text-muted;">At the stomach</td>
+                        <td style="padding: 12px; font-family: monospace;">lon <strong>insa</strong> [noun]</td>
                     </tr>
                     <tr style="border-bottom: 1px solid var(--color-slate-100);">
                         <td style="padding: 12px; font-weight: 800;">Above / Top</td>
-                        <td style="padding: 12px; color: var(--text-muted);">At the sky/head</td>
-                        <td style="padding: 12px; font-family: monospace;">lon <strong>sewi</strong> pi...</td>
+                        <td style="padding: 12px; color: var(--text-muted;">At the sky/head</td>
+                        <td style="padding: 12px; font-family: monospace;">lon <strong>sewi</strong> [noun]</td>
                     </tr>
                     <tr style="border-bottom: 1px solid var(--color-slate-100);">
                         <td style="padding: 12px; font-weight: 800;">Below / Under</td>
-                        <td style="padding: 12px; color: var(--text-muted);">At the feet/bottom</td>
-                        <td style="padding: 12px; font-family: monospace;">lon <strong>anpa</strong> pi...</td>
+                        <td style="padding: 12px; color: var(--text-muted;">At the feet/bottom</td>
+                        <td style="padding: 12px; font-family: monospace;">lon <strong>anpa</strong> [noun]</td>
                     </tr>
                     <tr style="border-bottom: 1px solid var(--color-slate-100);">
                         <td style="padding: 12px; font-weight: 800;">Behind</td>
                         <td style="padding: 12px; color: var(--text-muted);">At the back</td>
-                        <td style="padding: 12px; font-family: monospace;">lon <strong>monsi</strong> pi...</td>
+                        <td style="padding: 12px; font-family: monospace;">lon <strong>monsi</strong> [noun]</td>
                     </tr>
                     <tr>
                         <td style="padding: 12px; font-weight: 800;">Beside</td>
                         <td style="padding: 12px; color: var(--text-muted);">At the hip/side</td>
-                        <td style="padding: 12px; font-family: monospace;">lon <strong>poka</strong> pi...</td>
+                        <td style="padding: 12px; font-family: monospace;">lon <strong>poka</strong> [noun]</td>
                     </tr>
                 </tbody>
             </table>
@@ -2649,23 +2776,18 @@ const LESSON_13 = {
             <h4>Examples in Context</h4>
             <ul style="list-style: none; padding: 0; margin: 0;">
                 <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed var(--border-color);">
-                    <strong>soweli li lon <span style="color: var(--accent);">sewi</span> pi tomo.</strong><br>
-                    <span style="font-size: 0.9rem; color: var(--text-muted);">The cat is on the <strong>roof</strong> (top of house).</span>
+                    <strong>soweli li lon <span style="color: var(--accent);">sewi</span> tomo.</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--text-muted);">The cat is on the <strong>roof</strong> (house-top).</span>
                 </li>
                 <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed var(--border-color);">
                     <strong>jan lili li lon <span style="color: var(--accent);">anpa</span> pi jan suli.</strong><br>
                     <span style="font-size: 0.9rem; color: var(--text-muted);">The child is <strong>under</strong> (at the bottom of) the adult.</span>
                 </li>
                 <li>
-                    <strong>mi lon <span style="color: var(--accent);">poka</span> pi sina.</strong><br>
+                    <strong>mi lon <span style="color: var(--accent);">poka</span> sina.</strong><br>
                     <span style="font-size: 0.9rem; color: var(--text-muted);">I am <strong>with</strong> (at the side of) you.</span>
                 </li>
             </ul>
-        </div>
-        
-        <div class="note" style="margin-top: 2rem;">
-            <strong>Why use <em>pi</em>?</strong><br>
-            We use <em>pi</em> because we are describing the location. We are technically saying: "Located at [the House's Top]." The <em>pi</em> connects the part (sewi) to the whole (tomo).
         </div>
     </section>
 
@@ -2682,26 +2804,69 @@ const LESSON_13 = {
             <div class="feature-card">
                 <span class="feature-icon">🧍</span>
                 <strong>Body Map</strong>
-                <p style="font-size: 0.9rem; margin: 0;">Use body parts (back, stomach) for direction.</p>
+                <p style="font-size: 0.9rem; margin: 0;">Use body parts (back, stomach) or directions for location.</p>
             </div>
         </div>
     </section>
     `,
     story: `
-        <div class="story-box">
-            <p style="font-size: 1.25rem; line-height: 1.8;">
-                <span style="color: var(--text-main);">soweli li <strong>lon</strong> insa tomo.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(The animal is inside the house.)</span><br>
-                <span style="color: var(--text-main);">o lukin e <strong>sinpin</strong> mi.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(Look at my face.)</span>
-            </p>
-        </div>
+    <div class="story-pair">
+        <p class="tp-line">soweli li lon sewi supa.</p>
+        <p class="en-line">The animal is on top of the surface (table/bed).</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">ala. ona li lon anpa supa.</p>
+        <p class="en-line">No. It is under the surface.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">o lukin e insa poki ni.</p>
+        <p class="en-line">Look at the inside of this box.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">a! ona li lon monsi sina!</p>
+        <p class="en-line">Ah! It is behind you!</p>
+    </div>
     `,
     quiz: [
-        { type: "builder", q: "Build: <b>'Look at my face.'</b>", correctSentence: "o lukin e sinpin mi", words: ["o", "lukin", "e", "sinpin", "mi", "monsi"] },
-        { type: "mc",      q: "Translate: <b>'monsi'</b>", options: ["Back / Behind", "Front / Face", "Inside"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'insa'</b>", options: ["Inside / Stomach", "Outside / Skin", "Head"], ans: 0 },
-        { type: "mc",      q: "What part of a house is <b>'sinpin tomo'</b>?", options: ["Wall / Front", "Floor", "Roof"], ans: 0 },
-        { type: "builder", q: "Build: <b>'I am at the house.'</b>", correctSentence: "mi lon tomo", words: ["mi", "lon", "tomo", "li", "e", "tawa"] },
-        { type: "mc",      q: "Translate: <b>'lon poka'</b>", options: ["Nearby / Beside", "Inside", "Far away"], ans: 0 }
+        { 
+            type: "builder", 
+            q: "Build: <b>'Look at my face.'</b>", 
+            correctSentence: "o lukin e sinpin mi", 
+            words: ["o", "lukin", "e", "sinpin", "mi", "monsi"] 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'monsi'</b>", 
+            options: ["Back / Behind", "Front / Face", "Inside"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'insa'</b>", 
+            options: ["Inside / Stomach", "Outside / Skin", "Head"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "What part of a house is <b>'sinpin tomo'</b>?", 
+            options: ["Wall / Front", "Floor", "Roof"], 
+            ans: 0 
+        },
+        { 
+            type: "builder", 
+            q: "Build: <b>'I am at the house.'</b>", 
+            correctSentence: "mi lon tomo", 
+            words: ["mi", "lon", "tomo", "li", "e", "tawa"] 
+        },
+        { 
+            type: "mc", 
+            q: "Which is correct? (At the house-top)", 
+            options: ["lon sewi tomo", "lon sewi pi tomo", "lon tomo sewi"], 
+            ans: 0 
+        }
     ]
 };
 
@@ -2709,7 +2874,7 @@ const LESSON_14 = {
     id: "5.2",
     type: "lesson",
     title: "Going There (Movement)",
-    desc: "",
+    desc: "Direction, origin, and moving things vs. moving yourself.",
     vocab: [
         { word: "tawa",   type: "preposition", def: "To, towards, for, moving to.", ex: "mi tawa tomo. (I go to the house.)" },
         { word: "tan",    type: "preposition", def: "From, because of, origin.", ex: "mi kama tan ma. (I come from the land.)" },
@@ -2842,19 +3007,63 @@ const LESSON_14 = {
     </section>
     `,
     story: `
-        <div class="story-box">
-            <p style="font-size: 1.25rem; line-height: 1.8;">
-                <span style="color: var(--text-main);">mi <strong>kama</strong> tan tomo.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(I come from the house.)</span><br>
-                <span style="color: var(--text-main);">o <strong>awen</strong>!</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(Wait!)</span>
-            </p>
-        </div>
+    <div class="story-pair">
+        <p class="tp-line">mi kama tan nasin suli.</p>
+        <p class="en-line">I come from the big road.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">mi tawa tomo. o awen!</p>
+        <p class="en-line">I am going to the house. Wait!</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">jan lili li weka. mi wile lukin e ona.</p>
+        <p class="en-line">The child is missing/away. I want to see him.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">tomo ni li pona tawa mi.</p>
+        <p class="en-line">This house is good to me (I like this house).</p>
+    </div>
     `,
     quiz: [
-        { type: "builder", q: "Build: <b>'I go to the house.'</b>", correctSentence: "mi tawa tomo", words: ["mi", "tawa", "tomo", "e", "li", "lon"] },
-        { type: "mc",      q: "Translate: <b>'mi tawa tomo'</b>", options: ["I move the house", "I go to the house", "I like the house"], ans: 1 },
-        { type: "mc",      q: "Translate: <b>'mi tawa e tomo'</b> (Note the 'e')", options: ["I go to the house", "I move the house", "The house moves"], ans: 1 },
-        { type: "mc",      q: "Translate: <b>'weka'</b>", options: ["Away / Absent / Removed", "Here", "Near"], ans: 0 },
-        { type: "mc",      q: "How do you say <b>'Fly up'</b>?", options: ["tawa sewi", "lon sewi", "sewi tawa"], ans: 0 }
+        { 
+            type: "builder", 
+            q: "Build: <b>'I go to the house.'</b>", 
+            correctSentence: "mi tawa tomo", 
+            words: ["mi", "tawa", "tomo", "e", "li", "lon"] 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'mi tawa tomo'</b>", 
+            options: ["I move the house", "I go to the house", "I like the house"], 
+            ans: 1 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'mi tawa e tomo'</b> (Note the 'e')", 
+            options: ["I go to the house", "I move the house", "The house moves"], 
+            ans: 1 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'weka'</b>", 
+            options: ["Away / Absent / Removed", "Here", "Near"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "How do you say <b>'Fly up'</b>?", 
+            options: ["tawa sewi", "lon sewi", "sewi tawa"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "What does <b>'ni li pona tawa mi'</b> mean?", 
+            options: ["This is good to me (I like it).", "I go to the good place.", "This comes from me."], 
+            ans: 0 
+        }
     ]
 };
 
@@ -2862,13 +3071,13 @@ const LESSON_15 = {
     id: "5.3",
     type: "lesson",
     title: "Using Tools & Actions",
-    desc: "",
+    desc: "How to use tools (kepeken) and manage objects (open/close/cut).",
     vocab: [
         { word: "kepeken", type: "content word/preposition", def: "Using, with, by means of, to use.", ex: "mi kepeken ilo. (I use a tool.)" },
         { word: "kipisi",  type: "content word", def: "To cut, split, slice, section.", ex: "ilo kipisi. (Knife/Scissors.)" },
         { word: "moli",    type: "content word", def: "Death, to die, to kill, dead.", ex: "o moli ala. (Don't kill.)" },
-        { word: "open",    type: "content word", def: "Start, begin, open, turn on.", ex: "o open e lupa. (Open the door.)" },
-        { word: "pini",    type: "content word", def: "End, tip, finished, past, close, stop.", ex: "mi pini moku. (I finish eating.)" }
+        { word: "open",    type: "content word", def: "Start, begin, open, turn on.", ex: "mi open e lupa. (I open the door.)" },
+        { word: "pini",    type: "content word", def: "End, tip, finished, past, close, stop.", ex: "pali li pini. (Work is finished.)" }
     ],
     grammar: `
     <section>
@@ -2938,17 +3147,24 @@ const LESSON_15 = {
     </section>
 
     <section style="margin-top: 3rem;">
-        <h3>4. Open and Close</h3>
-        <p><strong>open</strong> and <strong>pini</strong> describe the state of an action.</p>
+        <h3>4. Start and Finish (Not Preverbs!)</h3>
+        <p>It is tempting to say "I start eating." In Toki Pona, we avoid using <strong>open</strong> and <strong>pini</strong> as helper verbs because it creates ambiguity.</p>
+        <p>Instead, use them as <strong>verbs</strong> (to open/end something) or <strong>adjectives</strong> (open/finished).</p>
+
         <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div class="feature-card">
-                <strong>o open e lupa.</strong>
-                <p style="font-size: 0.9rem; margin: 0; color: var(--text-muted);">Open the door/hole.</p>
+                <strong>mi open e lupa.</strong>
+                <p style="font-size: 0.9rem; margin: 0; color: var(--text-muted);">I open the door. <br>(Transitive Verb)</p>
             </div>
             <div class="feature-card">
-                <strong>mi pini moku.</strong>
-                <p style="font-size: 0.9rem; margin: 0; color: var(--text-muted);">I finish eating.</p>
+                <strong>moku li pini.</strong>
+                <p style="font-size: 0.9rem; margin: 0; color: var(--text-muted);">The eating is finished. <br>(Adjective)</p>
             </div>
+        </div>
+        
+        <div style="background: var(--error-bg); border-left: 6px solid var(--error); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
+            <strong style="color: var(--error-text);">⚠️ Avoid: "mi pini moku"</strong>
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">This is confusing. It could mean "I finish eating" or "I finish the food." Use "moku li pini" instead.</p>
         </div>
     </section>
 
@@ -2963,44 +3179,87 @@ const LESSON_15 = {
                 <p style="font-size: 0.9rem; margin: 0;">Means "Using" (at end) or "To use" (as verb).</p>
             </div>
             <div class="feature-card">
-                <span class="feature-icon">✂️</span>
-                <strong>kipisi</strong>
-                <p style="font-size: 0.9rem; margin: 0;">To cut, divide, or slice.</p>
+                <span class="feature-icon">🚪</span>
+                <strong>open / pini</strong>
+                <p style="font-size: 0.9rem; margin: 0;">Use as main verbs (open X) or adjectives (X is finished).</p>
             </div>
         </div>
     </section>
     `,
     story: `
-        <div class="story-box">
-            <p style="font-size: 1.25rem; line-height: 1.8;">
-                <span style="color: var(--text-main);">mi <strong>kipisi</strong> e pan kepeken ilo.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(I cut the bread with a tool.)</span><br>
-                <span style="color: var(--text-main);">mi <strong>open</strong> e lupa.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(I open the door.)</span>
-            </p>
-        </div>
+    <div class="story-pair">
+        <p class="tp-line">mi kipisi e pan kepeken ilo.</p>
+        <p class="en-line">I cut the bread using a tool.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">moku mi li pini. mi open e lupa.</p>
+        <p class="en-line">My food/eating is finished. I open the door.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">a! pipi li moli lon anpa noka mi.</p>
+        <p class="en-line">Ah! A bug is dead under my foot.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">mi wile ala moli e ona! mi ike.</p>
+        <p class="en-line">I didn't want to kill it! I am bad.</p>
+    </div>
     `,
     quiz: [
-        { type: "builder", q: "Build: <b>'I use a tool.'</b>", correctSentence: "mi kepeken ilo", words: ["mi", "kepeken", "ilo", "e", "li"] },
-        { type: "builder", q: "Build: <b>'I kill the bug.'</b>", correctSentence: "mi moli e pipi", words: ["mi", "moli", "e", "pipi", "li", "lape"] },
-        { type: "mc",      q: "Translate: <b>'To cut / Split'</b>", options: ["kipisi", "tu", "pakala"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'Death / To die'</b>", options: ["moli", "lape", "weka"], ans: 0 },
-        { type: "mc",      q: "How do you say: <b>'I eat using a tool.'</b>", options: ["mi kepeken ilo", "mi moku kepeken ilo", "mi ilo kepeken"], ans: 1 },
-        { type: "mc",      q: "Translate: <b>'pini'</b>", options: ["Start", "End / Finish", "Middle"], ans: 1 }
+        { 
+            type: "builder", 
+            q: "Build: <b>'I use a tool.'</b>", 
+            correctSentence: "mi kepeken ilo", 
+            words: ["mi", "kepeken", "ilo", "e", "li"] 
+        },
+        { 
+            type: "builder", 
+            q: "Build: <b>'I kill the bug.'</b>", 
+            correctSentence: "mi moli e pipi", 
+            words: ["mi", "moli", "e", "pipi", "li", "lape"] 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'To cut / Split'</b>", 
+            options: ["kipisi", "tu", "pakala"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'Death / To die'</b>", 
+            options: ["moli", "lape", "weka"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "How do you say: <b>'I eat using a tool.'</b>", 
+            options: ["mi kepeken ilo", "mi moku kepeken ilo", "mi ilo kepeken"], 
+            ans: 1 
+        },
+        { 
+            type: "mc", 
+            q: "What does <b>'pali li pini'</b> mean?", 
+            options: ["The work is finished", "I stop working", "Working stop"], 
+            ans: 0 
+        }
     ]
 };
 
-// UNIT 6
+// UNIT 6 {REFINED}
 
 const LESSON_16 = {
     id: "6.1",
     type: "lesson",
     title: "Nature: Plants & Earth",
-    desc: "",
+    desc: "The environment: Land, flora, fungi, and filth.",
     vocab: [
         { word: "ma",     type: "content word", def: "Land, earth, country, outdoors, territory.", ex: "ma li suli. (The land is big.)" },
         { word: "kasi",   type: "content word", def: "Plant, vegetation, herb, leaf, wood, tree.", ex: "kasi li laso. (The plant is green.)" },
         { word: "soko",   type: "content word", def: "Fungus, mushroom.", ex: "soko li lon anpa kasi. (Mushrooms are under the plants.)" },
-        { word: "ko",     type: "content word", def: "Semi-solid, paste, powder, gum, mud.", ex: "ko jaki. (Mud/dirt.)" },
-        { word: "jaki",   type: "content word", def: "Dirty, gross, toxic, trash, pollution.", ex: "telo jaki. (Dirty water.)" }
+        { word: "jaki",   type: "content word", def: "Dirty, gross, toxic, trash, pollution.", ex: "telo jaki. (Dirty water.)" },
+        { word: "ko",     type: "content word", def: "Semi-solid, paste, powder, gum, mud.", ex: "ko jaki. (Mud/dirt.)" }
     ],
     grammar: `
     <section>
@@ -3115,24 +3374,75 @@ const LESSON_16 = {
     </section>
     `,
     story: `
-        <div class="story-box">
-            <p style="font-size: 1.25rem; line-height: 1.8;">
-                <span style="color: var(--text-main);">mi lon <strong>ma</strong> kasi.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(I am in the forest.)</span><br>
-                <span style="color: var(--text-main);"><strong>ko</strong> li lon noka mi.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(Mud is on my feet.)</span><br>
-                <span style="color: var(--text-main);">ni li <strong>jaki</strong>.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(This is dirty.)</span><br>
-                <span style="color: var(--text-main);">mi lukin e <strong>soko</strong> lili.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(I see a small mushroom.)</span>
-            </p>
-        </div>
+    <div class="story-pair">
+        <p class="tp-line">mi lon ma kasi.</p>
+        <p class="en-line">I am in the forest (plant-land).</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">ko li lon noka mi. ni li jaki.</p>
+        <p class="en-line">Mud/powder is on my feet. This is dirty.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">mi lukin e soko lili.</p>
+        <p class="en-line">I see a small mushroom.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">soko li sama ala kasi.</p>
+        <p class="en-line">Fungi are not like plants.</p>
+    </div>
     `,
     quiz: [
-        { type: "builder", q: "Build: <b>'The land is dirty.'</b>", correctSentence: "ma li jaki", words: ["ma", "li", "jaki", "ko", "e", "kasi"] },
-        { type: "builder", q: "Build: <b>'Remove the mud.'</b>", correctSentence: "o weka e ko", words: ["o", "weka", "e", "ko", "ma", "li"] },
-        { type: "mc",      q: "Translate: <b>'kasi'</b>", options: ["Plant / Tree", "Land", "Fungus"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'soko'</b>", options: ["Fungus / Mushroom", "Flower", "Dirt"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'jaki'</b>", options: ["Dirty / Toxic", "Good", "Wet"], ans: 0 },
-        { type: "mc",      q: "What is <b>'ko'</b>?", options: ["Semi-solid / Paste / Powder", "Hard rock", "Water"], ans: 0 },
-        { type: "mc",      q: "How do you say <b>'Forest'</b>?", options: ["ma kasi (Plant land)", "ma suli", "ma jaki"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'Flower'</b>", options: ["kasi kule", "kasi suli", "kasi jaki"], ans: 0 }
+        { 
+            type: "builder", 
+            q: "Build: <b>'The land is dirty.'</b>", 
+            correctSentence: "ma li jaki", 
+            words: ["ma", "li", "jaki", "ko", "e", "kasi"] 
+        },
+        { 
+            type: "builder", 
+            q: "Build: <b>'Remove the mud.'</b>", 
+            correctSentence: "o weka e ko", 
+            words: ["o", "weka", "e", "ko", "ma", "li"] 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'kasi'</b>", 
+            options: ["Plant / Tree", "Land", "Fungus"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'soko'</b>", 
+            options: ["Fungus / Mushroom", "Flower", "Dirt"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'jaki'</b>", 
+            options: ["Dirty / Toxic", "Good", "Wet"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "What is <b>'ko'</b>?", 
+            options: ["Semi-solid / Paste / Powder", "Hard rock", "Water"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "How do you say <b>'Forest'</b>?", 
+            options: ["ma kasi (Plant land)", "ma suli", "ma jaki"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'Flower'</b>", 
+            options: ["kasi kule", "kasi suli", "kasi jaki"], 
+            ans: 0 
+        }
     ]
 };
 
@@ -3140,22 +3450,22 @@ const LESSON_17 = {
     id: "6.2",
     type: "lesson",
     title: "Physics: States of Matter",
-    desc: "",
+    desc: "Solids, squishy things, gases, temperature, and materials.",
     vocab: [
         { word: "kiwen",  type: "content word", def: "Hard object, metal, rock, solid.", ex: "ilo kiwen. (Metal tool.)" },
         { word: "kon",    type: "content word", def: "Air, wind, spirit, soul, gas.", ex: "kon li lete. (The wind is cold.)" },
         { word: "seli",   type: "content word", def: "Fire, heat, warm, cooking.", ex: "telo seli. (Hot water.)" },
         { word: "lete",   type: "content word", def: "Cold, freeze, raw.", ex: "telo lete. (Cold water.)" },
-        // 'telo' is reviewed here as a state of matter, though taught in 2.2
+        { word: "ko",     type: "content word", def: "Semi-solid, paste, powder, gum, mud.", ex: "ko jaki. (Mud/dirt.)" }
     ],
     grammar: `
     <section>
-        <p>In this lesson, we break the physical world down into its fundamental states: Solid, Liquid, Gas, and Temperature. Toki Pona categorizes objects by how they feel and behave.</p>
+        <p>In this lesson, we break the physical world down into its fundamental states: Solid, Squishy, Liquid, Gas, and Temperature. Toki Pona categorizes objects by how they feel and behave.</p>
     </section>
 
     <section>
-        <h3>1. The Three States of Matter</h3>
-        <p>Everything physical falls into one of these three categories (plus <em>ko</em>/squishy from the previous lesson).</p>
+        <h3>1. The Four States of Matter</h3>
+        <p>Everything physical falls into one of these categories.</p>
 
         <div style="overflow-x: auto; border: var(--border-w) solid var(--border-color); border-radius: var(--radius-lg); box-shadow: 6px 6px 0 var(--border-color); margin-bottom: 2rem;">
             <table style="width: 100%; border-collapse: collapse; background: white;">
@@ -3168,28 +3478,33 @@ const LESSON_17 = {
                 </thead>
                 <tbody style="font-size: 0.95rem;">
                     <tr style="border-bottom: 1px solid var(--color-slate-100);">
-                        <td style="padding: 12px;"><span style="background: var(--color-slate-200); padding: 4px 8px; border-radius: 4px; font-weight: 800;">Solid</span></td>
+                        <td style="padding: 12px;"><span style="background: var(--color-slate-200); padding: 4px 8px; border-radius: 4px; font-weight: 800;">Solid (Hard)</span></td>
                         <td style="padding: 12px; color: var(--primary-dark); font-weight: 800;">kiwen</td>
-                        <td style="padding: 12px; color: var(--text-muted);">Rock, metal, ice, bone, hard plastic, glass.</td>
+                        <td style="padding: 12px; color: var(--text-muted);">Rock, metal, ice, glass, bone.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--color-slate-100);">
+                        <td style="padding: 12px;"><span style="background: #fed7aa; color: #9a3412; padding: 4px 8px; border-radius: 4px; font-weight: 800;">Semi-Solid</span></td>
+                        <td style="padding: 12px; color: var(--accent-dark); font-weight: 800;">ko</td>
+                        <td style="padding: 12px; color: var(--text-muted);">Clay, mud, dough, paste, powder.</td>
                     </tr>
                     <tr style="border-bottom: 1px solid var(--color-slate-100);">
                         <td style="padding: 12px;"><span style="background: var(--color-sky-100); color: var(--primary-dark); padding: 4px 8px; border-radius: 4px; font-weight: 800;">Liquid</span></td>
                         <td style="padding: 12px; color: var(--primary-dark); font-weight: 800;">telo</td>
-                        <td style="padding: 12px; color: var(--text-muted);">Water, juice, sauce, oil, blood.</td>
+                        <td style="padding: 12px; color: var(--text-muted);">Water, juice, oil, blood.</td>
                     </tr>
                     <tr>
                         <td style="padding: 12px;"><span style="background: var(--advanced-bg); color: var(--advanced); padding: 4px 8px; border-radius: 4px; font-weight: 800;">Gas</span></td>
                         <td style="padding: 12px; color: var(--primary-dark); font-weight: 800;">kon</td>
-                        <td style="padding: 12px; color: var(--text-muted);">Air, smoke, steam, breath, spirit, soul.</td>
+                        <td style="padding: 12px; color: var(--text-muted);">Air, smoke, steam, soul.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         
         <div style="background: var(--primary-light); padding: 1rem; border-radius: var(--radius-md); border-left: 6px solid var(--primary);">
-            <strong style="color: var(--primary-dark);">💡 Metaphorical Meaning</strong>
+            <strong style="color: var(--primary-dark);">💡 Hard vs. Squishy</strong>
             <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">
-                <strong>kon</strong> (Air) represents anything unseen. "Spirit" or "Soul" is often translated as <em>kon</em>.
+                If you knock on it and it hurts, it's <strong>kiwen</strong>. If you can mold it or it crumbles, it's <strong>ko</strong>.
             </p>
         </div>
     </section>
@@ -3229,18 +3544,18 @@ const LESSON_17 = {
                     <div style="color: var(--text-muted);">Hard water (Ice).</div>
                 </div>
             </div>
+            <div class="outline-item" style="border-left: 6px solid var(--accent);">
+                <span style="font-size: 1.5rem;">🧱</span>
+                <div>
+                    <div style="font-weight: 800;">ko kiwen</div>
+                    <div style="color: var(--text-muted);">Hard paste (Concrete/Dried Clay).</div>
+                </div>
+            </div>
             <div class="outline-item" style="border-left: 6px solid var(--primary);">
                 <span style="font-size: 1.5rem;">🌫️</span>
                 <div>
                     <div style="font-weight: 800;">telo kon</div>
                     <div style="color: var(--text-muted);">Air water (Steam/Mist).</div>
-                </div>
-            </div>
-            <div class="outline-item" style="border-left: 6px solid var(--primary);">
-                <span style="font-size: 1.5rem;">🪨</span>
-                <div>
-                    <div style="font-weight: 800;">ma kiwen</div>
-                    <div style="color: var(--text-muted);">Hard earth (Rock/Stone).</div>
                 </div>
             </div>
         </div>
@@ -3252,28 +3567,70 @@ const LESSON_17 = {
         <h3>Summary</h3>
         <ul>
             <li><strong>kiwen:</strong> Hard / Solid.</li>
+            <li><strong>ko:</strong> Squishy / Powder / Paste.</li>
             <li><strong>kon:</strong> Gas / Spirit / Air.</li>
-            <li><strong>seli:</strong> Hot / Fire.</li>
-            <li><strong>lete:</strong> Cold / Chill.</li>
+            <li><strong>seli/lete:</strong> Hot/Cold.</li>
         </ul>
     </section>
     `,
     story: `
-        <div class="story-box">
-            <p style="font-size: 1.25rem; line-height: 1.8;">
-                <span style="color: var(--text-main);">suno li <strong>seli</strong>.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(The sun is hot.)</span><br>
-                <span style="color: var(--text-main);">kon li <strong>lete</strong>.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(The wind is cold.)</span><br>
-                <span style="color: var(--text-main);">mi sitelen lon <strong>kiwen</strong>.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(I write on the rock/stone.)</span>
-            </p>
-        </div>
+    <div class="story-pair">
+        <p class="tp-line">suno li seli a!</p>
+        <p class="en-line">The sun is so hot!</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">mi sitelen lon kiwen suli.</p>
+        <p class="en-line">I am writing/drawing on a big rock.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">mi pali e ko. ko li seli.</p>
+        <p class="en-line">I make dough/paste. The dough is warm.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">kon li lete. ni li pona tawa mi.</p>
+        <p class="en-line">The wind is cold. This is good to me (I like it).</p>
+    </div>
     `,
     quiz: [
-        { type: "mc",      q: "Translate: <b>'telo seli'</b>", options: ["Hot water", "Cold water", "Ice"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'Stone / Metal / Hard'</b>", options: ["kiwen", "ko", "ma"], ans: 0 },
-        { type: "mc",      q: "Translate: <b>'Fire / Heat'</b>", options: ["seli", "lete", "telo"], ans: 0 },
-        { type: "mc",      q: "Which word describes <b>Ice</b>?", options: ["telo kiwen (Hard water)", "telo seli", "telo kon"], ans: 0 },
-        { type: "mc",      q: "What is <b>'kon'</b>?", options: ["Air / Spirit / Wind", "Fire", "Earth"], ans: 0 },
-        { type: "builder", q: "Build: <b>'The stone is hard.'</b>", correctSentence: "kiwen li kiwen", words: ["kiwen", "li", "kiwen", "ko", "e", "pona"] }
+        { 
+            type: "mc", 
+            q: "Translate: <b>'telo seli'</b>", 
+            options: ["Hot water", "Cold water", "Ice"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Translate: <b>'Stone / Metal / Hard'</b>", 
+            options: ["kiwen", "ko", "ma"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "What is <b>'ko'</b>?", 
+            options: ["Squishy / Powder / Paste", "Hard Rock", "Air"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "Which word describes <b>Ice</b>?", 
+            options: ["telo kiwen (Hard water)", "telo seli", "telo kon"], 
+            ans: 0 
+        },
+        { 
+            type: "mc", 
+            q: "What is <b>'kon'</b>?", 
+            options: ["Air / Spirit / Wind", "Fire", "Earth"], 
+            ans: 0 
+        },
+        { 
+            type: "builder", 
+            q: "Build: <b>'The stone is hard.'</b>", 
+            correctSentence: "kiwen li kiwen", 
+            words: ["kiwen", "li", "kiwen", "ko", "e", "pona"] 
+        }
     ]
 };
 
@@ -3281,7 +3638,7 @@ const LESSON_18 = {
     id: "6.3",
     type: "lesson",
     title: "Conjunctions & Lists",
-    desc: "",
+    desc: "How to connect ideas: 'And', 'But', and 'Also'.",
     vocab: [
         { word: "en",     type: "particle", def: "And (connects subjects only).", ex: "mi en sina. (Me and you.)" },
         { word: "taso",   type: "particle", def: "But, however, only.", ex: "mi wile, taso mi ken ala. (I want, but I can't.)" },
@@ -3426,13 +3783,25 @@ const LESSON_18 = {
     </section>
     `,
     story: `
-        <div class="story-box">
-            <p style="font-size: 1.25rem; line-height: 1.8;">
-                <span style="color: var(--text-main);">mi <strong>en</strong> sina li tawa.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(You and I go.)</span><br>
-                <span style="color: var(--text-main);">mi wile moku <strong>taso</strong> mi jo ala e mani.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(I want to eat, but I have no money.)</span><br>
-                <span style="color: var(--text-main);">ona li toki <strong>li</strong> musi.</span> <span style="font-size: 0.9rem; color: var(--text-muted);">(He talks and has fun.)</span>
-            </p>
-        </div>
+    <div class="story-pair">
+        <p class="tp-line">mi en sina li tawa.</p>
+        <p class="en-line">You and I go.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">mi wile moku taso mi jo ala e mani.</p>
+        <p class="en-line">I want to eat, but I have no money.</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">ona li toki li musi.</p>
+        <p class="en-line">He talks and has fun (is entertaining).</p>
+    </div>
+
+    <div class="story-pair">
+        <p class="tp-line">mi moku e kili e pan.</p>
+        <p class="en-line">I eat fruit and bread.</p>
+    </div>
     `,
     quiz: [
         { type: "mc",      q: "Translate: <b>'mi kin'</b>", options: ["Me too / Indeed", "My kin", "I can"], ans: 0 },
